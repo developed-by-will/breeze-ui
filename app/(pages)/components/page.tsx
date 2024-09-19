@@ -1,11 +1,11 @@
 'use client';
 
-import * as Tabs from '@radix-ui/react-tabs';
+import CodeSnippet from '@/components/breeze-ui/CodeSnippet';
 import Sidebar from '@/components/project/Sidebar';
 import { useGlobalStore } from '@/store';
-import CodeSnippet from '@/components/breeze-ui/CodeSnippet';
-import { isValidElement } from 'react';
+import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
+import { isValidElement } from 'react';
 
 export default function Component() {
   const globalStore = useGlobalStore();
