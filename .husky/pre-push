@@ -1,0 +1,8 @@
+#!/usr/bin/env pwsh
+npm run prettier
+if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+npm run build
+if ($LASTEXITCODE -ne 0) {
+Write-Host "Build failed. Aborting push."
+exit 1
+}
