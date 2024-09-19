@@ -1,8 +1,9 @@
-import { useCallback, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import * as PrismStyles from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Button } from "@/components/ui/button";
-import { Check, Copy } from "lucide-react";
+import { useCallback, useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import * as PrismStyles from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Button } from '@/components/ui/button';
+import { Check, Copy } from 'lucide-react';
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -12,8 +13,8 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+  AlertDialogTrigger
+} from '@/components/ui/alert-dialog';
 
 type StyleName = keyof typeof PrismStyles;
 
@@ -59,7 +60,7 @@ const ShowAlertDialog = (props: PropsType) => {
 
   const copyToClipboard = useCallback(() => {
     navigator.clipboard.writeText(codeSnippet).then(() => {
-      console.log("Close dialog");
+      console.log('Close dialog');
     });
   }, [codeSnippet]);
 
@@ -83,9 +84,7 @@ const ShowAlertDialog = (props: PropsType) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={copyToClipboard}>
-            {props.alertDialogAction}
-          </AlertDialogAction>
+          <AlertDialogAction onClick={copyToClipboard}>{props.alertDialogAction}</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -117,8 +116,8 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
         wrapLongLines={true}
         customStyle={{
           margin: 0,
-          borderRadius: "0.375rem",
-          padding: "1rem",
+          borderRadius: '0.375rem',
+          padding: '1rem'
         }}
       >
         {codeSnippet}
@@ -128,11 +127,11 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
 }
 
 /* For the preview */
-import { ComponentType } from "@/types/componentType";
+import { ComponentType } from '@/types/componentType';
 
-const name = "Code Highlighter";
+const name = 'Code Highlighter';
 const description =
-  "Provides syntax highlighting and copy to keyboard functionality with code wrapping for long lines.";
+  'Provides syntax highlighting and copy to keyboard functionality with code wrapping for long lines.';
 
 const codeSnippet = `import { useCallback, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -300,5 +299,5 @@ export const config: ComponentType = {
   implementation_1,
   implementation_2,
   dependencies:
-    "npx shadcn@latest add button; npx shadcn@latest add alert-dialog; npm i react-syntax-highlighter; npm i --save-dev @types/react-syntax-highlighter",
+    'npx shadcn@latest add button; npx shadcn@latest add alert-dialog; npm i react-syntax-highlighter; npm i --save-dev @types/react-syntax-highlighter'
 };

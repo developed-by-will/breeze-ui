@@ -1,12 +1,10 @@
-"use client";
+'use client';
 
-import Navbar from "@/components/project/Navbar";
-import { ThemeProvider } from "@/components/theme-provider";
-import { StrictMode, useEffect, useState } from "react";
+import Navbar from '@/components/project/Navbar';
+import { ThemeProvider } from '@/components/theme-provider';
+import { StrictMode, useEffect, useState } from 'react';
 
-export default function Hydrate({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function Hydrate({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {

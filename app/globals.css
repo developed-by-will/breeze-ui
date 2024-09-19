@@ -37,7 +37,7 @@
     --radius: 0.5rem;
   }
   .dark,
-  :root[class~="dark"] {
+  :root[class~='dark'] {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
@@ -75,28 +75,28 @@
 }
 
 @font-face {
-  font-family: "Harlow Solid Italic";
+  font-family: 'Harlow Solid Italic';
   font-style: normal;
   font-weight: normal;
   src:
-    local("Harlow Solid Italic"),
-    url("./fonts/HARLOWSI.woff") format("woff");
+    local('Harlow Solid Italic'),
+    url('./fonts/HARLOWSI.woff') format('woff');
 }
 
 @font-face {
-  font-family: "Arial Rounded MT ExtraBold";
+  font-family: 'Arial Rounded MT ExtraBold';
   font-style: normal;
   font-weight: normal;
   src:
-    local("Arial Rounded MT ExtraBold"),
-    url("./fonts/ARIALROUNDEDMTEXTRABOLD.woff") format("woff");
+    local('Arial Rounded MT ExtraBold'),
+    url('./fonts/ARIALROUNDEDMTEXTRABOLD.woff') format('woff');
 }
 
 .logo-font-1 {
-  font-family: "Harlow Solid Italic";
+  font-family: 'Harlow Solid Italic';
 }
 
 .logo-font-2 {
-  font-family: "Arial Rounded MT ExtraBold";
+  font-family: 'Arial Rounded MT ExtraBold';
   font-weight: bold;
 }
