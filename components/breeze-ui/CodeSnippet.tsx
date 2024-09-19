@@ -1,8 +1,8 @@
+import { Button } from '@/components/ui/button';
+import { Check, Copy } from 'lucide-react';
 import { useCallback, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import * as PrismStyles from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Button } from '@/components/ui/button';
-import { Check, Copy } from 'lucide-react';
 
 import {
   AlertDialog,

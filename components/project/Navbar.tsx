@@ -1,6 +1,6 @@
+import { components } from '@/components/breeze-ui/index';
+import { Switch } from '@/components/project/Switch';
 import { Button } from '@/components/ui/button';
-import { Menu, Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import {
   Sheet,
   SheetClose,
@@ -10,12 +10,12 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import { ScrollArea } from '@radix-ui/react-scroll-area';
-import { components } from '@/components/breeze-ui/index';
-import { ComponentType } from '@/types/componentType';
 import { useGlobalStore } from '@/store';
+import { ComponentType } from '@/types/componentType';
+import { ScrollArea } from '@radix-ui/react-scroll-area';
+import { Menu, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import Logo from './Logo';
-import { Switch } from '@/components/project/Switch';
 
 export default function Navbar() {
   const globalStore = useGlobalStore();

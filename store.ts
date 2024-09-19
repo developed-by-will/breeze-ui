@@ -1,7 +1,7 @@
+import { components } from '@/components/breeze-ui/index';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { ComponentType } from './types/componentType';
-import { components } from '@/components/breeze-ui/index';
 
 type GlobalStoreType = {
   curComponent: ComponentType;
