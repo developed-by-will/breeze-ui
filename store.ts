@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { ComponentType } from "./types/componentType";
-import { components } from "@/components/breeze-ui/index";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { ComponentType } from './types/componentType';
+import { components } from '@/components/breeze-ui/index';
 
 type GlobalStoreType = {
   curComponent: ComponentType;
@@ -14,16 +14,16 @@ export const useGlobalStore = create<GlobalStoreType>()(
   persist(
     (set) => ({
       curComponent: {
-        ...components[0],
+        ...components[0]
       },
       setComponent: (component: ComponentType) => {
         set({ curComponent: component });
       },
-      theme: "light",
+      theme: 'light',
       setTheme: (theme: string) => {
         set({ theme });
-      },
+      }
     }),
-    { name: "global-store" },
-  ),
+    { name: 'global-store' }
+  )
 );

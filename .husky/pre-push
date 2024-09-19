@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if ! npm run lint; then
+    echo "Linting failed. Please fix the lint errors."
+    exit 1
+fi
+
+if ! npm run prettier; then
+    echo "Prettier failed. Please fix the formatting issues."
+    exit 1
+fi
+
+if ! npm run build; then
+    echo "Build failed. Please resolve the build issues."
+    exit 1
+fi
+
+echo "All checks passed successfully."

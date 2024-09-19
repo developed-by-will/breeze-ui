@@ -1,8 +1,8 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui/button";
-import { components } from "@/components/breeze-ui/index";
-import { ComponentType } from "@/types/componentType";
-import { useGlobalStore } from "@/store";
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Button } from '@/components/ui/button';
+import { components } from '@/components/breeze-ui/index';
+import { ComponentType } from '@/types/componentType';
+import { useGlobalStore } from '@/store';
 
 export default function Sidebar() {
   const globalStore = useGlobalStore();
@@ -21,14 +21,10 @@ export default function Sidebar() {
               key={component.name}
               variant="ghost"
               className={`w-full justify-start hover:bg-foreground/10 ${
-                theme === "light"
-                  ? "text-primary hover:bg-foreground/40 hover:text-primary"
-                  : "text-white hover:bg-foreground/50 hover:text-white"
-              } ${
-                component.name === globalStore.curComponent.name
-                  ? "bg-foreground/30"
-                  : ""
-              }`}
+                theme === 'light'
+                  ? 'text-primary hover:bg-foreground/40 hover:text-primary'
+                  : 'text-white hover:bg-foreground/50 hover:text-white'
+              } ${component.name === globalStore.curComponent.name ? 'bg-foreground/30' : ''}`}
               onClick={() => changeComponent(component)}
             >
               {component.name}

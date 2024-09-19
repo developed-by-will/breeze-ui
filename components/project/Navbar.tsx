@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Menu, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Button } from '@/components/ui/button';
+import { Menu, Moon, Sun } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import {
   Sheet,
   SheetClose,
@@ -8,14 +8,14 @@ import {
   SheetDescription,
   SheetHeader,
   SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { components } from "@/components/breeze-ui/index";
-import { ComponentType } from "@/types/componentType";
-import { useGlobalStore } from "@/store";
-import Logo from "./Logo";
-import { Switch } from "@/components/project/Switch";
+  SheetTrigger
+} from '@/components/ui/sheet';
+import { ScrollArea } from '@radix-ui/react-scroll-area';
+import { components } from '@/components/breeze-ui/index';
+import { ComponentType } from '@/types/componentType';
+import { useGlobalStore } from '@/store';
+import Logo from './Logo';
+import { Switch } from '@/components/project/Switch';
 
 export default function Navbar() {
   const globalStore = useGlobalStore();
@@ -39,9 +39,7 @@ export default function Navbar() {
               <SheetContent side="left">
                 <SheetHeader>
                   <SheetTitle>Components</SheetTitle>
-                  <SheetDescription>
-                    Choose the component you want to see
-                  </SheetDescription>
+                  <SheetDescription>Choose the component you want to see</SheetDescription>
                 </SheetHeader>
                 <ScrollArea className="h-[calc(100vh-5rem)] mt-4">
                   <div className="space-y-1">
@@ -62,30 +60,20 @@ export default function Navbar() {
             </Sheet>
           </div>
 
-          <Logo
-            font1="text-4xl"
-            font2="text-3xl"
-            classes="space-x-[2px] hidden lg:flex"
-          />
+          <Logo font1="text-4xl" font2="text-3xl" classes="space-x-[2px] hidden lg:flex" />
         </div>
-        <Logo
-          font1="text-4xl"
-          font2="text-3xl"
-          classes="space-x-[2px] flex lg:hidden"
-        />
+        <Logo font1="text-4xl" font2="text-3xl" classes="space-x-[2px] flex lg:hidden" />
         <div className="flex items-center space-x-2">
-          {theme === "light" ? (
+          {theme === 'light' ? (
             <Sun className="h-4 w-4 text-blue-500" />
           ) : (
             <Moon className="h-4 w-4 text-blue-500" />
           )}
           <Switch
             id="theme-switch"
-            checked={theme === "dark"}
+            checked={theme === 'dark'}
             className="bg-gray-500"
-            onCheckedChange={() =>
-              setTheme(theme === "light" ? "dark" : "light")
-            }
+            onCheckedChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
           />
         </div>
       </nav>

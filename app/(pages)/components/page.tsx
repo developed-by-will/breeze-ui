@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import * as Tabs from "@radix-ui/react-tabs";
-import Sidebar from "@/components/project/Sidebar";
-import { useGlobalStore } from "@/store";
-import CodeSnippet from "@/components/breeze-ui/CodeSnippet";
-import { isValidElement } from "react";
-import { Blocks, Boxes } from "lucide-react";
+import * as Tabs from '@radix-ui/react-tabs';
+import Sidebar from '@/components/project/Sidebar';
+import { useGlobalStore } from '@/store';
+import CodeSnippet from '@/components/breeze-ui/CodeSnippet';
+import { isValidElement } from 'react';
+import { Blocks, Boxes } from 'lucide-react';
 
 export default function Component() {
   const globalStore = useGlobalStore();
 
   const component = {
-    ...globalStore.curComponent,
+    ...globalStore.curComponent
   };
 
   const renderExample = (example: React.ReactNode) => {
@@ -44,10 +44,7 @@ export default function Component() {
                 Code
               </Tabs.Trigger>
             </Tabs.List>
-            <Tabs.Content
-              value="preview"
-              className="p-4 border rounded-md space-y-6"
-            >
+            <Tabs.Content value="preview" className="p-4 border rounded-md space-y-6">
               {renderExample(component.example)}
 
               <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
@@ -67,37 +64,22 @@ export default function Component() {
                 <Blocks size={24} /> Implementation examples
               </h2>
 
-              <CodeSnippet
-                codeSnippet={component.implementation_1}
-                styleName="vscDarkPlus"
-              />
+              <CodeSnippet codeSnippet={component.implementation_1} styleName="vscDarkPlus" />
 
               {component.implementation_2 && (
-                <CodeSnippet
-                  codeSnippet={component.implementation_2}
-                  styleName="vscDarkPlus"
-                />
+                <CodeSnippet codeSnippet={component.implementation_2} styleName="vscDarkPlus" />
               )}
 
               {component.implementation_3 && (
-                <CodeSnippet
-                  codeSnippet={component.implementation_3}
-                  styleName="vscDarkPlus"
-                />
+                <CodeSnippet codeSnippet={component.implementation_3} styleName="vscDarkPlus" />
               )}
 
               {component.implementation_4 && (
-                <CodeSnippet
-                  codeSnippet={component.implementation_4}
-                  styleName="vscDarkPlus"
-                />
+                <CodeSnippet codeSnippet={component.implementation_4} styleName="vscDarkPlus" />
               )}
             </Tabs.Content>
             <Tabs.Content value="code">
-              <CodeSnippet
-                codeSnippet={component.codeSnippet}
-                styleName="vscDarkPlus"
-              />
+              <CodeSnippet codeSnippet={component.codeSnippet} styleName="vscDarkPlus" />
             </Tabs.Content>
           </Tabs.Root>
         </main>
