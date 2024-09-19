@@ -1,0 +1,88 @@
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+name: 🚀 Deploy app to PROD
+jobs:
+  check_branch_name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🕵️ Check branch name
+        run: |
+          if [[ "${GITHUB_HEAD_REF}" != "dev" ]]; then
+            echo "Only pull requests from 'dev' can be merged into 'main'."
+            exit 1
+          fi
+  build:
+    name: 🏗️ Build
+    needs: check_branch_name
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+
+    strategy:
+      matrix:
+        node-version: [20.10.0]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: 💻 Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      - name: 💾 Cache .next folder
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 📦 Install sharp for Image Optimization
+        run: npm i sharp
+
+      # This will build the app and produce the .next folder in the root
+      - name: 🏗️ Build
+        run: npm run build
+
+      # Since the pipeline ignores the .next folder, we need to add it ot the artifact
+      - name: ⬆️ Upload .next folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotNext
+          path: .next
+          include-hidden-files: true
+
+  web-deploy:
+    name: 🎉 Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      # Adds the .next folder to the rest of the build files
+      - name: ⬇️ Download .next artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dotNext
+          path: .next
+
+      # Remove everything not needed to run the app
+      - name: 🗑️ Clean up before sync files
+        run: |
+          rm -rf .git .github .husky .next/cache node_modules
+      - name: 🔄 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
