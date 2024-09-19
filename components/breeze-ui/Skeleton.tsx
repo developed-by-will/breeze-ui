@@ -4,17 +4,17 @@ type PropsType = {
 };
 
 export default function Skeleton(props: Readonly<PropsType>) {
-  const { bgColor = "bg-primary", classes } = props;
+  const { bgColor = 'bg-primary', classes } = props;
 
   return <div className={`${bgColor} rounded animate-pulse flex ${classes}`} />;
 }
 
 /* For the preview */
-import { ComponentType } from "@/types/componentType";
-import jsxToString from "react-element-to-jsx-string";
+import { ComponentType } from '@/types/componentType';
+import jsxToString from 'react-element-to-jsx-string';
 
-const name = "Skeleton";
-const description = "Use to show a placeholder while content is loading.";
+const name = 'Skeleton';
+const description = 'Use to show a placeholder while content is loading.';
 
 const codeSnippet = `type PropsType = {
       classes: string;
@@ -48,5 +48,5 @@ export const config: ComponentType = {
   codeSnippet,
   example,
   implementation_1: exampleAsString,
-  dependencies: "npx shadcn@latest add skeleton",
+  dependencies: 'npx shadcn@latest add skeleton'
 };

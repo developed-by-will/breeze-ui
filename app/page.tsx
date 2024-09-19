@@ -1,17 +1,11 @@
-"use client";
+'use client';
 
-import Logo from "@/components/project/Logo";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Component } from "lucide-react";
-import { useTheme } from "next-themes";
-import Link from "next/link";
+import Logo from '@/components/project/Logo';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { Component } from 'lucide-react';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
 
 export default function HomePage() {
   const { theme } = useTheme();
@@ -19,17 +13,11 @@ export default function HomePage() {
   return (
     <div className="flex flex-col justify-center items-center">
       <header className="text-center mb-16 space-y-4">
-        <Logo
-          font1="text-8xl"
-          font2="text-6xl"
-          classes="justify-center space-x-2 mb-8 mt-20"
-        />
-        <p className="text-xl">
-          Components created for Next.js based on Shadcn UI
-        </p>
+        <Logo font1="text-8xl" font2="text-6xl" classes="justify-center space-x-2 mb-8 mt-20" />
+        <p className="text-xl">Components created for Next.js based on Shadcn UI</p>
         <p
           className={`text-2xl font-semibold ${
-            theme === "light" ? "text-blue-800" : "text-blue-500"
+            theme === 'light' ? 'text-blue-800' : 'text-blue-500'
           }`}
         >
           Build your projects with breeze.
@@ -37,13 +25,10 @@ export default function HomePage() {
       </header>
 
       <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <Link
-          href="https://discordapp.com/users/432294302153179147"
-          target="_blank"
-        >
+        <Link href="https://discordapp.com/users/432294302153179147" target="_blank">
           <Card
             className={`group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-              theme === "light" ? "bg-white" : "bg-slate-800"
+              theme === 'light' ? 'bg-white' : 'bg-slate-800'
             }`}
           >
             <CardHeader>
@@ -60,14 +45,11 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="opacity-70">
-                Do you have an ideia or need help using these components? Add me
-                on Discord.
+                Do you have an ideia or need help using these components? Add me on Discord.
               </p>
             </CardContent>
             <CardFooter>
-              <Button className="bg-blue-500 hover:bg-blue-500">
-                Befriend: vir7ual.
-              </Button>
+              <Button className="bg-blue-500 hover:bg-blue-500">Befriend: vir7ual.</Button>
             </CardFooter>
           </Card>
         </Link>
@@ -75,7 +57,7 @@ export default function HomePage() {
         <Link href="/components">
           <Card
             className={`group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${
-              theme === "light" ? "bg-white" : "bg-slate-800"
+              theme === 'light' ? 'bg-white' : 'bg-slate-800'
             }`}
           >
             <CardHeader>
@@ -86,14 +68,11 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <p className="opacity-70">
-                Discover our customizable components to accelerate your
-                React/Next.js projects.
+                Discover our customizable components to accelerate your React/Next.js projects.
               </p>
             </CardContent>
             <CardFooter>
-              <Button className="bg-green-500 hover:bg-green-500">
-                View Components
-              </Button>
+              <Button className="bg-green-500 hover:bg-green-500">View Components</Button>
             </CardFooter>
           </Card>
         </Link>
