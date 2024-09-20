@@ -1,16 +1,14 @@
+import { ComponentType } from '@/components/breeze-ui/config';
 import { components } from '@/components/breeze-ui/index';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useGlobalStore } from '@/store';
-import { ComponentType } from '@/types/componentType';
+import { useChangeComponent } from './useChangeComponent';
 
 export default function Sidebar() {
   const globalStore = useGlobalStore();
   const theme = globalStore.theme;
-
-  const changeComponent = (component: ComponentType) => {
-    globalStore.setComponent(component);
-  };
+  const { changeComponent } = useChangeComponent();
 
   return (
     <aside className="w-64 border-r p-4 hidden lg:block">
@@ -27,7 +25,7 @@ export default function Sidebar() {
               } ${component.name === globalStore.curComponent.name ? 'bg-foreground/30' : ''}`}
               onClick={() => changeComponent(component)}
             >
-              {component.name}
+              {component.title}
             </Button>
           ))}
         </div>

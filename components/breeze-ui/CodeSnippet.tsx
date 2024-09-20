@@ -127,11 +127,7 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
 }
 
 /* For the preview */
-import { ComponentType } from '@/types/componentType';
-
-const name = 'Code Highlighter';
-const description =
-  'Provides syntax highlighting and copy to keyboard functionality with code wrapping for long lines.';
+import { componentsMetadata, ComponentType } from './config';
 
 const codeSnippet = `import { useCallback, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -292,8 +288,10 @@ const implementation_2 = `const codeExample = \`<p>Example with alert dialog</p>
 `;
 
 export const config: ComponentType = {
-  name,
-  description,
+  slug: componentsMetadata.codeSnippet.slug,
+  name: componentsMetadata.codeSnippet.name,
+  title: componentsMetadata.codeSnippet.title,
+  description: componentsMetadata.codeSnippet.description,
   codeSnippet,
   example,
   implementation_1,
