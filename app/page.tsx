@@ -15,7 +15,7 @@ export default function HomePage() {
 
   useEffect(() => {
     const checkHeight = () => {
-      setHasMinHeight(window.innerHeight >= 600);
+      setHasMinHeight(window.innerHeight >= 760);
     };
 
     checkHeight();

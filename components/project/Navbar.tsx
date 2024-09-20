@@ -15,14 +15,17 @@ import { ComponentType } from '@/types/componentType';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { useRouter } from 'next/navigation';
 import Logo from './Logo';
 
 export default function Navbar() {
   const globalStore = useGlobalStore();
   const { setTheme, theme } = useTheme();
+  const router = useRouter();
 
   const changeComponent = (component: ComponentType) => {
     globalStore.setComponent(component);
+    router.push('/components');
   };
 
   return (
@@ -39,7 +42,7 @@ export default function Navbar() {
               <SheetContent side="left">
                 <SheetHeader>
                   <SheetTitle>Components</SheetTitle>
-                  <SheetDescription>Choose the component you want to see</SheetDescription>
+                  <SheetDescription>Choose the component you want</SheetDescription>
                 </SheetHeader>
                 <ScrollArea className="h-[calc(100vh-5rem)] mt-4">
                   <div className="space-y-1">
