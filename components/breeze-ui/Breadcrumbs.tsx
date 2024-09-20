@@ -56,11 +56,8 @@ export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
 }
 
 /* For the preview */
-import { ComponentType } from '@/types/componentType';
 import jsxToString from 'react-element-to-jsx-string';
-
-const name = 'Breadcrumbs';
-const description = 'Displays the path to the current resource using a hierarchy of links.';
+import { componentsMetadata, ComponentType } from './metadata';
 
 const codeSnippet = `import Link from "next/link";
 
@@ -140,8 +137,10 @@ const exampleAsString = `const breadcrumbs: BreadcrumbType[] = [
 `;
 
 export const config: ComponentType = {
-  name,
-  description,
+  slug: componentsMetadata.breadcrumbs.slug,
+  name: componentsMetadata.breadcrumbs.name,
+  title: componentsMetadata.breadcrumbs.title,
+  description: componentsMetadata.breadcrumbs.description,
   codeSnippet,
   example,
   implementation_1: exampleAsString,

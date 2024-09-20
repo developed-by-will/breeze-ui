@@ -1,6 +1,7 @@
 'use client';
 
 import CodeSnippet from '@/components/breeze-ui/CodeSnippet';
+import { ComponentType } from '@/components/breeze-ui/metadata';
 import Sidebar from '@/components/project/Sidebar';
 import { useGlobalStore } from '@/store';
 import * as Tabs from '@radix-ui/react-tabs';
@@ -10,7 +11,7 @@ import { isValidElement } from 'react';
 export default function Component() {
   const globalStore = useGlobalStore();
 
-  const component = {
+  const component: ComponentType = {
     ...globalStore.curComponent
   };
 
@@ -26,7 +27,7 @@ export default function Component() {
         <Sidebar />
 
         <main className="flex-1 p-6">
-          <h1 className="text-3xl font-bold mb-2 ">{component.name}</h1>
+          <h1 className="text-3xl font-bold mb-2 ">{component.title}</h1>
           <p className="text-muted-foreground mb-6">{component.description}</p>
 
           <Tabs.Root defaultValue="preview">

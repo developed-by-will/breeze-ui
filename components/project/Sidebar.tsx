@@ -1,8 +1,8 @@
 import { components } from '@/components/breeze-ui/index';
+import { ComponentType } from '@/components/breeze-ui/metadata';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useGlobalStore } from '@/store';
-import { ComponentType } from '@/types/componentType';
 
 export default function Sidebar() {
   const globalStore = useGlobalStore();
@@ -27,7 +27,7 @@ export default function Sidebar() {
               } ${component.name === globalStore.curComponent.name ? 'bg-foreground/30' : ''}`}
               onClick={() => changeComponent(component)}
             >
-              {component.name}
+              {component.title}
             </Button>
           ))}
         </div>

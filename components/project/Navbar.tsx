@@ -1,4 +1,5 @@
 import { components } from '@/components/breeze-ui/index';
+import { ComponentType } from '@/components/breeze-ui/metadata';
 import { Switch } from '@/components/project/Switch';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,7 +12,6 @@ import {
   SheetTrigger
 } from '@/components/ui/sheet';
 import { useGlobalStore } from '@/store';
-import { ComponentType } from '@/types/componentType';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
