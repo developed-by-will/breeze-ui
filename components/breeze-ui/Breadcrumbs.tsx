@@ -57,7 +57,7 @@ export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
 
 /* For the preview */
 import jsxToString from 'react-element-to-jsx-string';
-import { componentsMetadata, ComponentType } from './metadata';
+import { componentsMetadata, ComponentType } from './config';
 
 const codeSnippet = `import Link from "next/link";
 

@@ -1,25 +1,28 @@
 'use client';
 
+import { components } from '@/components/breeze-ui';
 import CodeSnippet from '@/components/breeze-ui/CodeSnippet';
-import { ComponentType } from '@/components/breeze-ui/metadata';
 import Sidebar from '@/components/project/Sidebar';
-import { useGlobalStore } from '@/store';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
 import { isValidElement } from 'react';
 
-export default function Component() {
-  const globalStore = useGlobalStore();
+type PropsType = {
+  slug: string;
+};
 
-  const component: ComponentType = {
-    ...globalStore.curComponent
-  };
+export default function Component({ slug }: Readonly<PropsType>) {
+  const component = Object.values(components).find((c) => c.slug === slug);
 
   const renderExample = (example: React.ReactNode) => {
     if (isValidElement(example)) {
       return example;
     }
   };
+
+  if (!component) {
+    return <p>Component not found</p>;
+  }
 
   return (
     <div className="flex justify-center">

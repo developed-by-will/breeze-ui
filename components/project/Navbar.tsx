@@ -1,5 +1,5 @@
+import { ComponentType } from '@/components/breeze-ui/config';
 import { components } from '@/components/breeze-ui/index';
-import { ComponentType } from '@/components/breeze-ui/metadata';
 import { Switch } from '@/components/project/Switch';
 import { Button } from '@/components/ui/button';
 import {

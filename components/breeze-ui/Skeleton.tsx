@@ -11,7 +11,7 @@ export default function Skeleton(props: Readonly<PropsType>) {
 
 /* For the preview */
 import jsxToString from 'react-element-to-jsx-string';
-import { componentsMetadata, ComponentType } from './metadata';
+import { componentsMetadata, ComponentType } from './config';
 
 const codeSnippet = `type PropsType = {
       classes: string;

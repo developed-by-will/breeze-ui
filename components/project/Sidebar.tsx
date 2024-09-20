@@ -1,5 +1,5 @@
+import { ComponentType } from '@/components/breeze-ui/config';
 import { components } from '@/components/breeze-ui/index';
-import { ComponentType } from '@/components/breeze-ui/metadata';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useGlobalStore } from '@/store';

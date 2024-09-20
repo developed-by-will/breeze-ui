@@ -1,4 +1,4 @@
-import { componentsMetadata } from '@/components/breeze-ui/metadata';
+import { componentsMetadata } from '@/components/breeze-ui/config';
 import { Metadata } from 'next';
 import Component from '.';
 
@@ -17,6 +17,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function Index() {
-  return <Component />;
+export default async function Index({ params }: Readonly<Props>) {
+  return <Component slug={params.slug} />;
 }

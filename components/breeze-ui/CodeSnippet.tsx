@@ -127,7 +127,7 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
 }
 
 /* For the preview */
-import { componentsMetadata, ComponentType } from './metadata';
+import { componentsMetadata, ComponentType } from './config';
 
 const codeSnippet = `import { useCallback, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";

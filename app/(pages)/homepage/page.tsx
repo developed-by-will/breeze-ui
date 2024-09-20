@@ -1,7 +1,7 @@
 'use client';
 
+import { ComponentType } from '@/components/breeze-ui/config';
 import { components } from '@/components/breeze-ui/index';
-import { ComponentType } from '@/components/breeze-ui/metadata';
 import HomepageCard from '@/components/project/HomepageCard';
 import Logo from '@/components/project/Logo';
 import { Button } from '@/components/ui/button';
