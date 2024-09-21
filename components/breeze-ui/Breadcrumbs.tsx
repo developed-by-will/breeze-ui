@@ -120,7 +120,7 @@ export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
 
 /* For the example */
 const breadcrumbs: BreadcrumbType[] = [
-  { text: 'Admin Dashboard', url: '/admin' },
+  { text: 'Admin Dashboard', url: '/' },
   { text: 'Resources' },
   { text: `Create Resource` }
 ];
@@ -128,7 +128,7 @@ const breadcrumbs: BreadcrumbType[] = [
 const example = <Breadcrumbs breadcrumbs={breadcrumbs} position="justify-center" />;
 
 const exampleAsString = `const breadcrumbs: BreadcrumbType[] = [
-      { text: "Admin Dashboard", url: "/admin" },
+      { text: "Admin Dashboard", url: "/" },
       { text: "Resources" },
       { text: "Create Resource" },
     ];
