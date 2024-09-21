@@ -10,20 +10,15 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import { useGlobalStore } from '@/store';
-import { ComponentType } from '@/types/componentType';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Logo from './Logo';
+import { useChangeComponent } from './useChangeComponent';
 
 export default function Navbar() {
-  const globalStore = useGlobalStore();
   const { setTheme, theme } = useTheme();
-
-  const changeComponent = (component: ComponentType) => {
-    globalStore.setComponent(component);
-  };
+  const { changeComponent } = useChangeComponent();
 
   return (
     <div className="w-full flex justify-center bg-transparent backdrop-blur sticky top-0 z-50">
@@ -39,7 +34,7 @@ export default function Navbar() {
               <SheetContent side="left">
                 <SheetHeader>
                   <SheetTitle>Components</SheetTitle>
-                  <SheetDescription>Choose the component you want to see</SheetDescription>
+                  <SheetDescription>Choose the component you want</SheetDescription>
                 </SheetHeader>
                 <ScrollArea className="h-[calc(100vh-5rem)] mt-4">
                   <div className="space-y-1">
@@ -50,7 +45,7 @@ export default function Navbar() {
                           className="w-full justify-start"
                           onClick={() => changeComponent(component)}
                         >
-                          {component.name}
+                          {component.title}
                         </Button>
                       </SheetClose>
                     ))}

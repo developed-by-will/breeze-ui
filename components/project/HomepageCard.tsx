@@ -1,6 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
+import { ReactNode } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 type PropsType = {
@@ -8,15 +9,16 @@ type PropsType = {
   title: string;
   description: string;
   footer: JSX.Element;
+  children?: ReactNode;
 };
 
 export default function HomepageCard(props: Readonly<PropsType>) {
-  const { icon, title, description, footer } = props;
+  const { icon, title, description, footer, children } = props;
   const { theme } = useTheme();
 
   return (
     <Card
-      className={`group transition-all duration-500 hover:shadow-lg hover:-translate-y-1 ${
+      className={`group transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full ${
         theme === 'light' ? 'bg-white' : 'bg-slate-800'
       }`}
     >
@@ -26,7 +28,9 @@ export default function HomepageCard(props: Readonly<PropsType>) {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="opacity-70">{description}</p>
+        {!children && description}
+
+        {children && <div>{children}</div>}
       </CardContent>
       <CardFooter>{footer}</CardFooter>
     </Card>

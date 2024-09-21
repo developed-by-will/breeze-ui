@@ -10,11 +10,8 @@ export default function Skeleton(props: Readonly<PropsType>) {
 }
 
 /* For the preview */
-import { ComponentType } from '@/types/componentType';
 import jsxToString from 'react-element-to-jsx-string';
-
-const name = 'Skeleton';
-const description = 'Use to show a placeholder while content is loading.';
+import { componentsMetadata, ComponentType } from './config';
 
 const codeSnippet = `type PropsType = {
       classes: string;
@@ -40,11 +37,13 @@ const example = (
 
 const exampleAsString = `const isFetching = true;
     
-    {isFetching && ${jsxToString(example)}}`;
+{isFetching && ${jsxToString(example)}}`;
 
 export const config: ComponentType = {
-  name,
-  description,
+  slug: componentsMetadata.skeleton.slug,
+  name: componentsMetadata.skeleton.name,
+  title: componentsMetadata.skeleton.title,
+  description: componentsMetadata.skeleton.description,
   codeSnippet,
   example,
   implementation_1: exampleAsString,
