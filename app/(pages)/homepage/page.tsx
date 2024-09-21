@@ -82,7 +82,7 @@ export default function HomePage() {
           onClick={() => changeComponent(featured)}
           className="md:col-span-2 flex justify-center"
         >
-          <div className="w-[90%] transition-all duration-300 hover:w-full">
+          <div className="w-full lg:w-[90%] transition-all duration-300 hover:w-full">
             <HomepageCard
               icon={
                 <BellPlus className="w-6 h-6 text-orange-500 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-12" />
