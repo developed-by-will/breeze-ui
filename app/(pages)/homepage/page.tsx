@@ -78,7 +78,7 @@ export default function HomePage() {
         </Link>
 
         <Link
-          href=""
+          href={`/component/${featured.slug}`}
           onClick={() => changeComponent(featured)}
           className="md:col-span-2 flex justify-center"
         >
