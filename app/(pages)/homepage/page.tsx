@@ -4,6 +4,7 @@ import { ComponentType } from '@/components/breeze-ui/config';
 import { components } from '@/components/breeze-ui/index';
 import HomepageCard from '@/components/project/HomepageCard';
 import Logo from '@/components/project/Logo';
+import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
 import { useGlobalStore } from '@/store';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
@@ -25,6 +26,8 @@ export default function HomePage() {
     const randomIndex = Math.floor(Math.random() * components.length);
     setFeatured(components[randomIndex]);
   };
+
+  const { changeComponent } = useChangeComponent();
 
   if (!featured) {
     return null;
@@ -74,7 +77,11 @@ export default function HomePage() {
           />
         </Link>
 
-        <Link href={`/component/${featured.slug}`} className="md:col-span-2 flex justify-center">
+        <Link
+          href=""
+          onClick={() => changeComponent(featured)}
+          className="md:col-span-2 flex justify-center"
+        >
           <div className="w-[90%] transition-all duration-300 hover:w-full">
             <HomepageCard
               icon={
