@@ -100,3 +100,11 @@
   font-family: 'Arial Rounded MT ExtraBold';
   font-weight: bold;
 }
+
+html.transition,
+html.transition *,
+html.transition *:before,
+html.transition *:after {
+  transition: all 0.3s !important;
+  transition-delay: 0 !important;
+}
