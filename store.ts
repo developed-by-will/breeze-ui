@@ -1,5 +1,5 @@
-import { ComponentType } from '@/components/breeze-ui/config';
-import { components } from '@/components/breeze-ui/index';
+import { componentsConfig } from '@/registry/default/ui';
+import { ComponentType } from '@/registry/default/ui/metadata';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -14,7 +14,7 @@ export const useGlobalStore = create<GlobalStoreType>()(
   persist(
     (set) => ({
       curComponent: {
-        ...components[0]
+        ...componentsConfig[0]
       },
       setComponent: (component: ComponentType) => {
         set({ curComponent: component });

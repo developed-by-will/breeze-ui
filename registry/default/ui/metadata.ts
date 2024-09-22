@@ -11,12 +11,6 @@ export const componentsMetadata = {
     title: 'Code Highlighter',
     description:
       'Provides syntax highlighting and copy to keyboard functionality with code wrapping for long lines.'
-  },
-  skeleton: {
-    slug: 'skeleton',
-    name: 'skeleton',
-    title: 'Skeleton',
-    description: 'Shows a placeholder while content is loading.'
   }
 } as const;
 
@@ -38,5 +32,5 @@ export type ComponentType = {
   implementation_2?: string;
   implementation_3?: string;
   implementation_4?: string;
-  dependencies: string;
+  addCommand: string;
 };

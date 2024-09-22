@@ -1,3 +1,9 @@
+/* For the preview */
+import { componentsMetadata, ComponentType } from '@/registry/default/ui/metadata';
+import jsxToString from 'react-element-to-jsx-string';
+import Breadcrumbs, { BreadcrumbType } from '.';
+
+const codeSnippet = `
 import Link from 'next/link';
 
 import {
@@ -22,7 +28,7 @@ export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
   const { breadcrumbs, position } = props;
 
   return (
-    <div className={`flex w-full ${position} text-sm mt-4 mb-6`}>
+    <div className={\`flex w-full \${position} text-sm mt-4 mb-6\`}>
       <Breadcrumb>
         <BreadcrumbList>
           {breadcrumbs.map((breadcrumb, index) => {
@@ -54,69 +60,7 @@ export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
     </div>
   );
 }
-
-/* For the preview */
-import jsxToString from 'react-element-to-jsx-string';
-import { componentsMetadata, ComponentType } from './config';
-
-const codeSnippet = `import Link from "next/link";
-
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-
-export type BreadcrumbType = {
-  text: string;
-  url?: string;
-};
-
-type BreadcrumbsProps = {
-  breadcrumbs: BreadcrumbType[];
-  position: "justify-start" | "justify-center" | "justify-end";
-};
-
-export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
-  const { breadcrumbs, position } = props;
-
-  return (
-    <div className={\`flex w-full \${position} text-sm mt-4 mb-6\`}>
-      <Breadcrumb>
-        <BreadcrumbList>
-          {breadcrumbs.map((breadcrumb, index) => {
-            const isLastItem = index === breadcrumbs.length - 1;
-
-            return (
-              <BreadcrumbItem key={breadcrumb.text} className="capitalize">
-                {breadcrumb.url ? (
-                  <Link
-                    className="underline underline-offset-4 hover:text-primary transition-all"
-                    href={breadcrumb.url}
-                  >
-                    {breadcrumb.text}
-                  </Link>
-                ) : (
-                  <BreadcrumbPage
-                    className={
-                      isLastItem ? "text-primary font-medium" : "text-muted-foreground"
-                    }
-                  >
-                    {breadcrumb.text}
-                  </BreadcrumbPage>
-                )}
-
-                {!isLastItem && <BreadcrumbSeparator />}
-              </BreadcrumbItem>
-            );
-          })}
-        </BreadcrumbList>
-      </Breadcrumb>
-    </div>
-  );
-}`;
+`;
 
 /* For the example */
 const breadcrumbs: BreadcrumbType[] = [
@@ -128,12 +72,12 @@ const breadcrumbs: BreadcrumbType[] = [
 const example = <Breadcrumbs breadcrumbs={breadcrumbs} position="justify-center" />;
 
 const exampleAsString = `const breadcrumbs: BreadcrumbType[] = [
-      { text: "Admin Dashboard", url: "/" },
-      { text: "Resources" },
-      { text: "Create Resource" },
-    ];
+    { text: "Admin Dashboard", url: "/" },
+    { text: "Resources" },
+    { text: "Create Resource" },
+];
     
-    {breadcrumbs && ${jsxToString(example)}}
+{breadcrumbs && ${jsxToString(example)}}
 `;
 
 export const config: ComponentType = {
@@ -144,5 +88,6 @@ export const config: ComponentType = {
   codeSnippet,
   example,
   implementation_1: exampleAsString,
-  dependencies: 'npx shadcn@latest add breadcrumb'
+  addCommand:
+    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/styles/default/breadcrumbs.json'
 };

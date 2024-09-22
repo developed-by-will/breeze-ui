@@ -1,8 +1,8 @@
 'use client';
 
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTheme } from 'next-themes';
 import { ReactNode } from 'react';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 
 type PropsType = {
   icon: JSX.Element;

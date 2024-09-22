@@ -8,11 +8,6 @@ export default function Hydrate({ children }: Readonly<{ children: React.ReactNo
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.add('transition');
-    document.documentElement.classList.add('duration-300');
-  }, []);
-
-  useEffect(() => {
     setIsHydrated(true);
   }, []);
 
