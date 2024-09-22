@@ -1,8 +1,8 @@
 'use client';
 
-import { components } from '@/components/breeze-ui';
-import CodeSnippet from '@/components/breeze-ui/CodeSnippet';
+import CodeSnippet from '@/components/breeze-ui/codeSnippet';
 import Sidebar from '@/components/project/Sidebar';
+import { componentsConfig } from '@/registry/default/ui';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
 import { isValidElement } from 'react';
@@ -12,17 +12,17 @@ type PropsType = {
 };
 
 export default function Component({ slug }: Readonly<PropsType>) {
-  const component = Object.values(components).find((c) => c.slug === slug);
+  const component = Object.values(componentsConfig).find((c) => c.slug === slug);
+
+  if (!component) {
+    return <p>Component not found</p>;
+  }
 
   const renderExample = (example: React.ReactNode) => {
     if (isValidElement(example)) {
       return example;
     }
   };
-
-  if (!component) {
-    return <p>Component not found</p>;
-  }
 
   return (
     <div className="flex justify-center">
@@ -52,17 +52,10 @@ export default function Component({ slug }: Readonly<PropsType>) {
               {renderExample(component.example)}
 
               <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
-                <Boxes size={24} /> Dependencies
+                <Boxes size={24} /> Installation
               </h2>
 
-              <CodeSnippet
-                codeSnippet={component.dependencies}
-                styleName="vscDarkPlus"
-                showAlert={true}
-                alertTitle="Caution"
-                alertMessage="A prompt may appear. If you haven't customized that Shadcn component you can select Yes to override it. Otherwise, select No to keep your changes. Repeat the process for each prompt."
-                alertDialogAction="Copy & Continue"
-              />
+              <CodeSnippet codeSnippet={component.addCommand} styleName="vscDarkPlus" />
 
               <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center py-6 border-b-2">
                 <Blocks size={24} /> Implementation examples

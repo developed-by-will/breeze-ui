@@ -1,9 +1,9 @@
-import { ComponentType } from '@/components/breeze-ui/config';
-import { components } from '@/components/breeze-ui/index';
+import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { componentsConfig } from '@/registry/default/ui';
+import { ComponentType } from '@/registry/default/ui/metadata';
 import { useGlobalStore } from '@/store';
-import { useChangeComponent } from './useChangeComponent';
 
 export default function Sidebar() {
   const globalStore = useGlobalStore();
@@ -14,7 +14,7 @@ export default function Sidebar() {
     <aside className="w-64 border-r p-4 hidden lg:block">
       <ScrollArea className="h-[calc(100vh-5rem)]">
         <div className="space-y-1">
-          {components.map((component: ComponentType) => (
+          {componentsConfig.map((component: ComponentType) => (
             <Button
               key={component.name}
               variant="ghost"
