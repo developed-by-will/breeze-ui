@@ -1,4 +1,4 @@
-import { componentsMetadata } from '@/components/breeze-ui/config';
+import { componentsMetadata } from '@/registry/default/ui/metadata';
 import { Metadata } from 'next';
 import Component from '.';
 
