@@ -10,7 +10,7 @@
     "prettier": "prettier --write \"./**/*.{js,jsx,ts,tsx,json,css}\"",
     "local": "next build && next start",
     "prepare": "husky install",
-    "build-registry": "tsx ./scripts/build-registry.mts"
+    "build-registry": "tsx ./scripts/build-registry.mts && npm run prettier"
   },
   "dependencies": {
     "@radix-ui/react-alert-dialog": "^1.1.1",
