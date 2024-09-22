@@ -1,5 +1,5 @@
+import HomePage from '@/app/(pages)/homepage/page';
 import { Metadata } from 'next';
-import HomePage from './(pages)/homepage/page';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

@@ -1,5 +1,6 @@
-import { components } from '@/components/breeze-ui/index';
+import Logo from '@/components/project/Logo';
 import { Switch } from '@/components/project/Switch';
+import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -10,11 +11,10 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
+import { componentsConfig } from '@/registry/default/ui';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import Logo from './Logo';
-import { useChangeComponent } from './useChangeComponent';
 
 export default function Navbar() {
   const { setTheme, theme } = useTheme();
@@ -38,7 +38,7 @@ export default function Navbar() {
                 </SheetHeader>
                 <ScrollArea className="h-[calc(100vh-5rem)] mt-4">
                   <div className="space-y-1">
-                    {components.map((component) => (
+                    {componentsConfig.map((component) => (
                       <SheetClose asChild key={component.name}>
                         <Button
                           variant="ghost"

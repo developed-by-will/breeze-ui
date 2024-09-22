@@ -1,5 +1,4 @@
-// hooks/useChangeComponent.ts
-import { ComponentType } from '@/components/breeze-ui/config';
+import { ComponentType } from '@/registry/default/ui/metadata';
 import { useGlobalStore } from '@/store';
 import { useRouter } from 'next/navigation';
 

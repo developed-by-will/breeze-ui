@@ -1,11 +1,11 @@
 'use client';
 
-import { ComponentType } from '@/components/breeze-ui/config';
-import { components } from '@/components/breeze-ui/index';
 import HomepageCard from '@/components/project/HomepageCard';
 import Logo from '@/components/project/Logo';
 import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
+import { componentsConfig } from '@/registry/default/ui';
+import { ComponentType } from '@/registry/default/ui/metadata';
 import { useGlobalStore } from '@/store';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { BellPlus, Component } from 'lucide-react';
@@ -23,8 +23,8 @@ export default function HomePage() {
   }, []);
 
   const randomComponent = () => {
-    const randomIndex = Math.floor(Math.random() * components.length);
-    setFeatured(components[randomIndex]);
+    const randomIndex = Math.floor(Math.random() * componentsConfig.length);
+    setFeatured(componentsConfig[randomIndex]);
   };
 
   const { changeComponent } = useChangeComponent();
@@ -64,8 +64,8 @@ export default function HomePage() {
         </Link>
 
         <Link
-          href={`/component/${components[0].slug}`}
-          onClick={() => globalStore.setComponent(components[0])}
+          href={`/component/${componentsConfig[0].slug}`}
+          onClick={() => globalStore.setComponent(componentsConfig[0])}
         >
           <HomepageCard
             icon={
