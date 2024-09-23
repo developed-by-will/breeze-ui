@@ -26,3 +26,7 @@ Our components are designed to be highly customizable. You can customize them us
 We welcome contributions to our project! If you'd like to contribute, please fork our repository and submit a pull request.
 
 I hope this helps! Let me know if you need any further assistance.
+
+## Special thanks
+
+I would like to give a special thanks to @jolbol1 for his amazing work. If you would like to create your own component library registry you can go over his [shadcn-registry-starter](https://github.com/jolbol1/shadcn-registry-starter) and also watch his video explain in detail [here](https://www.youtube.com/watch?v=e-EH_KZEva0&ab_channel=JollyCoding)
