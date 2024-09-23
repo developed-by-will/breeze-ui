@@ -29,7 +29,7 @@ export default function Component({ slug }: Readonly<PropsType>) {
       <div className="flex container">
         <Sidebar />
 
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-6 container">
           <h1 className="text-3xl font-bold mb-2 ">{component.title}</h1>
           <p className="text-muted-foreground mb-6">{component.description}</p>
 
