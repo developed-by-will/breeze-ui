@@ -2,7 +2,7 @@ import { Registry } from '@/registry/schema';
 
 export const ui: Registry = [
   {
-    name: 'breadcrumb',
+    name: 'breadcrumbs',
     type: 'registry:ui',
     dependencies: [''],
     registryDependencies: ['breadcrumb'],
@@ -19,6 +19,7 @@ export const ui: Registry = [
     type: 'registry:ui',
     dependencies: ['react-syntax-highlighter'],
     registryDependencies: ['alert-dialog', 'button'],
+    devDependencies: ['@types/react-syntax-highlighter'],
     files: [
       {
         path: 'ui/codeSnippet/index.tsx',
