@@ -5,12 +5,12 @@ if ! npm run lint; then
     exit 1
 fi
 
-if ! npm run prettier; then
-    echo "Prettier failed. Please fix the formatting issues."
+if ! npm run build; then
+    echo "Build failed. Please resolve the build issues."
     exit 1
 fi
 
-if ! npm run build; then
+if ! npm run build-registry; then
     echo "Build failed. Please resolve the build issues."
     exit 1
 fi

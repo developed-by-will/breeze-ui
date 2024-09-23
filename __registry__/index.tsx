@@ -5,8 +5,8 @@ import * as React from 'react';
 
 export const Index: Record<string, any> = {
   default: {
-    breadcrumb: {
-      name: 'breadcrumb',
+    breadcrumbs: {
+      name: 'breadcrumbs',
       type: 'registry:ui',
       registryDependencies: ['breadcrumb'],
       files: ['registry/default/ui/breadcrumbs/index.tsx'],
