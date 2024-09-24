@@ -45,5 +45,5 @@ git add package.json
 git commit --amend --no-edit
 
 # Push the changes
-echo "All checks passed and version updated. Pushing the changes."
+echo "All checks passed and version updated. Pushing the changes now."
 exit 0
