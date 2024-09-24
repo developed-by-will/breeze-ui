@@ -163,7 +163,6 @@ return (
             alertTitle="Caution"
             alertMessage=" Some text here."
             alertDialogAction="Copy & Continue"
-
         />
     </div>
 )
