@@ -117,7 +117,8 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
         customStyle={{
           margin: 0,
           borderRadius: '0.375rem',
-          padding: '1rem'
+          padding: '1rem',
+          minHeight: '55px'
         }}
       >
         {codeSnippet}
