@@ -63,8 +63,19 @@ export default function Component({ slug }: Readonly<PropsType>) {
 
               <CodeSnippet codeSnippet={component.implementation_1} styleName="vscDarkPlus" />
 
-              {component.implementation_2 && (
+              {component.implementation_2 && component.slug !== 'code-snippet' && (
                 <CodeSnippet codeSnippet={component.implementation_2} styleName="vscDarkPlus" />
+              )}
+
+              {component.implementation_2 && component.slug === 'code-snippet' && (
+                <CodeSnippet
+                  codeSnippet={component.implementation_2}
+                  styleName="vscDarkPlus"
+                  showAlert={true}
+                  alertTitle="Caution"
+                  alertMessage=" Some text here."
+                  alertDialogAction="Copy & Continue"
+                />
               )}
 
               {component.implementation_3 && (
