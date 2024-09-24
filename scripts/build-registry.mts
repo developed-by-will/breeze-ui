@@ -12,7 +12,7 @@ import { z } from 'zod';
 import { registry } from '../registry';
 import { baseColors } from '../registry/registry-base-colors';
 import { colorMapping, colors } from '../registry/registry-colors';
-import { styles } from '../registry/registry-styles';
+
 import {
   Registry,
   RegistryEntry,
@@ -52,142 +52,140 @@ import * as React from "react"
 export const Index: Record<string, unknown> = {
 `;
 
-  for (const style of styles) {
-    index += `  "${style.name}": {`;
+  index += `  "components": {`;
 
-    // Build style index.
-    for (const item of registry) {
-      const resolveFiles = item.files?.map(
-        (file) => `registry/${style.name}/${typeof file === 'string' ? file : file.path}`
-      );
-      if (!resolveFiles) {
-        continue;
-      }
+  for (const item of registry) {
+    const resolveFiles = item.files?.map(
+      (file) => `registry/components/${typeof file === 'string' ? file : file.path}`
+    );
+    if (!resolveFiles) {
+      continue;
+    }
 
-      const type = item.type.split(':')[1];
-      let sourceFilename = '';
+    const type = item.type.split(':')[1];
+    let sourceFilename = '';
 
-      let chunks: any = [];
-      if (item.type === 'registry:block') {
-        const file = resolveFiles[0];
-        const filename = path.basename(file);
-        const raw = await fs.readFile(file, 'utf8');
-        const tempFile = await createTempSourceFile(filename);
-        const sourceFile = project.createSourceFile(tempFile, raw, {
-          scriptKind: ScriptKind.TSX
+    let chunks: any = [];
+    if (item.type === 'registry:block') {
+      const file = resolveFiles[0];
+      const filename = path.basename(file);
+      const raw = await fs.readFile(file, 'utf8');
+      const tempFile = await createTempSourceFile(filename);
+      const sourceFile = project.createSourceFile(tempFile, raw, {
+        scriptKind: ScriptKind.TSX
+      });
+
+      // Find all imports.
+      const imports = new Map<
+        string,
+        {
+          module: string;
+          text: string;
+          isDefault?: boolean;
+        }
+      >();
+      sourceFile.getImportDeclarations().forEach((node) => {
+        const module = node.getModuleSpecifier().getLiteralValue();
+        node.getNamedImports().forEach((item) => {
+          imports.set(item.getText(), {
+            module,
+            text: node.getText()
+          });
         });
 
-        // Find all imports.
-        const imports = new Map<
-          string,
-          {
-            module: string;
-            text: string;
-            isDefault?: boolean;
-          }
-        >();
-        sourceFile.getImportDeclarations().forEach((node) => {
-          const module = node.getModuleSpecifier().getLiteralValue();
-          node.getNamedImports().forEach((item) => {
-            imports.set(item.getText(), {
-              module,
-              text: node.getText()
-            });
+        const defaultImport = node.getDefaultImport();
+        if (defaultImport) {
+          imports.set(defaultImport.getText(), {
+            module,
+            text: defaultImport.getText(),
+            isDefault: true
           });
+        }
+      });
 
-          const defaultImport = node.getDefaultImport();
-          if (defaultImport) {
-            imports.set(defaultImport.getText(), {
-              module,
-              text: defaultImport.getText(),
-              isDefault: true
-            });
-          }
+      // Find all opening tags with x-chunk attribute.
+      const components = sourceFile
+        .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
+        .filter((node) => {
+          return node.getAttribute('x-chunk') !== undefined;
         });
 
-        // Find all opening tags with x-chunk attribute.
-        const components = sourceFile
-          .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-          .filter((node) => {
-            return node.getAttribute('x-chunk') !== undefined;
+      chunks = await Promise.all(
+        components.map(async (component, index) => {
+          const chunkName = `${item.name}-chunk-${index}`;
+
+          // Get the value of x-chunk attribute.
+          const attr = component
+            .getAttributeOrThrow('x-chunk')
+            .asKindOrThrow(SyntaxKind.JsxAttribute);
+
+          const description = attr
+            .getInitializerOrThrow()
+            .asKindOrThrow(SyntaxKind.StringLiteral)
+            .getLiteralValue();
+
+          // Delete the x-chunk attribute.
+          attr.remove();
+
+          // Add a new attribute to the component.
+          component.addAttribute({
+            name: 'x-chunk',
+            initializer: `"${chunkName}"`
           });
 
-        chunks = await Promise.all(
-          components.map(async (component, index) => {
-            const chunkName = `${item.name}-chunk-${index}`;
+          // Get the value of x-chunk-container attribute.
+          const containerAttr = component
+            .getAttribute('x-chunk-container')
+            ?.asKindOrThrow(SyntaxKind.JsxAttribute);
 
-            // Get the value of x-chunk attribute.
-            const attr = component
-              .getAttributeOrThrow('x-chunk')
-              .asKindOrThrow(SyntaxKind.JsxAttribute);
+          const containerClassName = containerAttr
+            ?.getInitializer()
+            ?.asKindOrThrow(SyntaxKind.StringLiteral)
+            .getLiteralValue();
 
-            const description = attr
-              .getInitializerOrThrow()
-              .asKindOrThrow(SyntaxKind.StringLiteral)
-              .getLiteralValue();
+          containerAttr?.remove();
 
-            // Delete the x-chunk attribute.
-            attr.remove();
+          const parentJsxElement = component.getParentIfKindOrThrow(SyntaxKind.JsxElement);
 
-            // Add a new attribute to the component.
-            component.addAttribute({
-              name: 'x-chunk',
-              initializer: `"${chunkName}"`
-            });
+          // Find all opening tags on component.
+          const children = parentJsxElement
+            .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
+            .map((node) => {
+              return node.getTagNameNode().getText();
+            })
+            .concat(
+              parentJsxElement
+                .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
+                .map((node) => {
+                  return node.getTagNameNode().getText();
+                })
+            );
 
-            // Get the value of x-chunk-container attribute.
-            const containerAttr = component
-              .getAttribute('x-chunk-container')
-              ?.asKindOrThrow(SyntaxKind.JsxAttribute);
+          const componentImports = new Map<string, string | string[] | Set<string>>();
+          children.forEach((child) => {
+            const importLine = imports.get(child);
+            if (importLine) {
+              const imports = componentImports.get(importLine.module) || [];
 
-            const containerClassName = containerAttr
-              ?.getInitializer()
-              ?.asKindOrThrow(SyntaxKind.StringLiteral)
-              .getLiteralValue();
+              const newImports = importLine.isDefault
+                ? importLine.text
+                : new Set([...imports, child]);
 
-            containerAttr?.remove();
-
-            const parentJsxElement = component.getParentIfKindOrThrow(SyntaxKind.JsxElement);
-
-            // Find all opening tags on component.
-            const children = parentJsxElement
-              .getDescendantsOfKind(SyntaxKind.JsxOpeningElement)
-              .map((node) => {
-                return node.getTagNameNode().getText();
-              })
-              .concat(
-                parentJsxElement
-                  .getDescendantsOfKind(SyntaxKind.JsxSelfClosingElement)
-                  .map((node) => {
-                    return node.getTagNameNode().getText();
-                  })
+              componentImports.set(
+                importLine.module,
+                importLine?.isDefault ? newImports : Array.from(newImports)
               );
+            }
+          });
 
-            const componentImports = new Map<string, string | string[] | Set<string>>();
-            children.forEach((child) => {
-              const importLine = imports.get(child);
-              if (importLine) {
-                const imports = componentImports.get(importLine.module) || [];
+          const componnetImportLines = Array.from(componentImports.keys()).map((key) => {
+            const values = componentImports.get(key);
+            const specifier = Array.isArray(values) ? `{${values.join(',')}}` : values;
 
-                const newImports = importLine.isDefault
-                  ? importLine.text
-                  : new Set([...imports, child]);
+            return `import ${specifier} from "${key}"`;
+          });
 
-                componentImports.set(
-                  importLine.module,
-                  importLine?.isDefault ? newImports : Array.from(newImports)
-                );
-              }
-            });
-
-            const componnetImportLines = Array.from(componentImports.keys()).map((key) => {
-              const values = componentImports.get(key);
-              const specifier = Array.isArray(values) ? `{${values.join(',')}}` : values;
-
-              return `import ${specifier} from "${key}"`;
-            });
-
-            const code = `
+          const code = `
             'use client'
 
             ${componnetImportLines.join('\n')}
@@ -196,61 +194,58 @@ export const Index: Record<string, unknown> = {
               return (${parentJsxElement.getText()})
             }`;
 
-            const targetFile = file.replace(item.name, `${chunkName}`);
-            const targetFilePath = path.join(
-              cwd(),
-              `registry/${style.name}/${type}/${chunkName}.tsx`
-            );
+          const targetFile = file.replace(item.name, `${chunkName}`);
+          const targetFilePath = path.join(cwd(), `registry/components/${type}/${chunkName}.tsx`);
 
-            // Write component file.
-            rimraf.sync(targetFilePath);
-            await fs.writeFile(targetFilePath, code, 'utf8');
+          // Write component file.
+          rimraf.sync(targetFilePath);
+          await fs.writeFile(targetFilePath, code, 'utf8');
 
-            return {
-              name: chunkName,
-              description,
-              component: `React.lazy(() => import("@/registry/${style.name}/${type}/${chunkName}")),`,
-              file: targetFile,
-              container: {
-                className: containerClassName
-              }
-            };
-          })
-        );
+          return {
+            name: chunkName,
+            description,
+            component: `React.lazy(() => import("@/registry/components/${type}/${chunkName}")),`,
+            file: targetFile,
+            container: {
+              className: containerClassName
+            }
+          };
+        })
+      );
 
-        // // Write the source file for blocks only.
-        sourceFilename = `__registry__/${style.name}/${type}/${item.name}.tsx`;
-
-        if (item.files) {
-          const files = item.files.map((file) =>
-            typeof file === 'string' ? { type: 'registry:page', path: file } : file
-          );
-          if (files?.length) {
-            sourceFilename = `__registry__/${style.name}/${files[0].path}`;
-          }
-        }
-
-        const sourcePath = path.join(process.cwd(), sourceFilename);
-        if (!existsSync(sourcePath)) {
-          await fs.mkdir(sourcePath, { recursive: true });
-        }
-
-        rimraf.sync(sourcePath);
-        await fs.writeFile(sourcePath, sourceFile.getText());
-      }
-
-      let componentPath = `@/registry/${style.name}/${type}/${item.name}`;
+      // // Write the source file for blocks only.
+      sourceFilename = `__registry__/components/${type}/${item.name}.tsx`;
 
       if (item.files) {
         const files = item.files.map((file) =>
           typeof file === 'string' ? { type: 'registry:page', path: file } : file
         );
         if (files?.length) {
-          componentPath = `@/registry/${style.name}/${files[0].path}`;
+          sourceFilename = `__registry__/components/${files[0].path}`;
         }
       }
 
-      index += `
+      const sourcePath = path.join(process.cwd(), sourceFilename);
+      if (!existsSync(sourcePath)) {
+        await fs.mkdir(sourcePath, { recursive: true });
+      }
+
+      rimraf.sync(sourcePath);
+      await fs.writeFile(sourcePath, sourceFile.getText());
+    }
+
+    let componentPath = `@/registry/components/${type}/${item.name}`;
+
+    if (item.files) {
+      const files = item.files.map((file) =>
+        typeof file === 'string' ? { type: 'registry:page', path: file } : file
+      );
+      if (files?.length) {
+        componentPath = `@/registry/components/${files[0].path}`;
+      }
+    }
+
+    index += `
     "${item.name}": {
       name: "${item.name}",
       type: "${item.type}",
@@ -272,11 +267,10 @@ export const Index: Record<string, unknown> = {
       }`
       )}]
     },`;
-    }
-
-    index += `
-  },`;
   }
+
+  index += `
+  },`;
 
   index += `
 }
@@ -307,130 +301,121 @@ export const Index: Record<string, unknown> = {
   rimraf.sync(path.join(REGISTRY_PATH, 'index.json'));
   await fs.writeFile(path.join(REGISTRY_PATH, 'index.json'), registryJson, 'utf8');
 
-  // Write style index.
+  // Write index.
   rimraf.sync(path.join(process.cwd(), '__registry__/index.tsx'));
   await fs.writeFile(path.join(process.cwd(), '__registry__/index.tsx'), index);
 }
 
 // ----------------------------------------------------------------------------
-// Build registry/styles/[style]/[name].json.
+// Build registry/components/[name].json.
 // ----------------------------------------------------------------------------
-async function buildStyles(registry: Registry) {
-  for (const style of styles) {
-    const targetPath = path.join(REGISTRY_PATH, 'styles', style.name);
+async function buildComponents(registry: Registry) {
+  const targetPath = path.join(REGISTRY_PATH, 'components');
 
-    // Create directory if it doesn't exist.
-    if (!existsSync(targetPath)) {
-      await fs.mkdir(targetPath, { recursive: true });
+  // Create directory if it doesn't exist.
+  if (!existsSync(targetPath)) {
+    await fs.mkdir(targetPath, { recursive: true });
+  }
+
+  for (const item of registry) {
+    if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
+      continue;
     }
 
-    for (const item of registry) {
-      if (!REGISTRY_INDEX_WHITELIST.includes(item.type)) {
-        continue;
-      }
+    let files;
+    if (item.files) {
+      files = await Promise.all(
+        item.files.map(async (_file) => {
+          const file =
+            typeof _file === 'string'
+              ? {
+                  path: _file,
+                  type: item.type,
+                  content: '',
+                  target: ''
+                }
+              : _file;
 
-      let files;
-      if (item.files) {
-        files = await Promise.all(
-          item.files.map(async (_file) => {
-            const file =
-              typeof _file === 'string'
-                ? {
-                    path: _file,
-                    type: item.type,
-                    content: '',
-                    target: ''
-                  }
-                : _file;
+          const content = await fs.readFile(
+            path.join(process.cwd(), 'registry', 'components', file.path),
+            'utf8'
+          );
 
-            const content = await fs.readFile(
-              path.join(process.cwd(), 'registry', style.name, file.path),
-              'utf8'
-            );
+          const tempFile = await createTempSourceFile(file.path);
+          const sourceFile = project.createSourceFile(tempFile, content, {
+            scriptKind: ScriptKind.TSX
+          });
 
-            const tempFile = await createTempSourceFile(file.path);
-            const sourceFile = project.createSourceFile(tempFile, content, {
-              scriptKind: ScriptKind.TSX
-            });
+          sourceFile.getVariableDeclaration('iframeHeight')?.remove();
+          sourceFile.getVariableDeclaration('containerClassName')?.remove();
+          sourceFile.getVariableDeclaration('description')?.remove();
 
-            sourceFile.getVariableDeclaration('iframeHeight')?.remove();
-            sourceFile.getVariableDeclaration('containerClassName')?.remove();
-            sourceFile.getVariableDeclaration('description')?.remove();
-
-            return {
-              path: file.path,
-              type: file.type,
-              content: sourceFile.getText(),
-              target: file.target
-            };
-          })
-        );
-      }
-
-      // Modified to use URLs for shadcn add.
-      const payload = registryEntrySchema
-        .omit({
-          source: true,
-          category: true,
-          subcategory: true,
-          chunks: true
+          return {
+            path: file.path,
+            type: file.type,
+            content: sourceFile.getText(),
+            target: file.target
+          };
         })
-        .safeParse({
-          ...item,
-          ...(process.env.REGISTRY_URL
-            ? {
-                registryDependencies: item.registryDependencies?.map(
-                  (r) => `${process.env.REGISTRY_URL}/styles/${style.name}/${r}.json`
-                )
-              }
-            : {}),
-          files
-        });
+      );
+    }
 
-      if (payload.success) {
-        await fs.writeFile(
-          path.join(targetPath, `${item.name}.json`),
-          JSON.stringify(payload.data, null, 2),
-          'utf8'
-        );
-      }
+    // Modified to use URLs for shadcn add.
+    const payload = registryEntrySchema
+      .omit({
+        source: true,
+        category: true,
+        subcategory: true,
+        chunks: true
+      })
+      .safeParse({
+        ...item,
+        ...(process.env.REGISTRY_URL
+          ? {
+              registryDependencies: item.registryDependencies?.map(
+                (r) => `${process.env.REGISTRY_URL}/components/${r}.json`
+              )
+            }
+          : {}),
+        files
+      });
+
+    if (payload.success) {
+      await fs.writeFile(
+        path.join(targetPath, `${item.name}.json`),
+        JSON.stringify(payload.data, null, 2),
+        'utf8'
+      );
     }
   }
 
   // ----------------------------------------------------------------------------
-  // Build registry/styles/index.json.
+  // Build registry/index.json.
   // ----------------------------------------------------------------------------
-  const stylesJson = JSON.stringify(styles, null, 2);
-  await fs.writeFile(path.join(REGISTRY_PATH, 'styles/index.json'), stylesJson, 'utf8');
+  await fs.writeFile(path.join(REGISTRY_PATH, 'components/index.json'), 'utf8');
 }
 
 // ----------------------------------------------------------------------------
-// Build registry/styles/[name]/index.json.
+// Build registry/[name]/index.json.
 // ----------------------------------------------------------------------------
-async function buildStylesIndex() {
-  for (const style of styles) {
-    const targetPath = path.join(REGISTRY_PATH, 'styles', style.name);
+async function buildComponentsIndex() {
+  const targetPath = path.join(REGISTRY_PATH, 'components');
 
-    const payload: RegistryEntry = {
-      name: style.name,
-      type: 'registry:style',
-      dependencies: ['tailwindcss-animate', 'class-variance-authority', 'lucide-react'],
-      registryDependencies: ['utils'],
-      tailwind: {
-        config: {
-          plugins: [`require("tailwindcss-animate")`]
-        }
-      },
-      cssVars: {},
-      files: []
-    };
+  const payload: RegistryEntry = {
+    name: 'components',
+    type: 'registry:component',
+    dependencies: ['tailwindcss-animate', 'class-variance-authority', 'lucide-react'],
+    registryDependencies: ['utils'],
+    tailwind: {
+      config: {
+        plugins: [`require("tailwindcss-animate")`]
+      }
+    },
+    cssVars: {},
+    files: []
+  };
 
-    await fs.writeFile(
-      path.join(targetPath, 'index.json'),
-      JSON.stringify(payload, null, 2),
-      'utf8'
-    );
-  }
+  await fs.writeFile(path.join(targetPath, 'index.json'), JSON.stringify(payload, null, 2), 'utf8');
 }
 
 // ----------------------------------------------------------------------------
@@ -729,8 +714,8 @@ try {
   }
 
   await buildRegistry(result.data);
-  await buildStyles(result.data);
-  await buildStylesIndex();
+  await buildComponents(result.data);
+  await buildComponentsIndex();
   await buildThemes();
 
   console.log('✅ Done!');
