@@ -15,7 +15,7 @@ This project is a collection of reusable UI components built with Shadcn UI. Our
 
 ## Getting Started
 
-Pick one component, copy paste it and install its dependencies. That's it!
+Pick one component, copy and run the command. That's it!
 
 ## Customization
 

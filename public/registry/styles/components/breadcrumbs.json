@@ -1,0 +1,14 @@
+{
+  "name": "breadcrumbs",
+  "type": "registry:ui",
+  "dependencies": [""],
+  "registryDependencies": ["breadcrumb"],
+  "files": [
+    {
+      "path": "ui/breadcrumbs/index.tsx",
+      "content": "import Link from 'next/link';\n\nimport {\n  Breadcrumb,\n  BreadcrumbItem,\n  BreadcrumbList,\n  BreadcrumbPage,\n  BreadcrumbSeparator\n} from '@/components/ui/breadcrumb';\n\nexport type BreadcrumbType = {\n  text: string;\n  url?: string;\n};\n\ntype BreadcrumbsProps = {\n  breadcrumbs: BreadcrumbType[];\n  position: 'justify-start' | 'justify-center' | 'justify-end';\n};\n\nexport default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {\n  const { breadcrumbs, position } = props;\n\n  return (\n    <div className={`flex w-full ${position} text-sm mt-4 mb-6`}>\n      <Breadcrumb>\n        <BreadcrumbList>\n          {breadcrumbs.map((breadcrumb, index) => {\n            const isLastItem = index === breadcrumbs.length - 1;\n\n            return (\n              <BreadcrumbItem key={breadcrumb.text} className=\"capitalize\">\n                {breadcrumb.url ? (\n                  <Link\n                    className=\"underline underline-offset-4 hover:text-primary transition-all\"\n                    href={breadcrumb.url}\n                  >\n                    {breadcrumb.text}\n                  </Link>\n                ) : (\n                  <BreadcrumbPage\n                    className={isLastItem ? 'text-primary font-medium' : 'text-muted-foreground'}\n                  >\n                    {breadcrumb.text}\n                  </BreadcrumbPage>\n                )}\n\n                {!isLastItem && <BreadcrumbSeparator />}\n              </BreadcrumbItem>\n            );\n          })}\n        </BreadcrumbList>\n      </Breadcrumb>\n    </div>\n  );\n}\n",
+      "type": "registry:page",
+      "target": "components/breeze-ui/breadcrumb.tsx"
+    }
+  ]
+}

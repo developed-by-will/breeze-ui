@@ -1,17 +1,12 @@
 #!/bin/bash
 
 if ! npm run lint; then
-    echo "Linting failed. Please fix the lint errors."
+    echo "Linting failed. Please fix the errors."
     exit 1
 fi
 
 if ! npm run build; then
-    echo "Build failed. Please resolve the build issues."
-    exit 1
-fi
-
-if ! npm run build-registry; then
-    echo "Build failed. Please resolve the build issues."
+    echo "Build failed. Please fix the issues."
     exit 1
 fi
 

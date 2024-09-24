@@ -1,5 +1,5 @@
 /* For the preview */
-import { componentsMetadata, ComponentType } from '@/registry/default/ui/metadata';
+import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
 import CodeSnippet from '.';
 
 const codeSnippet = `import { Button } from '@/components/ui/button';

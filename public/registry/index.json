@@ -15,8 +15,7 @@
   {
     "name": "codeSnippet",
     "type": "registry:ui",
-    "dependencies": ["react-syntax-highlighter"],
-    "devDependencies": ["@types/react-syntax-highlighter"],
+    "dependencies": ["react-syntax-highlighter", "@types/react-syntax-highlighter --save-dev"],
     "registryDependencies": ["alert-dialog", "button"],
     "files": [
       {

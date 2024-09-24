@@ -1,5 +1,5 @@
 /* For the preview */
-import { componentsMetadata, ComponentType } from '@/registry/default/ui/metadata';
+import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
 import jsxToString from 'react-element-to-jsx-string';
 import Breadcrumbs, { BreadcrumbType } from '.';
 
