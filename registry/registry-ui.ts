@@ -17,7 +17,7 @@ export const ui: Registry = [
   {
     name: 'codeSnippet',
     type: 'registry:ui',
-    dependencies: ['react-syntax-highlighter', '@types/react-syntax-highlighter --save-dev'],
+    dependencies: ['react-syntax-highlighter', '@types/react-syntax-highlighter'],
     registryDependencies: ['alert-dialog', 'button'],
     files: [
       {
