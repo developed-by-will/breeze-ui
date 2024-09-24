@@ -11,7 +11,7 @@ import {
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet';
-import { componentsConfig } from '@/registry/default/ui';
+import { componentsConfig } from '@/registry/components/ui';
 import { ScrollArea } from '@radix-ui/react-scroll-area';
 import { Menu, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';

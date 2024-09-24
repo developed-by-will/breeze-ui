@@ -2,7 +2,7 @@
 
 import CodeSnippet from '@/components/breeze-ui/codeSnippet';
 import Sidebar from '@/components/project/Sidebar';
-import { componentsConfig } from '@/registry/default/ui';
+import { componentsConfig } from '@/registry/components/ui';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
 import { isValidElement } from 'react';

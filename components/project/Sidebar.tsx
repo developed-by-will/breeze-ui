@@ -1,8 +1,8 @@
 import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { componentsConfig } from '@/registry/default/ui';
-import { ComponentType } from '@/registry/default/ui/metadata';
+import { componentsConfig } from '@/registry/components/ui';
+import { ComponentType } from '@/registry/components/ui/metadata';
 import { useGlobalStore } from '@/store';
 
 export default function Sidebar() {
