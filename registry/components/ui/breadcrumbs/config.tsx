@@ -1,6 +1,5 @@
 /* For the preview */
 import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
-import jsxToString from 'react-element-to-jsx-string';
 import Breadcrumbs, { BreadcrumbType } from '.';
 
 const codeSnippet = `
@@ -77,7 +76,7 @@ const exampleAsString = `const breadcrumbs: BreadcrumbType[] = [
     { text: "Create Resource" },
 ];
     
-{breadcrumbs && ${jsxToString(example)}}
+{breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} position="justify-center" />}
 `;
 
 export const config: ComponentType = {
