@@ -141,23 +141,31 @@ const code = `<html>
 </html>`;
 const example = <CodeSnippet codeSnippet={code} styleName="duotoneSpace" />;
 const implementation_1 = `const codeExample = \`<p>Example without alert dialog</p>\`;
-    
-<CodeSnippet
-    codeSnippet={component.dependencies}
-    styleName="vscDarkPlus"
-/>
+
+return (
+    <div>
+        <CodeSnippet
+            codeSnippet={codeExample}
+            styleName="vscDarkPlus"
+        />
+    </div>
+)
 `;
 
-const implementation_2 = `const codeExample = \`<p>Example with alert dialog</p>\`;
-    
-<CodeSnippet
-    codeSnippet={component.dependencies}
-    styleName="vscDarkPlus"
-    showAlert={true}
-    alertTitle="Caution"
-    alertMessage=" If you haven't customized shadcn components, select Yes to override. Otherwise, select No to keep your changes."
-    alertDialogAction="Copy & Continue"
-/>
+const implementation_2 = `const codeExample2 = \`<p>Example with alert dialog</p>\`;
+ 
+return (
+    <div>
+        <CodeSnippet
+            codeSnippet={codeExample2}
+            styleName="vscDarkPlus"
+            showAlert={true}
+            alertTitle="Caution"
+            alertMessage=" Some text here."
+            alertDialogAction="Copy & Continue"
+        />
+    </div>
+)
 `;
 
 export const config: ComponentType = {
