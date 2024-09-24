@@ -79,12 +79,14 @@ const ShowAlertDialog = (props: PropsType) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{props.alertTitle}</AlertDialogTitle>
+          <AlertDialogTitle className="text-primary">{props.alertTitle}</AlertDialogTitle>
           <AlertDialogDescription>{props.alertMessage}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={copyToClipboard}>{props.alertDialogAction}</AlertDialogAction>
+          <AlertDialogCancel className="text-primary">Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={copyToClipboard} className="text-secondary">
+            {props.alertDialogAction}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
