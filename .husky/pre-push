@@ -10,4 +10,40 @@ if ! npm run build; then
     exit 1
 fi
 
-echo "All checks passed successfully."
+# Show version increment menu
+echo "Select version increment:"
+options=("Patch" "Minor" "Major" "Cancel")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Patch")
+            npm version patch
+            break
+            ;;
+        "Minor")
+            npm version minor
+            break
+            ;;
+        "Major")
+            npm version major
+            break
+            ;;
+        "Cancel")
+            echo "Version increment canceled."
+            exit 1
+            ;;
+        *)
+            echo "Invalid option."
+            ;;
+    esac
+done
+
+# Add the updated package.json to the commit
+git add package.json
+
+# Amend the last commit with the updated package.json
+git commit --amend --no-edit
+
+# Push the changes
+echo "All checks passed and version updated. Pushing the changes now."
+exit 0
