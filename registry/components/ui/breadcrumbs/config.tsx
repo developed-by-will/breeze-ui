@@ -89,5 +89,5 @@ export const config: ComponentType = {
   example,
   implementation_1: exampleAsString,
   addCommand:
-    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/styles/default/breadcrumbs.json'
+    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/components/breadcrumbs.json'
 };
