@@ -1,4 +1,4 @@
-import { componentsMetadata } from '@/registry/default/ui/metadata';
+import { componentsMetadata } from '@/registry/components/ui/metadata';
 import { Metadata } from 'next';
 import Component from '.';
 
