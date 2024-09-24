@@ -170,5 +170,5 @@ export const config: ComponentType = {
   implementation_1,
   implementation_2,
   addCommand:
-    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/styles/default/codeSnippet.json'
+    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/components/codeSnippet.json'
 };
