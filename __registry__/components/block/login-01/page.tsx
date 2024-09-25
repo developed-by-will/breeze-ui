@@ -1,8 +1,8 @@
 'use client';
 
+import logo from './assets/001-generic-company-logo.png';
+import cover from './assets/pexels-nietjuh-1906440.jpg';
 import LoginPage01 from './components/form';
-import logo from './generic-company-logo.png';
-import cover from './pexels-nietjuh-1906440.jpg';
 
 export default function Login() {
   async function signIn() {

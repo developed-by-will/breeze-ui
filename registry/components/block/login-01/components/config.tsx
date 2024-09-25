@@ -128,8 +128,8 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
 }`;
 
 /* For the example */
-import logo from '../generic-company-logo.png';
-import cover from '../pexels-nietjuh-1906440.jpg';
+import logo from '../assets/generic-company-logo.png';
+import cover from '../assets/pexels-nietjuh-1906440.jpg';
 
 async function signIn() {
   alert('Custom sign in logic');

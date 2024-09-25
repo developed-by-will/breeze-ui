@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "block/login-01/page.tsx",
-      "content": "'use client';\r\n\r\nimport LoginPage01 from './components/form';\r\nimport logo from './generic-company-logo.png';\r\nimport cover from './pexels-nietjuh-1906440.jpg';\r\n\r\nexport default function Login() {\r\n  async function signIn() {\r\n    alert('Sign in logic');\r\n  }\r\n\r\n  async function signInWithGoogle() {\r\n    alert('Sign in with Google logic');\r\n  }\r\n\r\n  return (\r\n    <LoginPage01\r\n      backgroundImage={cover}\r\n      companyLogo={logo}\r\n      customBtnColor=\"bg:background\"\r\n      customLabel=\"Sign In\"\r\n      customIcon=\"\"\r\n      formWidth={300}\r\n      providers={['custom', 'google']}\r\n      handleLogin={[() => signIn(), () => signInWithGoogle()]}\r\n    />\r\n  );\r\n}\r\n",
+      "content": "'use client';\r\n\r\nimport logo from './assets/001-generic-company-logo.png';\r\nimport cover from './assets/pexels-nietjuh-1906440.jpg';\r\nimport LoginPage01 from './components/form';\r\n\r\nexport default function Login() {\r\n  async function signIn() {\r\n    alert('Sign in logic');\r\n  }\r\n\r\n  async function signInWithGoogle() {\r\n    alert('Sign in with Google logic');\r\n  }\r\n\r\n  return (\r\n    <LoginPage01\r\n      backgroundImage={cover}\r\n      companyLogo={logo}\r\n      customBtnColor=\"bg:background\"\r\n      customLabel=\"Sign In\"\r\n      customIcon=\"\"\r\n      formWidth={300}\r\n      providers={['custom', 'google']}\r\n      handleLogin={[() => signIn(), () => signInWithGoogle()]}\r\n    />\r\n  );\r\n}\r\n",
       "type": "registry:page",
       "target": "app/login-01/page.tsx"
     },
