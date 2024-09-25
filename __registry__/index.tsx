@@ -27,6 +27,20 @@ export const Index: Record<string, unknown> = {
       subcategory: 'undefined',
       chunks: []
     },
+    'login-01': {
+      name: 'login-01',
+      type: 'registry:block',
+      registryDependencies: ['button', 'card', 'input', 'label'],
+      files: [
+        'registry/components/block/login-01/page.tsx',
+        'registry/components/block/login-01/components/form.tsx'
+      ],
+      component: React.lazy(() => import('@/registry/components/block/login-01/page.tsx')),
+      source: '__registry__/components/block/login-01/page.tsx',
+      category: 'Authentication',
+      subcategory: 'Login',
+      chunks: []
+    },
     utils: {
       name: 'utils',
       type: 'registry:lib',
