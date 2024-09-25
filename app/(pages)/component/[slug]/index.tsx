@@ -49,7 +49,15 @@ export default function Component({ slug }: Readonly<PropsType>) {
               </Tabs.Trigger>
             </Tabs.List>
             <Tabs.Content value="preview" className="p-4 border rounded-md space-y-6">
-              {renderExample(component.example)}
+              {component.example && component.slug === 'login-01' ? (
+                <div className="h-[550px]">
+                  <div className="relative flex justify-center items-center h-full">
+                    {renderExample(component.example)}
+                  </div>
+                </div>
+              ) : (
+                renderExample(component.example)
+              )}
 
               <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
                 <Boxes size={24} /> Installation

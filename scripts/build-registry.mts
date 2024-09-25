@@ -403,7 +403,7 @@ async function buildComponentsIndex() {
 
   const payload: RegistryEntry = {
     name: 'components',
-    type: 'registry:component',
+    type: 'registry:ui',
     dependencies: ['tailwindcss-animate', 'class-variance-authority', 'lucide-react'],
     registryDependencies: ['utils'],
     tailwind: {
