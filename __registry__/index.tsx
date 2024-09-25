@@ -33,7 +33,9 @@ export const Index: Record<string, unknown> = {
       registryDependencies: ['button', 'card', 'input', 'label'],
       files: [
         'registry/components/block/login-01/page.tsx',
-        'registry/components/block/login-01/components/form.tsx'
+        'registry/components/block/login-01/components/form.tsx',
+        'registry/components/block/login-01/pexels-nietjuh-1906440.jpg',
+        'registry/components/block/login-01/generic-company-logo.png'
       ],
       component: React.lazy(() => import('@/registry/components/block/login-01/page.tsx')),
       source: '__registry__/components/block/login-01/page.tsx',

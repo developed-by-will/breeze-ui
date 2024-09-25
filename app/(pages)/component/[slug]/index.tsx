@@ -50,7 +50,7 @@ export default function Component({ slug }: Readonly<PropsType>) {
             </Tabs.List>
             <Tabs.Content value="preview" className="p-4 border rounded-md space-y-6">
               {component.example && component.slug === 'login-01' ? (
-                <div className="h-[550px]">
+                <div className="h-[650px]">
                   <div className="relative flex justify-center items-center h-full">
                     {renderExample(component.example)}
                   </div>

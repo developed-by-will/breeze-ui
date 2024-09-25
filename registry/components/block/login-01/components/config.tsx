@@ -128,12 +128,8 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
 }`;
 
 /* For the example */
-import Logo from '@/components/project/Logo';
+import logo from '../generic-company-logo.png';
 import cover from '../pexels-nietjuh-1906440.jpg';
-
-async function signInWithEmail() {
-  alert('Sign with email logic');
-}
 
 async function signIn() {
   alert('Custom sign in logic');
@@ -143,57 +139,46 @@ async function signInWithGoogle() {
   alert('Sign in with Google logic');
 }
 
-const logo = <Logo font1="text-6xl" font2="text-4xl" />;
-
 const example = (
   <LoginPage01
     backgroundImage={cover}
     companyLogo={logo}
-    title="Breeze UI"
-    description="Build your projects with breeze"
     customBtnColor="bg:background"
-    customLabel="Custom Login"
+    customLabel="Sign In"
     customIcon=""
     formWidth={300}
-    providers={['email', 'custom', 'google']}
-    handleLogin={[() => signInWithEmail(), () => signIn(), () => signInWithGoogle()]}
+    providers={['custom', 'google']}
+    handleLogin={[() => signIn(), () => signInWithGoogle()]}
   />
 );
 
-const exampleAsString = `import Logo from '@/components/project/Logo';
+const exampleAsString = `import LoginPage01 from './components/form';
+import logo from '../generic-company-logo.png';
 import cover from '../pexels-nietjuh-1906440.jpg';
 
-export default function Page() {
-    async function signInWithEmail() {
-      alert('Sign with email logic');
-    }
-
-    async function signIn() {
-        alert('Custom sign in logic');
-    }
-
-    async function signInWithGoogle() {
-        alert('Sign in with Google logic');
-    }
-
-    const logo = <Logo font1="text-6xl" font2="text-4xl" />;
-
-    return (
-        <LoginPage01
-            backgroundImage={cover}
-            companyLogo={logo}
-            title="Breeze UI"
-            description="Build your projects with breeze"
-            customBtnColor="bg:background"
-            customLabel="Custom Login"
-            customIcon=""
-            formWidth={300}
-            providers={['email', 'custom', 'google']}
-            handleLogin={[() => signInWithEmail(), () => signIn(), () => signInWithGoogle()]}
-        />
-    );
+export default function Login() {
+  async function signIn() {
+    alert('Sign in logic');
   }
+
+  async function signInWithGoogle() {
+    alert('Sign in with Google logic');
+  }
+
+  return (
+    <LoginPage01
+      backgroundImage={cover}
+      companyLogo={logo}
+      customBtnColor="bg:background"
+      customLabel="Sign In"
+      customIcon=""
+      formWidth={300}
+      providers={['custom', 'google']}
+      handleLogin={[() => signIn(), () => signInWithGoogle()]}
+    />
+  );
 }
+
 `;
 
 export const config: ComponentType = {

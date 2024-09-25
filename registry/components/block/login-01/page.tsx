@@ -1,5 +1,5 @@
-import Logo from '@/components/project/Logo';
 import LoginPage01 from './components/form';
+import logo from './generic-company-logo.png';
 import cover from './pexels-nietjuh-1906440.jpg';
 
 export default function Login() {
@@ -11,14 +11,10 @@ export default function Login() {
     alert('Sign in with Google logic');
   }
 
-  const logo = <Logo font1="text-6xl" font2="text-4xl" />;
-
   return (
     <LoginPage01
       backgroundImage={cover}
       companyLogo={logo}
-      title="Breeze UI"
-      description="Build your projects with breeze"
       customBtnColor="bg:background"
       customLabel="Sign In"
       customIcon=""
