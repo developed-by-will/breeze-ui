@@ -17,16 +17,6 @@ export const blocks: Registry = [
         path: 'block/login-01/components/form.tsx',
         target: 'app/login-01/components/form.tsx',
         type: 'registry:component'
-      },
-      {
-        path: 'block/login-01/pexels-nietjuh-1906440.jpg',
-        target: 'app/login-01/pexels-nietjuh-1906440.jpg',
-        type: 'registry:example'
-      },
-      {
-        path: 'block/login-01/generic-company-logo.png',
-        target: 'app/login-01/generic-company-logo.png',
-        type: 'registry:example'
       }
     ],
     category: 'Authentication',

@@ -1,3 +1,5 @@
+'use client';
+
 import LoginPage01 from './components/form';
 import logo from './generic-company-logo.png';
 import cover from './pexels-nietjuh-1906440.jpg';
