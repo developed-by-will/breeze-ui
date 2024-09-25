@@ -11,6 +11,12 @@ export const componentsMetadata = {
     title: 'Code Highlighter',
     description:
       'Provides syntax highlighting and copy to keyboard functionality with code wrapping for long lines.'
+  },
+  login01: {
+    slug: 'login-01',
+    name: 'login-01',
+    title: 'Login 01',
+    description: 'A login page with multiple authentication providers.'
   }
 } as const;
 
