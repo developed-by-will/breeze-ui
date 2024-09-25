@@ -21,6 +21,7 @@ export default function Login() {
       description="Build your projects with breeze"
       customBtnColor="bg:background"
       customLabel="Sign In"
+      customIcon=""
       formWidth={300}
       providers={['custom', 'google']}
       handleLogin={[() => signIn(), () => signInWithGoogle()]}
