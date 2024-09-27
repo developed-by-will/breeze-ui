@@ -6,7 +6,6 @@ import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
 import { componentsConfig } from '@/registry/components/ui';
 import { ComponentType } from '@/registry/components/ui/metadata';
-import { useGlobalStore } from '@/store';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { BellPlus, Component } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -15,7 +14,6 @@ import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   const { theme } = useTheme();
-  const globalStore = useGlobalStore();
   const [featured, setFeatured] = useState<ComponentType | null>(null);
 
   useEffect(() => {
@@ -24,7 +22,12 @@ export default function HomePage() {
 
   const randomComponent = () => {
     const randomIndex = Math.floor(Math.random() * componentsConfig.length);
-    setFeatured(componentsConfig[randomIndex]);
+
+    if (componentsConfig[randomIndex].slug !== 'login-01') {
+      setFeatured(componentsConfig[randomIndex]);
+    } else {
+      setFeatured(componentsConfig[0]);
+    }
   };
 
   const { changeComponent } = useChangeComponent();
@@ -65,7 +68,7 @@ export default function HomePage() {
 
         <Link
           href={`/component/${componentsConfig[0].slug}`}
-          onClick={() => globalStore.setComponent(componentsConfig[0])}
+          onClick={() => changeComponent(componentsConfig[0])}
         >
           <HomepageCard
             icon={
