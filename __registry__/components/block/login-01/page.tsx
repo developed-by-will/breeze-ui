@@ -1,7 +1,5 @@
 'use client';
 
-import logo from './assets/001-generic-company-logo.png';
-import cover from './assets/pexels-nietjuh-1906440.jpg';
 import LoginPage01 from './components/form';
 
 export default function Login() {
@@ -15,8 +13,6 @@ export default function Login() {
 
   return (
     <LoginPage01
-      backgroundImage={cover}
-      companyLogo={logo}
       customBtnColor="bg:background"
       customLabel="Sign In"
       customIcon=""
