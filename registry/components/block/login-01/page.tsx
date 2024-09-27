@@ -17,6 +17,7 @@ export default function Login() {
     <LoginPage01
       backgroundImage={cover}
       companyLogo={logo}
+      companyLogoAlt="Company logo"
       customBtnColor="bg:background"
       customLabel="Sign In"
       customIcon=""

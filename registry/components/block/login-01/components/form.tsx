@@ -32,21 +32,21 @@ const providerDetails: Record<
 // If it is then customLabel & customBtnColor are required
 export type LoginPage01Type = {
   backgroundImage?: string | StaticImageData;
-  companyLogo: string | StaticImageData | JSX.Element;
+  companyLogo?: string | StaticImageData | JSX.Element;
   title?: string | JSX.Element;
   description?: string | JSX.Element;
   providers: ProvidersEnum[];
   handleLogin: Array<() => void>;
   formWidth: number;
+} & {
+  providers: (ProvidersEnum | 'custom')[];
+  customLabel: string;
+  customBtnColor: string;
+  customIcon: IconType | string | JSX.Element;
 } & (
-  | { providers: Exclude<ProvidersEnum, 'custom'>[] }
-  | {
-      providers: (ProvidersEnum | 'custom')[];
-      customLabel: string;
-      customBtnColor: string;
-      customIcon: IconType | string | JSX.Element;
-    }
-);
+    | { companyLogo?: undefined; companyLogoAlt?: undefined }
+    | { companyLogo: string | StaticImageData | JSX.Element; companyLogoAlt: string }
+  );
 
 export default function LoginPage01(props: Readonly<LoginPage01Type>) {
   const {
@@ -62,6 +62,7 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
   // Optional chaining ensures customLabel & customBtnColor are only accessed if defined
   const customLabel = 'customLabel' in props ? props.customLabel : undefined;
   const customBtnColor = 'customBtnColor' in props ? props.customBtnColor : undefined;
+  const companyLogoAlt = 'companyLogoAlt' in props ? props.companyLogoAlt : undefined;
 
   return (
     <>
@@ -79,8 +80,13 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
       <div className="flex flex-col items-center justify-center h-screen">
         <Card className={`flex flex-col items-center justify-center px-4 z-10 w-[${formWidth}px]`}>
           <CardHeader className="flex flex-col items-center">
-            {typeof companyLogo === 'string' || 'src' in companyLogo ? (
-              <Image src={companyLogo} alt="Company Logo" width={formWidth} height={100} />
+            {companyLogo && (typeof companyLogo === 'string' || 'src' in companyLogo) ? (
+              <Image
+                src={companyLogo}
+                alt={companyLogoAlt || 'Company Logo'}
+                width={formWidth}
+                height={100}
+              />
             ) : (
               companyLogo
             )}
