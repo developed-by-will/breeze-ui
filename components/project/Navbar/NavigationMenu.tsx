@@ -18,7 +18,7 @@ export default function NavigationMenu() {
     <ShadcnNavigationMenu className="ms-24 hidden lg:block">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <Link href="docs" legacyBehavior passHref>
+          <Link href="/docs" legacyBehavior passHref>
             <NavigationMenuLink className={navigationMenuLinkStyle}>Docs</NavigationMenuLink>
           </Link>
         </NavigationMenuItem>
