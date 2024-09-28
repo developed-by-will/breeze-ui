@@ -55,13 +55,11 @@ const CopyCode = ({ codeSnippet }: { codeSnippet: string }) => {
   );
 };
 
-const ShowAlertDialog = (props: PropsType) => {
+const ShowAlertDialog = (props: Readonly<PropsType>) => {
   const { showAlert, codeSnippet } = props;
 
   const copyToClipboard = useCallback(() => {
-    navigator.clipboard.writeText(codeSnippet).then(() => {
-      console.log('Close dialog');
-    });
+    navigator.clipboard.writeText(codeSnippet);
   }, [codeSnippet]);
 
   if (!showAlert) return;

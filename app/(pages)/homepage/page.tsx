@@ -23,11 +23,7 @@ export default function HomePage() {
   const randomComponent = () => {
     const randomIndex = Math.floor(Math.random() * componentsConfig.length);
 
-    if (componentsConfig[randomIndex].slug !== 'login-01') {
-      setFeatured(componentsConfig[randomIndex]);
-    } else {
-      setFeatured(componentsConfig[0]);
-    }
+    setFeatured(componentsConfig[randomIndex]);
   };
 
   const { changeComponent } = useChangeComponent();
@@ -39,19 +35,15 @@ export default function HomePage() {
   return (
     <div className="flex flex-col justify-center px-4 gap-8 mt-4 lg:mt-8 mb-16">
       <header className="text-center">
-        <Logo
-          font1="text-6xl md:text-8xl"
-          font2="text-4xl md:text-6xl"
-          classes="justify-center mb-8 hidden lg:flex"
-        />
-        <p className="text-sm sm:text-2xl">Components created for Next.js based on Shadcn UI</p>
-        <p
+        <Logo width={300} height={100} classes="justify-center mb-8 hidden lg:flex" />
+        <h1 className="text-sm sm:text-2xl">Components created for Next.js based on Shadcn UI</h1>
+        <h2
           className={`text-xl sm:text-2xl font-semibold ${
             theme === 'light' ? 'text-blue-800' : 'text-blue-500'
           }`}
         >
           Build your projects with breeze.
-        </p>
+        </h2>
       </header>
 
       <div className="grid md:grid-cols-2 max-w-4xl mx-auto gap-8">
