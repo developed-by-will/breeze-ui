@@ -1,3 +1,6 @@
+'use client';
+
+import { useTheme } from 'next-themes';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,10 +12,16 @@ type PropsType = {
 
 export default function Logo(props: Readonly<PropsType>) {
   const { width, height, classes } = props;
+  const { theme } = useTheme();
 
   return (
     <Link href="/" className={`flex items-center ${classes}`}>
-      <Image src="/logo.png" alt="logo" width={width} height={height} />
+      <Image
+        src={`${theme === 'light' ? '/logo.png' : '/logo-night.png'}`}
+        alt="logo"
+        width={width}
+        height={height}
+      />
     </Link>
   );
 }
