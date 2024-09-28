@@ -1,3 +1,4 @@
+import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
 import CodeSnippet from '@/components/breeze-ui/codeSnippet';
 import Sidebar from '@/components/project/Sidebar';
 import { ComponentType } from '@/registry/components/ui/metadata';
@@ -18,6 +19,8 @@ export default function Content(props: Readonly<PropsType>) {
     }
   };
 
+  const breadcrumbs: BreadcrumbType[] = [{ text: component.type }, { text: component.title }];
+
   return (
     <div className="flex justify-center">
       <div className="flex container">
@@ -26,7 +29,9 @@ export default function Content(props: Readonly<PropsType>) {
         </aside>
 
         <main className="flex-1 p-6 container">
-          <h1 className="text-3xl font-bold mb-2 ">{component.title}</h1>
+          {breadcrumbs && <Breadcrumbs breadcrumbs={breadcrumbs} position="justify-start" />}
+
+          <h1 className="text-3xl font-bold mb-2">{component.title}</h1>
           <p className="text-muted-foreground mb-6">{component.description}</p>
 
           <Tabs.Root defaultValue="preview">
