@@ -13,8 +13,10 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
   const [featured, setFeatured] = useState<ComponentType | null>(null);
+
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   useEffect(() => {
     randomComponent();
@@ -39,7 +41,7 @@ export default function HomePage() {
         <h1 className="text-sm sm:text-2xl">Components created for Next.js based on Shadcn UI</h1>
         <h2
           className={`text-xl sm:text-2xl font-semibold ${
-            theme === 'light' ? 'text-blue-800' : 'text-blue-500'
+            currentTheme === 'light' ? 'text-blue-800' : 'text-blue-500'
           }`}
         >
           Build your projects with breeze.
