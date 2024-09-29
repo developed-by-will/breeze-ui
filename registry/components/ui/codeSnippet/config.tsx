@@ -52,6 +52,5 @@ export const config: ComponentType = {
   example,
   implementation_1,
   implementation_2,
-  addCommand:
-    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/components/codeSnippet.json'
+  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.breadcrumbs.name}.json`
 };
