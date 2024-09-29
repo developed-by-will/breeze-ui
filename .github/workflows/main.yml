@@ -2,8 +2,6 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - closed
 name: 🚀 Deploy app to PROD
 jobs:
   check_branch_name:
@@ -19,7 +17,6 @@ jobs:
     name: 🏗️ Build
     needs: check_branch_name
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
 
     strategy:
       matrix:
@@ -31,7 +28,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
 
       - name: 💾 Cache .next folder
         uses: actions/cache@v4
@@ -78,7 +75,7 @@ jobs:
       # Remove everything not needed to run the app
       - name: 🗑️ Clean up before sync files
         run: |
-          rm -rf .git .github .husky .next/cache node_modules
+          rm -rf .git .github .husky .next/cache node_modules __registry__ scripts .huskyrc declaration.d.ts webpack.config.js .prettierrc .eslintrc.json README.md
       - name: 🔄 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:

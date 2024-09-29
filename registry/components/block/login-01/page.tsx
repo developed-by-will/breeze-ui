@@ -1,6 +1,8 @@
-import Logo from '@/components/project/Logo';
+'use client';
+
+import logo from './assets/001-generic-company-logo.png';
+import cover from './assets/pexels-nietjuh-1906440.jpg';
 import LoginPage01 from './components/form';
-import cover from './pexels-nietjuh-1906440.jpg';
 
 export default function Login() {
   async function signIn() {
@@ -11,14 +13,11 @@ export default function Login() {
     alert('Sign in with Google logic');
   }
 
-  const logo = <Logo font1="text-6xl" font2="text-4xl" />;
-
   return (
     <LoginPage01
       backgroundImage={cover}
       companyLogo={logo}
-      title="Breeze UI"
-      description="Build your projects with breeze"
+      companyLogoAlt="Company logo"
       customBtnColor="bg:background"
       customLabel="Sign In"
       customIcon=""

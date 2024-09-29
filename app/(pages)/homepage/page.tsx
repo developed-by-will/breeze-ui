@@ -6,7 +6,6 @@ import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
 import { componentsConfig } from '@/registry/components/ui';
 import { ComponentType } from '@/registry/components/ui/metadata';
-import { useGlobalStore } from '@/store';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { BellPlus, Component } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -15,7 +14,6 @@ import { useEffect, useState } from 'react';
 
 export default function HomePage() {
   const { theme } = useTheme();
-  const globalStore = useGlobalStore();
   const [featured, setFeatured] = useState<ComponentType | null>(null);
 
   useEffect(() => {
@@ -24,6 +22,7 @@ export default function HomePage() {
 
   const randomComponent = () => {
     const randomIndex = Math.floor(Math.random() * componentsConfig.length);
+
     setFeatured(componentsConfig[randomIndex]);
   };
 
@@ -36,19 +35,15 @@ export default function HomePage() {
   return (
     <div className="flex flex-col justify-center px-4 gap-8 mt-4 lg:mt-8 mb-16">
       <header className="text-center">
-        <Logo
-          font1="text-6xl md:text-8xl"
-          font2="text-4xl md:text-6xl"
-          classes="justify-center mb-8 hidden lg:flex"
-        />
-        <p className="text-sm sm:text-2xl">Components created for Next.js based on Shadcn UI</p>
-        <p
+        <Logo width={300} height={100} classes="justify-center mb-8 hidden lg:flex" />
+        <h1 className="text-sm sm:text-2xl">Components created for Next.js based on Shadcn UI</h1>
+        <h2
           className={`text-xl sm:text-2xl font-semibold ${
             theme === 'light' ? 'text-blue-800' : 'text-blue-500'
           }`}
         >
           Build your projects with breeze.
-        </p>
+        </h2>
       </header>
 
       <div className="grid md:grid-cols-2 max-w-4xl mx-auto gap-8">
@@ -65,7 +60,7 @@ export default function HomePage() {
 
         <Link
           href={`/component/${componentsConfig[0].slug}`}
-          onClick={() => globalStore.setComponent(componentsConfig[0])}
+          onClick={() => changeComponent(componentsConfig[0])}
         >
           <HomepageCard
             icon={

@@ -8,7 +8,11 @@ export const useChangeComponent = () => {
 
   const changeComponent = (component: ComponentType) => {
     globalStore.setComponent(component);
-    router.push(`/component/${component.slug}`);
+
+    const slug = component.slug;
+    const route = component.type === 'component' ? `/component/${slug}` : `/block/${slug}`;
+
+    router.push(route);
   };
 
   return { changeComponent };
