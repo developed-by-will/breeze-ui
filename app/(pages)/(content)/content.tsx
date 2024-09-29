@@ -1,3 +1,5 @@
+'use client';
+
 import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
 import CodeSnippet from '@/components/breeze-ui/codeSnippet';
 import Sidebar from '@/components/project/Sidebar';
