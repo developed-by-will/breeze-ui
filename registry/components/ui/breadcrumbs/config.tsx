@@ -1,5 +1,5 @@
 /* For the preview */
-import codeSource from '!!raw-loader!./Index.tsx';
+import codeSource from '!!raw-loader!./index.tsx';
 import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
 import Breadcrumbs, { BreadcrumbType } from '.';
 
