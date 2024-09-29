@@ -39,4 +39,5 @@ export type ComponentType = {
   implementation_3?: string;
   implementation_4?: string;
   addCommand: string;
+  type: 'component' | 'block';
 };

@@ -2,8 +2,6 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - closed
 name: 🚀 Deploy app to PROD
 jobs:
   check_branch_name:
@@ -19,7 +17,6 @@ jobs:
     name: 🏗️ Build
     needs: check_branch_name
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
 
     strategy:
       matrix:
@@ -31,7 +28,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+          cache: 'npm'
 
       - name: 💾 Cache .next folder
         uses: actions/cache@v4

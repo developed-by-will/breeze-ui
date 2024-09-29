@@ -1,35 +1,53 @@
 import { useChangeComponent } from '@/components/project/useChangeComponent';
 import { Button } from '@/components/ui/button';
+import { Dialog } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { componentsConfig } from '@/registry/components/ui';
+import { blocksConfig, componentsConfig } from '@/registry/components/ui';
 import { ComponentType } from '@/registry/components/ui/metadata';
-import { useGlobalStore } from '@/store';
 
 export default function Sidebar() {
-  const globalStore = useGlobalStore();
-  const theme = globalStore.theme;
   const { changeComponent } = useChangeComponent();
 
+  const components = Object.values(componentsConfig);
+  const blocks = Object.values(blocksConfig);
+  const btnClassName = 'w-full justify-start text-primary/80 hover:text-primary} mb-1';
+
   return (
-    <aside className="w-64 border-r p-4 hidden lg:block">
-      <ScrollArea className="h-[calc(100vh-5rem)]">
-        <div className="space-y-1">
-          {componentsConfig.map((component: ComponentType) => (
-            <Button
-              key={component.name}
-              variant="ghost"
-              className={`w-full justify-start hover:bg-foreground/10 ${
-                theme === 'light'
-                  ? 'text-primary hover:bg-foreground/40 hover:text-primary'
-                  : 'text-white hover:bg-foreground/50 hover:text-white'
-              } ${component.name === globalStore.curComponent.name ? 'bg-foreground/30' : ''}`}
-              onClick={() => changeComponent(component)}
-            >
-              {component.title}
-            </Button>
-          ))}
+    <Dialog>
+      <ScrollArea className="h-screen">
+        <div className="space-y-4">
+          <div>
+            <h4 className="font-medium pb-2 text-start">Components</h4>
+            {components.map((component: ComponentType) => (
+              <Button
+                key={component.name}
+                variant="link"
+                className={btnClassName}
+                onClick={() => {
+                  changeComponent(component);
+                }}
+              >
+                {component.title}
+              </Button>
+            ))}
+          </div>
+          <div>
+            <h4 className="font-medium pb-2 text-start">Blocks</h4>
+            {blocks.map((component: ComponentType) => (
+              <Button
+                key={component.name}
+                variant="link"
+                className={btnClassName}
+                onClick={() => {
+                  changeComponent(component);
+                }}
+              >
+                {component.title}
+              </Button>
+            ))}
+          </div>
         </div>
       </ScrollArea>
-    </aside>
+    </Dialog>
   );
 }

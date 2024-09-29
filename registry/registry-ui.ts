@@ -9,7 +9,7 @@ export const ui: Registry = [
     files: [
       {
         path: 'ui/breadcrumbs/index.tsx',
-        target: 'components/breeze-ui/breadcrumb.tsx',
+        target: 'components/breeze-ui/breadcrumbs.tsx',
         type: 'registry:page'
       }
     ]
