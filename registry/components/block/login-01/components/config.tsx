@@ -1,9 +1,9 @@
 /* For the preview */
-import LoginPage01Source from '!!raw-loader!./form.tsx';
+import codeSource from '!!raw-loader!./form.tsx';
 import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
 import LoginPage01 from './form';
 
-export const codeSnippet = LoginPage01Source;
+export const codeSnippet = codeSource;
 
 /* For the example */
 import logo from '../assets/generic-company-logo.png';
@@ -55,6 +55,7 @@ export default function Login() {
 }`;
 
 export const config: ComponentType = {
+  type: 'block',
   slug: componentsMetadata.login01.slug,
   name: componentsMetadata.login01.name,
   title: componentsMetadata.login01.title,

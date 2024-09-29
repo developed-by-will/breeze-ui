@@ -1,65 +1,9 @@
 /* For the preview */
+import codeSource from '!!raw-loader!./Index.tsx';
 import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
 import Breadcrumbs, { BreadcrumbType } from '.';
 
-const codeSnippet = `
-import Link from 'next/link';
-
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator
-} from '@/components/ui/breadcrumb';
-
-export type BreadcrumbType = {
-  text: string;
-  url?: string;
-};
-
-type BreadcrumbsProps = {
-  breadcrumbs: BreadcrumbType[];
-  position: 'justify-start' | 'justify-center' | 'justify-end';
-};
-
-export default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {
-  const { breadcrumbs, position } = props;
-
-  return (
-    <div className={\`flex w-full \${position} text-sm mt-4 mb-6\`}>
-      <Breadcrumb>
-        <BreadcrumbList>
-          {breadcrumbs.map((breadcrumb, index) => {
-            const isLastItem = index === breadcrumbs.length - 1;
-
-            return (
-              <BreadcrumbItem key={breadcrumb.text} className="capitalize">
-                {breadcrumb.url ? (
-                  <Link
-                    className="underline underline-offset-4 hover:text-primary transition-all"
-                    href={breadcrumb.url}
-                  >
-                    {breadcrumb.text}
-                  </Link>
-                ) : (
-                  <BreadcrumbPage
-                    className={isLastItem ? 'text-primary font-medium' : 'text-muted-foreground'}
-                  >
-                    {breadcrumb.text}
-                  </BreadcrumbPage>
-                )}
-
-                {!isLastItem && <BreadcrumbSeparator />}
-              </BreadcrumbItem>
-            );
-          })}
-        </BreadcrumbList>
-      </Breadcrumb>
-    </div>
-  );
-}
-`;
+export const codeSnippet = codeSource;
 
 /* For the example */
 const breadcrumbs: BreadcrumbType[] = [
@@ -80,6 +24,7 @@ const exampleAsString = `const breadcrumbs: BreadcrumbType[] = [
 `;
 
 export const config: ComponentType = {
+  type: 'component',
   slug: componentsMetadata.breadcrumbs.slug,
   name: componentsMetadata.breadcrumbs.name,
   title: componentsMetadata.breadcrumbs.title,

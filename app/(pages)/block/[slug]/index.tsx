@@ -1,6 +1,6 @@
 'use client';
 
-import { componentsConfig } from '@/registry/components/ui';
+import { blocksConfig } from '@/registry/components/ui';
 import Content from '../../(content)/content';
 
 type PropsType = {
@@ -8,7 +8,7 @@ type PropsType = {
 };
 
 export default function Component({ slug }: Readonly<PropsType>) {
-  const component = Object.values(componentsConfig).find((c) => c.slug === slug);
+  const component = Object.values(blocksConfig).find((c) => c.slug === slug);
 
   if (!component) {
     return <p>Component not found</p>;
