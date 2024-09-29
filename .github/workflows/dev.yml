@@ -76,7 +76,7 @@ jobs:
       # Remove everything not needed to run the app
       - name: 🗑️ Clean up before sync files
         run: |
-          rm -rf .git .github .husky .next/cache node_modules __registry__ scripts registry .huskyrc declaration.d.ts webpack.config.js .prettierrc .eslintrc.json README.md
+          rm -rf .git .github .husky .next/cache node_modules __registry__ scripts .huskyrc declaration.d.ts webpack.config.js .prettierrc .eslintrc.json README.md
       - name: 🔄 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
