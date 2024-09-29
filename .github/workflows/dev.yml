@@ -9,9 +9,9 @@ jobs:
     steps:
       - name: 🕵️ Check branch name
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | grep -P '^(bugfix|feature|refact|release)/[a-z0-9.-]+$')
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | grep -P '^(bugfix|feature|refact|release|hotfix)/[a-z0-9.-]+$')
           if [[ -z "${BRANCH_NAME}" ]]; then
-            echo "Invalid branch name. Branch names must start with 'bugfix/', 'feature/', 'refact/', 'release' and only contain lowercase letters, numbers, hyphens, and dots."
+            echo "Invalid branch name. Branch names must start with 'bugfix/', 'feature/', 'refact/', 'release/', 'hotfix/' and only contain lowercase letters, numbers, hyphens, and dots."
             exit 1
           fi
   build:
