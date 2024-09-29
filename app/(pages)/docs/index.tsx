@@ -8,6 +8,7 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
+import SyntaxHighlighter from '@/registry/components/ui/syntaxHighlighter';
 
 export default function Docs() {
   const breadcrumbs: BreadcrumbType[] = [{ text: 'Docs' }, { text: 'Introduction' }];
@@ -28,6 +29,15 @@ export default function Docs() {
               breeze/ui is a shadcn component library that you can bring into your apps by using the
               shadcn CLI.
             </p>
+          </div>
+
+          <div>
+            <h2 className="mt-8 font-bold">Getting Started</h2>
+            <p className="text-muted-foreground mb-4">
+              Run the init command to create a new Next.js project or to setup an existing one:
+            </p>
+
+            <SyntaxHighlighter codeSnippet="npx shadcn@latest init" styleName="vscDarkPlus" />
           </div>
 
           <div>
