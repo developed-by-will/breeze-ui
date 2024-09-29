@@ -9,7 +9,8 @@ import Sidebar from '../Sidebar';
 import NavigationMenu from './NavigationMenu';
 
 export default function Navbar() {
-  const { setTheme, theme } = useTheme();
+  const { setTheme, theme, systemTheme } = useTheme();
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <div className="w-full flex justify-center bg-transparent backdrop-blur sticky top-0 z-50">
@@ -35,14 +36,14 @@ export default function Navbar() {
         </div>
         <LogoText font1="text-4xl" font2="text-3xl" classes="space-x-[2px] flex lg:hidden" />
         <div className="flex items-center space-x-2">
-          {theme === 'light' ? (
+          {currentTheme === 'light' ? (
             <Sun className="h-4 w-4 text-blue-500" />
           ) : (
             <Moon className="h-4 w-4 text-blue-500" />
           )}
           <Switch
             id="theme-switch"
-            checked={theme === 'dark'}
+            checked={currentTheme === 'dark'}
             className="bg-gray-500"
             onCheckedChange={() => setTheme(theme === 'light' ? 'dark' : 'light')}
           />

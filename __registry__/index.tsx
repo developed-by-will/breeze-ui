@@ -5,8 +5,8 @@ import * as React from 'react';
 
 export const Index: Record<string, unknown> = {
   components: {
-    breadcrumbs: {
-      name: 'breadcrumbs',
+    Breadcrumbs: {
+      name: 'Breadcrumbs',
       type: 'registry:ui',
       registryDependencies: ['breadcrumb'],
       files: ['registry/components/ui/breadcrumbs/index.tsx'],
@@ -16,12 +16,12 @@ export const Index: Record<string, unknown> = {
       subcategory: 'undefined',
       chunks: []
     },
-    codeSnippet: {
-      name: 'codeSnippet',
+    SyntaxHighlighter: {
+      name: 'SyntaxHighlighter',
       type: 'registry:ui',
       registryDependencies: ['alert-dialog', 'button'],
-      files: ['registry/components/ui/codeSnippet/index.tsx'],
-      component: React.lazy(() => import('@/registry/components/ui/codeSnippet/index.tsx')),
+      files: ['registry/components/ui/syntaxHighlighter/index.tsx'],
+      component: React.lazy(() => import('@/registry/components/ui/syntaxHighlighter/index.tsx')),
       source: '',
       category: 'undefined',
       subcategory: 'undefined',

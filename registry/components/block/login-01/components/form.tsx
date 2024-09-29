@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -9,6 +11,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useTheme } from 'next-themes';
 import Image, { StaticImageData } from 'next/image';
 import { BsDiscord, BsEnvelopeFill, BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
 import { IconType } from 'react-icons/lib';
@@ -33,6 +36,7 @@ const providerDetails: Record<
 export type LoginPage01Type = {
   backgroundImage?: string | StaticImageData;
   companyLogo?: string | StaticImageData | JSX.Element;
+  companyLogoAlternative?: string | StaticImageData | JSX.Element;
   title?: string | JSX.Element;
   description?: string | JSX.Element;
   providers: ProvidersEnum[];
@@ -45,13 +49,18 @@ export type LoginPage01Type = {
   customIcon: IconType | string | JSX.Element;
 } & (
     | { companyLogo?: undefined; companyLogoAlt?: undefined }
-    | { companyLogo: string | StaticImageData | JSX.Element; companyLogoAlt: string }
+    | {
+        companyLogo: string | StaticImageData | JSX.Element;
+        companyLogoAlt: string;
+        companyLogoAlternative: string | StaticImageData | JSX.Element;
+      }
   );
 
 export default function LoginPage01(props: Readonly<LoginPage01Type>) {
   const {
     backgroundImage,
     companyLogo,
+    companyLogoAlternative,
     title,
     description,
     providers = [],
@@ -59,10 +68,15 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
     formWidth
   } = props;
 
+  const { theme, systemTheme } = useTheme();
+
   // Optional chaining ensures customLabel & customBtnColor are only accessed if defined
   const customLabel = 'customLabel' in props ? props.customLabel : undefined;
   const customBtnColor = 'customBtnColor' in props ? props.customBtnColor : undefined;
   const companyLogoAlt = 'companyLogoAlt' in props ? props.companyLogoAlt : undefined;
+
+  const currentTheme = theme === 'system' ? systemTheme : theme;
+  const logo = currentTheme === 'dark' ? companyLogoAlternative : companyLogo;
 
   return (
     <>
@@ -78,17 +92,19 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
       )}
 
       <div className="flex flex-col items-center justify-center h-screen">
-        <Card className={`flex flex-col items-center justify-center px-4 z-10 w-[${formWidth}px]`}>
+        <Card
+          className={`flex flex-col items-center justify-center bg-secondary/90 shadow-2xl px-4 z-10 w-[${formWidth}px]`}
+        >
           <CardHeader className="flex flex-col items-center">
-            {companyLogo && (typeof companyLogo === 'string' || 'src' in companyLogo) ? (
+            {logo && (typeof logo === 'string' || 'src' in logo) ? (
               <Image
-                src={companyLogo}
-                alt={companyLogoAlt || 'Company Logo'}
+                src={logo}
+                alt={companyLogoAlt ?? 'Company Logo'}
                 width={formWidth}
                 height={100}
               />
             ) : (
-              companyLogo
+              logo
             )}
             <CardTitle>{title && <h2>{title}</h2>}</CardTitle>
             <CardDescription>

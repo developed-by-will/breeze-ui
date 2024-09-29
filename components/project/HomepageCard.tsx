@@ -14,12 +14,14 @@ type PropsType = {
 
 export default function HomepageCard(props: Readonly<PropsType>) {
   const { icon, title, description, footer, children } = props;
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
+
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <Card
       className={`group transition-all duration-500 hover:shadow-lg hover:-translate-y-1 w-full ${
-        theme === 'light' ? 'bg-white' : 'bg-slate-800'
+        currentTheme === 'light' ? 'bg-white' : 'bg-slate-800'
       }`}
     >
       <CardHeader>

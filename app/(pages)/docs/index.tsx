@@ -67,7 +67,7 @@ export default function Docs() {
               <AccordionItem value="item-1">
                 <AccordionTrigger>What other libraries does it use?</AccordionTrigger>
                 <AccordionContent>
-                  As for now we use other well-known libraries such as{' '}
+                  As for now we use other well-known libraries such as <b>next-themes</b>,{' '}
                   <b>react-syntax-highlighter</b> and <b>react-icons</b>. This list will likely grow
                   but by always making sure they are reliable.
                 </AccordionContent>
@@ -90,7 +90,7 @@ export default function Docs() {
                 <strong>v1.2.0</strong> - Add breadcrumbs component
               </li>
               <li>
-                <strong>v2.0.6</strong> - CodeSnippet component update
+                <strong>v2.0.6</strong> - Syntax Highlighter component update
               </li>
               <li>
                 <strong>v2.1.0</strong> - Add Login-01 block

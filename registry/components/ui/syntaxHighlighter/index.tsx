@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Check, Copy } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 import * as PrismStyles from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import {
@@ -91,7 +91,7 @@ const ShowAlertDialog = (props: Readonly<PropsType>) => {
   );
 };
 
-export default function CodeSnippet(props: Readonly<PropsType>) {
+export default function SyntaxHighlighter(props: Readonly<PropsType>) {
   const { codeSnippet, styleName, showAlert } = props;
   const style = PrismStyles[styleName];
 
@@ -110,7 +110,7 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
         <CopyCode codeSnippet={codeSnippet} />
       )}
 
-      <SyntaxHighlighter
+      <ReactSyntaxHighlighter
         language="typescript"
         style={style}
         wrapLongLines={true}
@@ -122,7 +122,7 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
         }}
       >
         {codeSnippet}
-      </SyntaxHighlighter>
+      </ReactSyntaxHighlighter>
     </div>
   );
 }
