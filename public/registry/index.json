@@ -1,6 +1,6 @@
 [
   {
-    "name": "breadcrumbs",
+    "name": "Breadcrumbs",
     "type": "registry:ui",
     "dependencies": [""],
     "registryDependencies": ["breadcrumb"],
@@ -13,15 +13,15 @@
     ]
   },
   {
-    "name": "codeSnippet",
+    "name": "SyntaxHighlighter",
     "type": "registry:ui",
     "dependencies": ["react-syntax-highlighter", "@types/react-syntax-highlighter"],
     "registryDependencies": ["alert-dialog", "button"],
     "files": [
       {
-        "path": "ui/codeSnippet/index.tsx",
+        "path": "ui/syntaxHighlighter/index.tsx",
         "type": "registry:page",
-        "target": "components/breeze-ui/codeSnippet.tsx"
+        "target": "components/breeze-ui/syntax-highlighter.tsx"
       }
     ]
   }
