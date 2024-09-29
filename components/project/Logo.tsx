@@ -12,15 +12,18 @@ type PropsType = {
 
 export default function Logo(props: Readonly<PropsType>) {
   const { width, height, classes } = props;
-  const { theme } = useTheme();
+  const { theme, systemTheme } = useTheme();
+
+  const currentTheme = theme === 'system' ? systemTheme : theme;
 
   return (
     <Link href="/" className={`flex items-center ${classes}`}>
       <Image
-        src={`${theme === 'light' ? '/logo.png' : '/logo-night.png'}`}
+        src={`${currentTheme === 'light' ? '/logo.png' : '/logo-night.png'}`}
         alt="logo"
         width={width}
         height={height}
+        priority
       />
     </Link>
   );

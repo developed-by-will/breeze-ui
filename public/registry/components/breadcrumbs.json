@@ -1,5 +1,5 @@
 {
-  "name": "breadcrumbs",
+  "name": "Breadcrumbs",
   "type": "registry:ui",
   "dependencies": [""],
   "registryDependencies": ["breadcrumb"],

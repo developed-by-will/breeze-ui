@@ -1,9 +1,9 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./index.tsx';
 import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
-import CodeSnippet from '.';
+import SyntaxHighlighter from '.';
 
-export const codeSnippet = codeSource;
+export const syntaxHighlighter = codeSource;
 
 /* For the example */
 const code = `<html>
@@ -13,7 +13,7 @@ const code = `<html>
     </div>
   </body>
 </html>`;
-const example = <CodeSnippet codeSnippet={code} styleName="duotoneSpace" />;
+const example = <SyntaxHighlighter codeSnippet={code} styleName="duotoneSpace" />;
 const implementation_1 = `const codeExample = \`<p>Example without alert dialog</p>\`;
 
 return (
@@ -44,13 +44,13 @@ return (
 
 export const config: ComponentType = {
   type: 'component',
-  slug: componentsMetadata.codeSnippet.slug,
-  name: componentsMetadata.codeSnippet.name,
-  title: componentsMetadata.codeSnippet.title,
-  description: componentsMetadata.codeSnippet.description,
-  codeSnippet,
+  slug: componentsMetadata.syntaxHighlighter.slug,
+  name: componentsMetadata.syntaxHighlighter.name,
+  title: componentsMetadata.syntaxHighlighter.title,
+  description: componentsMetadata.syntaxHighlighter.description,
+  codeSnippet: syntaxHighlighter,
   example,
   implementation_1,
   implementation_2,
-  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.breadcrumbs.name}.json`
+  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.syntaxHighlighter.name}.json`
 };
