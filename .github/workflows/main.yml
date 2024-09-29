@@ -9,8 +9,9 @@ jobs:
     steps:
       - name: 🕵️ Check branch name
         run: |
-          if [[ "${GITHUB_HEAD_REF}" != "dev" ]]; then
-            echo "Only pull requests from 'dev' can be merged into 'main'."
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | grep -P '^(release)/[a-z0-9.-]+$')
+          if [[ -z "${BRANCH_NAME}" ]]; then
+            echo "Invalid branch name. Branch names must start with 'release' and only contain lowercase letters, numbers, hyphens, and dots."
             exit 1
           fi
   build:
