@@ -119,7 +119,7 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
               <Input id="password" type="password" placeholder="********" />
             </div>
           </CardContent>
-          <CardFooter className="flex flex-col gap-3">
+          <CardFooter className="flex flex-col gap-3 pb-14">
             {providers.map((provider, index) => {
               const { label, icon, background } =
                 provider === 'custom'
