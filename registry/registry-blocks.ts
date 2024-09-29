@@ -6,7 +6,7 @@ export const blocks: Registry = [
     description: 'Login 01',
     type: 'registry:block',
     registryDependencies: ['button', 'card', 'input', 'label'],
-    dependencies: ['react-icons, next-themes'],
+    dependencies: ['react-icons', 'next-themes'],
     files: [
       {
         path: 'block/login-01/page.tsx',
