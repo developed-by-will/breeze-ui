@@ -5,10 +5,10 @@ export const componentsMetadata = {
     title: 'Breadcrumbs',
     description: 'Displays the path to the current resource using a hierarchy of links.'
   },
-  codeSnippet: {
-    slug: 'code-snippet',
-    name: 'codeSnippet',
-    title: 'Code Highlighter',
+  syntaxHighlighter: {
+    slug: 'syntax-highlighter',
+    name: 'syntax-highlighter',
+    title: 'Syntax Highlighter',
     description:
       'Provides syntax highlighting and copy to keyboard functionality with code wrapping for long lines.'
   },

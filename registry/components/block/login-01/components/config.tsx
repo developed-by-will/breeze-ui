@@ -6,6 +6,7 @@ import LoginPage01 from './form';
 export const codeSnippet = codeSource;
 
 /* For the example */
+import logoAlternative from '../assets/generic-company-logo-white.png';
 import logo from '../assets/generic-company-logo.png';
 import cover from '../assets/pexels-nietjuh-1906440.jpg';
 
@@ -21,6 +22,7 @@ const example = (
   <LoginPage01
     backgroundImage={cover}
     companyLogo={logo}
+    companyLogoAlternative={logoAlternative}
     companyLogoAlt="Company logo"
     customBtnColor="bg:background"
     customLabel="Sign In"
@@ -63,5 +65,5 @@ export const config: ComponentType = {
   codeSnippet,
   example,
   implementation_1: exampleAsString,
-  addCommand: ''
+  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.login01.name}.json`
 };
