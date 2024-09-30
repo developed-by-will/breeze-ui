@@ -5,8 +5,8 @@ import * as React from 'react';
 
 export const Index: Record<string, unknown> = {
   components: {
-    Breadcrumbs: {
-      name: 'Breadcrumbs',
+    breadcrumbs: {
+      name: 'breadcrumbs',
       type: 'registry:ui',
       registryDependencies: ['breadcrumb'],
       files: ['registry/components/ui/breadcrumbs/index.tsx'],
@@ -16,8 +16,8 @@ export const Index: Record<string, unknown> = {
       subcategory: 'undefined',
       chunks: []
     },
-    SyntaxHighlighter: {
-      name: 'SyntaxHighlighter',
+    'syntax-highlighter': {
+      name: 'syntax-highlighter',
       type: 'registry:ui',
       registryDependencies: ['alert-dialog', 'button'],
       files: ['registry/components/ui/syntaxHighlighter/index.tsx'],

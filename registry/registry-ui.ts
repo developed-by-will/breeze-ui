@@ -2,7 +2,7 @@ import { Registry } from '@/registry/schema';
 
 export const ui: Registry = [
   {
-    name: 'Breadcrumbs',
+    name: 'breadcrumbs',
     type: 'registry:ui',
     dependencies: [''],
     registryDependencies: ['breadcrumb'],
@@ -15,7 +15,7 @@ export const ui: Registry = [
     ]
   },
   {
-    name: 'SyntaxHighlighter',
+    name: 'syntax-highlighter',
     type: 'registry:ui',
     dependencies: ['react-syntax-highlighter', '@types/react-syntax-highlighter'],
     registryDependencies: ['alert-dialog', 'button'],

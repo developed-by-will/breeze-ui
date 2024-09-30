@@ -1,5 +1,5 @@
 {
-  "name": "SyntaxHighlighter",
+  "name": "syntax-highlighter",
   "type": "registry:ui",
   "dependencies": ["react-syntax-highlighter", "@types/react-syntax-highlighter"],
   "registryDependencies": ["alert-dialog", "button"],
