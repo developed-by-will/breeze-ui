@@ -27,7 +27,6 @@ const REGISTRY_INDEX_WHITELIST: z.infer<typeof registryItemTypeSchema>[] = [
   'registry:ui',
   'registry:lib',
   'registry:hook',
-  'registry:theme',
   'registry:block'
 ];
 
