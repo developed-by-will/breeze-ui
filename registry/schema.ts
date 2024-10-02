@@ -16,12 +16,10 @@ export const blockChunkSchema = z.object({
 export const registryItemTypeSchema = z.enum([
   'registry:style',
   'registry:lib',
-  'registry:example',
   'registry:block',
   'registry:component',
   'registry:ui',
   'registry:hook',
-  'registry:theme',
   'registry:page'
 ]);
 
@@ -38,7 +36,6 @@ export const registryItemFileSchema = z.union([
 export const registryItemTailwindSchema = z.object({
   config: z.object({
     content: z.array(z.string()).optional(),
-    theme: z.record(z.string(), z.any()).optional(),
     plugins: z.array(z.string()).optional()
   })
 });
