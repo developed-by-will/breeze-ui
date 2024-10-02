@@ -14,7 +14,7 @@ export default function Steps(props: Readonly<PropsType>) {
     <ol className="relative border-l border-gray-200">
       {steps.map((step, index) => (
         <li key={index} className="mb-10 ml-6">
-          <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary">
+          <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-transparent bg-primary">
             <span className="text-secondary">{index + 1}</span>
           </span>
           <h3 className="font-medium leading-tight mb-4">{step.title}</h3>
