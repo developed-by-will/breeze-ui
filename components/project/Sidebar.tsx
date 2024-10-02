@@ -19,6 +19,7 @@ export default function Sidebar() {
       <ScrollArea className="h-screen">
         <div className="space-y-4">
           <div>
+            <h4 className="font-medium pb-2 text-start">Documentation</h4>
             <Button
               variant="link"
               className={btnClassName}
@@ -26,8 +27,19 @@ export default function Sidebar() {
                 router.push('/docs');
               }}
             >
-              Docs
+              Getting Started
             </Button>
+            <Button
+              variant="link"
+              className={btnClassName}
+              onClick={() => {
+                router.push('/dark-mode');
+              }}
+            >
+              Next.js Dark Mode
+            </Button>
+          </div>
+          <div>
             <h4 className="font-medium pb-2 text-start">Components</h4>
             {components.map((component: ComponentType) => (
               <Button
