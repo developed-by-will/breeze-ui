@@ -86,21 +86,6 @@ export default function Docs() {
           </AccordionItem>
         </Accordion>
       </div>
-
-      <div>
-        <h2 className="mt-8 font-bold text-2xl mb-4">Changelog</h2>
-        <ul className="list-disc list-inside">
-          <li>
-            <strong>v1.2.0</strong> - Add breadcrumbs component
-          </li>
-          <li>
-            <strong>v2.0.6</strong> - Syntax Highlighter component update
-          </li>
-          <li>
-            <strong>v2.1.0</strong> - Add Login-01 block
-          </li>
-        </ul>
-      </div>
     </>
   );
 }
