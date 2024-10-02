@@ -2,11 +2,11 @@
 
 import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
 import Sidebar from '@/components/project/Sidebar';
+import useRenderExample from '@/lib/useRenderExample';
 import { ComponentType } from '@/registry/components/ui/metadata';
 import SyntaxHighlighter from '@/registry/components/ui/syntaxHighlighter';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
-import { isValidElement } from 'react';
 
 type PropsType = {
   component: ComponentType;
@@ -15,13 +15,8 @@ type PropsType = {
 export default function Content(props: Readonly<PropsType>) {
   const { component } = props;
 
-  const renderExample = (example: React.ReactNode) => {
-    if (isValidElement(example)) {
-      return example;
-    }
-  };
-
   const breadcrumbs: BreadcrumbType[] = [{ text: component.type }, { text: component.title }];
+  const renderExample = useRenderExample(component.example);
 
   return (
     <div className="flex justify-center">
@@ -55,11 +50,11 @@ export default function Content(props: Readonly<PropsType>) {
               {component.example && component.slug === 'login-01' ? (
                 <div className="h-[650px]">
                   <div className="relative flex justify-center items-center h-full">
-                    {renderExample(component.example)}
+                    {renderExample}
                   </div>
                 </div>
               ) : (
-                renderExample(component.example)
+                renderExample
               )}
 
               <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
