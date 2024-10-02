@@ -1,0 +1,12 @@
+{
+  "name": "steps",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "ui/steps/index.tsx",
+      "content": "type StepsType = {\r\n  title: string;\r\n  content: string | JSX.Element;\r\n};\r\n\r\ntype PropsType = {\r\n  steps: StepsType[];\r\n};\r\n\r\nexport default function Steps(props: Readonly<PropsType>) {\r\n  const { steps } = props;\r\n\r\n  return (\r\n    <ol className=\"relative border-l border-gray-200\">\r\n      {steps.map((step, index) => (\r\n        <li key={index} className=\"mb-10 ml-6\">\r\n          <span className=\"absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary\">\r\n            <span className=\"text-white\">{index + 1}</span>\r\n          </span>\r\n          <h3 className=\"font-medium leading-tight mb-4\">{step.title}</h3>\r\n          <p className=\"text-sm text-muted-foreground\">{step.content}</p>\r\n        </li>\r\n      ))}\r\n    </ol>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/breeze-ui/steps.tsx"
+    }
+  ]
+}

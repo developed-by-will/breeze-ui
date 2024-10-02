@@ -1,27 +1,48 @@
 [
   {
-    "name": "Breadcrumbs",
+    "name": "breadcrumbs",
     "type": "registry:ui",
-    "dependencies": [""],
     "registryDependencies": ["breadcrumb"],
     "files": [
       {
         "path": "ui/breadcrumbs/index.tsx",
-        "type": "registry:page",
+        "type": "registry:ui",
         "target": "components/breeze-ui/breadcrumbs.tsx"
       }
     ]
   },
   {
-    "name": "SyntaxHighlighter",
+    "name": "syntax-highlighter",
     "type": "registry:ui",
     "dependencies": ["react-syntax-highlighter", "@types/react-syntax-highlighter"],
     "registryDependencies": ["alert-dialog", "button"],
     "files": [
       {
         "path": "ui/syntaxHighlighter/index.tsx",
-        "type": "registry:page",
+        "type": "registry:ui",
         "target": "components/breeze-ui/syntax-highlighter.tsx"
+      }
+    ]
+  },
+  {
+    "name": "code",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/code/index.tsx",
+        "type": "registry:ui",
+        "target": "components/breeze-ui/code.tsx"
+      }
+    ]
+  },
+  {
+    "name": "steps",
+    "type": "registry:ui",
+    "files": [
+      {
+        "path": "ui/steps/index.tsx",
+        "type": "registry:ui",
+        "target": "components/breeze-ui/steps.tsx"
       }
     ]
   }

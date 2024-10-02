@@ -1,7 +1,7 @@
 'use client';
 
+import Content from '@/app/(pages)/(content)/content';
 import { blocksConfig } from '@/registry/components/ui';
-import Content from '../../(content)/content';
 
 type PropsType = {
   slug: string;

@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Check, Copy } from 'lucide-react';
 import { useCallback, useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
 import * as PrismStyles from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import {
@@ -77,19 +77,21 @@ const ShowAlertDialog = (props: Readonly<PropsType>) => {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>{props.alertTitle}</AlertDialogTitle>
+          <AlertDialogTitle className="text-primary">{props.alertTitle}</AlertDialogTitle>
           <AlertDialogDescription>{props.alertMessage}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={copyToClipboard}>{props.alertDialogAction}</AlertDialogAction>
+          <AlertDialogCancel className="text-primary">Cancel</AlertDialogCancel>
+          <AlertDialogAction onClick={copyToClipboard} className="text-secondary">
+            {props.alertDialogAction}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
 };
 
-export default function CodeSnippet(props: Readonly<PropsType>) {
+export default function SyntaxHighlighter(props: Readonly<PropsType>) {
   const { codeSnippet, styleName, showAlert } = props;
   const style = PrismStyles[styleName];
 
@@ -108,18 +110,19 @@ export default function CodeSnippet(props: Readonly<PropsType>) {
         <CopyCode codeSnippet={codeSnippet} />
       )}
 
-      <SyntaxHighlighter
+      <ReactSyntaxHighlighter
         language="typescript"
         style={style}
         wrapLongLines={true}
         customStyle={{
           margin: 0,
           borderRadius: '0.375rem',
-          padding: '1rem'
+          padding: '1rem',
+          minHeight: '55px'
         }}
       >
         {codeSnippet}
-      </SyntaxHighlighter>
+      </ReactSyntaxHighlighter>
     </div>
   );
 }
