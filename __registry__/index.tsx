@@ -38,6 +38,17 @@ export const Index: Record<string, unknown> = {
       subcategory: 'undefined',
       chunks: []
     },
+    steps: {
+      name: 'steps',
+      type: 'registry:ui',
+      registryDependencies: undefined,
+      files: ['registry/components/ui/steps/index.tsx'],
+      component: React.lazy(() => import('@/registry/components/ui/steps/index.tsx')),
+      source: '',
+      category: 'undefined',
+      subcategory: 'undefined',
+      chunks: []
+    },
     'login-01': {
       name: 'login-01',
       type: 'registry:block',
