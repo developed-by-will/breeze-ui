@@ -1,0 +1,12 @@
+{
+  "name": "code",
+  "type": "registry:ui",
+  "files": [
+    {
+      "path": "ui/code/index.tsx",
+      "content": "type PropsType = {\r\n  children: string;\r\n};\r\n\r\nexport default function Code(props: Readonly<PropsType>) {\r\n  const { children } = props;\r\n\r\n  return (\r\n    <code className=\"relative rounded bg-primary/80 text-primary-foreground px-[0.3rem] py-[0.2rem] font-mono text-sm\">\r\n      {children}\r\n    </code>\r\n  );\r\n}\r\n",
+      "type": "registry:ui",
+      "target": "components/breeze-ui/code.tsx"
+    }
+  ]
+}

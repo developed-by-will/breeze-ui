@@ -4,9 +4,11 @@ import { Dialog } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { blocksConfig, componentsConfig } from '@/registry/components/ui';
 import { ComponentType } from '@/registry/components/ui/metadata';
+import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {
   const { changeComponent } = useChangeComponent();
+  const router = useRouter();
 
   const components = Object.values(componentsConfig);
   const blocks = Object.values(blocksConfig);
@@ -16,6 +18,27 @@ export default function Sidebar() {
     <Dialog>
       <ScrollArea className="h-screen">
         <div className="space-y-4">
+          <div>
+            <h4 className="font-medium pb-2 text-start">Documentation</h4>
+            <Button
+              variant="link"
+              className={btnClassName}
+              onClick={() => {
+                router.push('/docs');
+              }}
+            >
+              Getting Started
+            </Button>
+            <Button
+              variant="link"
+              className={btnClassName}
+              onClick={() => {
+                router.push('/dark-mode');
+              }}
+            >
+              Next.js Dark Mode
+            </Button>
+          </div>
           <div>
             <h4 className="font-medium pb-2 text-start">Components</h4>
             {components.map((component: ComponentType) => (
