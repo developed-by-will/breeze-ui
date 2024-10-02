@@ -1,5 +1,5 @@
-import Code from '@/registry/components/ui/code';
-import SyntaxHighlighter from '@/registry/components/ui/syntaxHighlighter';
+import Code from '@/components/breeze-ui/code';
+import SyntaxHighlighter from '@/components/breeze-ui/syntax-highlighter';
 
 export const darkModeSteps = [
   {

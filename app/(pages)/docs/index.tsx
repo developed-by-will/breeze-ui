@@ -1,5 +1,7 @@
 'use client';
+
 import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
+import SyntaxHighlighter from '@/components/breeze-ui/syntax-highlighter';
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +9,6 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion';
 import { Separator } from '@/components/ui/separator';
-import SyntaxHighlighter from '@/registry/components/ui/syntaxHighlighter';
 
 export default function Docs() {
   const breadcrumbs: BreadcrumbType[] = [{ text: 'Docs' }, { text: 'Introduction' }];
