@@ -15,7 +15,7 @@ export default function Steps(props: Readonly<PropsType>) {
       {steps.map((step, index) => (
         <li key={index} className="mb-10 ml-6">
           <span className="absolute flex items-center justify-center w-8 h-8 rounded-full -left-4 ring-4 ring-white bg-primary">
-            <span className="text-white">{index + 1}</span>
+            <span className="text-secondary">{index + 1}</span>
           </span>
           <h3 className="font-medium leading-tight mb-4">{step.title}</h3>
           <p className="text-sm text-muted-foreground">{step.content}</p>
