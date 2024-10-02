@@ -36,5 +36,16 @@ export const ui: Registry = [
         type: 'registry:ui'
       }
     ]
+  },
+  {
+    name: 'steps',
+    type: 'registry:ui',
+    files: [
+      {
+        path: 'ui/steps/index.tsx',
+        target: 'components/breeze-ui/steps.tsx',
+        type: 'registry:ui'
+      }
+    ]
   }
 ];
