@@ -4,13 +4,12 @@ export const ui: Registry = [
   {
     name: 'breadcrumbs',
     type: 'registry:ui',
-    dependencies: [''],
     registryDependencies: ['breadcrumb'],
     files: [
       {
         path: 'ui/breadcrumbs/index.tsx',
         target: 'components/breeze-ui/breadcrumbs.tsx',
-        type: 'registry:page'
+        type: 'registry:ui'
       }
     ]
   },
@@ -23,7 +22,18 @@ export const ui: Registry = [
       {
         path: 'ui/syntaxHighlighter/index.tsx',
         target: 'components/breeze-ui/syntax-highlighter.tsx',
-        type: 'registry:page'
+        type: 'registry:ui'
+      }
+    ]
+  },
+  {
+    name: 'code',
+    type: 'registry:ui',
+    files: [
+      {
+        path: 'ui/code/index.tsx',
+        target: 'components/breeze-ui/code.tsx',
+        type: 'registry:ui'
       }
     ]
   }

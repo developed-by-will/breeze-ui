@@ -17,6 +17,18 @@ export const componentsMetadata = {
     name: 'login-01',
     title: 'Login 01',
     description: 'A login page with multiple authentication providers.'
+  },
+  code: {
+    slug: 'code',
+    name: 'code',
+    title: 'Code',
+    description: 'Provides highlighting around a text.'
+  },
+  steps: {
+    slug: 'steps',
+    name: 'steps',
+    title: 'Steps',
+    description: 'Displays steps in a sequence.'
   }
 } as const;
 

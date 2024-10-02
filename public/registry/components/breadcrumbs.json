@@ -1,13 +1,12 @@
 {
   "name": "breadcrumbs",
   "type": "registry:ui",
-  "dependencies": [""],
   "registryDependencies": ["breadcrumb"],
   "files": [
     {
       "path": "ui/breadcrumbs/index.tsx",
       "content": "import Link from 'next/link';\r\n\r\nimport {\r\n  Breadcrumb,\r\n  BreadcrumbItem,\r\n  BreadcrumbList,\r\n  BreadcrumbPage,\r\n  BreadcrumbSeparator\r\n} from '@/components/ui/breadcrumb';\r\n\r\nexport type BreadcrumbType = {\r\n  text: string;\r\n  url?: string;\r\n};\r\n\r\ntype BreadcrumbsProps = {\r\n  breadcrumbs: BreadcrumbType[];\r\n  position: 'justify-start' | 'justify-center' | 'justify-end';\r\n};\r\n\r\nexport default function Breadcrumbs(props: Readonly<BreadcrumbsProps>) {\r\n  const { breadcrumbs, position } = props;\r\n\r\n  return (\r\n    <div className={`flex w-full ${position} text-sm mt-4 mb-6`}>\r\n      <Breadcrumb>\r\n        <BreadcrumbList>\r\n          {breadcrumbs.map((breadcrumb, index) => {\r\n            const isLastItem = index === breadcrumbs.length - 1;\r\n\r\n            return (\r\n              <BreadcrumbItem key={breadcrumb.text} className=\"capitalize\">\r\n                {breadcrumb.url ? (\r\n                  <Link\r\n                    className=\"underline underline-offset-4 hover:text-primary transition-all\"\r\n                    href={breadcrumb.url}\r\n                  >\r\n                    {breadcrumb.text}\r\n                  </Link>\r\n                ) : (\r\n                  <BreadcrumbPage\r\n                    className={isLastItem ? 'text-primary font-medium' : 'text-muted-foreground'}\r\n                  >\r\n                    {breadcrumb.text}\r\n                  </BreadcrumbPage>\r\n                )}\r\n\r\n                {!isLastItem && <BreadcrumbSeparator />}\r\n              </BreadcrumbItem>\r\n            );\r\n          })}\r\n        </BreadcrumbList>\r\n      </Breadcrumb>\r\n    </div>\r\n  );\r\n}\r\n",
-      "type": "registry:page",
+      "type": "registry:ui",
       "target": "components/breeze-ui/breadcrumbs.tsx"
     }
   ]
