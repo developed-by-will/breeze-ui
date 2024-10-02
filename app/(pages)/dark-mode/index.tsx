@@ -1,7 +1,6 @@
 'use client';
 import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
-
-import Steps from '@/registry/components/ui/steps';
+import Steps from '@/components/breeze-ui/steps';
 import { darkModeSteps } from './steps';
 
 export default function DarkMode() {
