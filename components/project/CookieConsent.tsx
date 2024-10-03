@@ -2,11 +2,11 @@
 
 import { ToastAction } from '@/components/breeze-ui/toast/toast';
 import { useToast } from '@/hooks/use-toast';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID as string;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID as string;
 
 export default function CookieConsent() {
   const { toast } = useToast();
@@ -50,6 +50,6 @@ export default function CookieConsent() {
   }, []);
 
   if (state === 'accepted') {
-    return <GoogleTagManager gtmId={GTM_ID} />;
+    return <GoogleAnalytics gaId={GA_ID} />;
   }
 }

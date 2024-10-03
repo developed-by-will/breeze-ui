@@ -49,7 +49,7 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
         env:
-          NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+          NEXT_PUBLIC_GA_ID: ${{ secrets.NEXT_PUBLIC_GA_ID }}
 
       # Since the pipeline ignores the .next folder, we need to add it ot the artifact
       - name: ⬆️ Upload .next folder
