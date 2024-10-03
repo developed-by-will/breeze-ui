@@ -2,7 +2,7 @@
 
 import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
 import SyntaxHighlighter from '@/components/breeze-ui/syntax-highlighter';
-import useRenderExample from '@/lib/useRenderExample';
+import useRenderExample from '@/hooks/useRenderExample';
 import { ComponentType } from '@/registry/components/ui/metadata';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
