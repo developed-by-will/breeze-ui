@@ -6,7 +6,7 @@ export const hooks: Registry = [
     type: 'registry:hook',
     files: [
       {
-        path: 'hooks/use-toast.ts',
+        path: 'ui/toast/hooks/use-toast.ts',
         target: 'components/breeze-ui/hooks/use-toast.ts',
         type: 'registry:hook'
       }

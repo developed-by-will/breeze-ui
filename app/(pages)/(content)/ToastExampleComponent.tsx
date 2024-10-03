@@ -1,8 +1,8 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/registry/components/hooks/use-toast';
 import { ComponentType } from '@/registry/components/metadata';
+import { useToast } from '@/registry/components/ui/toast/hooks/use-toast';
 import { useEffect } from 'react';
 
 type ToastExampleProps = {

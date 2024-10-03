@@ -35,6 +35,12 @@ export const componentsMetadata = {
     name: 'toast',
     title: 'Toast',
     description: 'Displays a toast message.'
+  },
+  'use-toast': {
+    slug: '',
+    name: 'use-toast',
+    title: '',
+    description: ''
   }
 } as const;
 
