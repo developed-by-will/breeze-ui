@@ -1,7 +1,7 @@
 'use client';
 
-import { ToastAction } from '@/components/breeze-ui/toast/toast';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@/registry/components/hooks/use-toast';
+import { ToastAction } from '@/registry/components/ui/toast';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
@@ -24,22 +24,13 @@ export default function CookieConsent() {
         description: 'These improve your experience, do you accept?',
         variant: 'info',
         duration: Infinity,
+
         action: (
           <div className="flex flex-col gap-2">
-            <ToastAction
-              altText="Try again"
-              className="w-full "
-              onClick={() => handleConsent('accepted')}
-              variant="info"
-            >
+            <ToastAction altText="accept" onClick={() => handleConsent('accepted')}>
               Accept
             </ToastAction>
-            <ToastAction
-              altText="Try again"
-              className="w-full"
-              onClick={() => handleConsent('rejected')}
-              variant="info"
-            >
+            <ToastAction altText="reject" onClick={() => handleConsent('rejected')}>
               Reject
             </ToastAction>
           </div>

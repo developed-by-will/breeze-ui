@@ -1,5 +1,5 @@
-import { Toaster } from '@/components/breeze-ui/toast/toaster';
 import CookieConsent from '@/components/project/CookieConsent';
+import { Toaster } from '@/registry/components/ui/toast/toaster';
 import './globals.css';
 import Hydrate from './Hydrate';
 

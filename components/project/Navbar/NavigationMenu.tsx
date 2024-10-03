@@ -1,4 +1,3 @@
-import { useChangeComponent } from '@/components/project/useChangeComponent';
 import {
   NavigationMenuItem,
   NavigationMenuLink,
@@ -6,6 +5,7 @@ import {
   navigationMenuTriggerStyle,
   NavigationMenu as ShadcnNavigationMenu
 } from '@/components/ui/navigation-menu';
+import { useChangeComponent } from '@/hooks/useChangeComponent';
 import { blocksConfig, componentsConfig } from '@/registry/components/ui';
 import Link from 'next/link';
 
