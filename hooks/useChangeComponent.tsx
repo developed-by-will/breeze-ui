@@ -1,4 +1,4 @@
-import { ComponentType } from '@/registry/components/ui/metadata';
+import { ComponentType } from '@/registry/components/metadata';
 import { useGlobalStore } from '@/store';
 import { useRouter } from 'next/navigation';
 

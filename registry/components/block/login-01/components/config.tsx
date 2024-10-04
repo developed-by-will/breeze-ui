@@ -1,6 +1,6 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./form.tsx';
-import { componentsMetadata, ComponentType } from '@/registry/components/ui/metadata';
+import { componentsMetadata, ComponentType } from '@/registry/components/metadata';
 import LoginPage01 from './form';
 
 export const codeSnippet = codeSource;

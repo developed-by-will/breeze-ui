@@ -49,6 +49,17 @@ export const Index: Record<string, unknown> = {
       subcategory: 'undefined',
       chunks: []
     },
+    toast: {
+      name: 'toast',
+      type: 'registry:ui',
+      registryDependencies: undefined,
+      files: ['registry/components/ui/toast/index.tsx', 'registry/components/ui/toast/toaster.tsx'],
+      component: React.lazy(() => import('@/registry/components/ui/toast/index.tsx')),
+      source: '',
+      category: 'undefined',
+      subcategory: 'undefined',
+      chunks: []
+    },
     'login-01': {
       name: 'login-01',
       type: 'registry:block',
@@ -69,6 +80,17 @@ export const Index: Record<string, unknown> = {
       registryDependencies: undefined,
       files: ['registry/components/lib/utils.ts'],
       component: React.lazy(() => import('@/registry/components/lib/utils.ts')),
+      source: '',
+      category: 'undefined',
+      subcategory: 'undefined',
+      chunks: []
+    },
+    'use-toast': {
+      name: 'use-toast',
+      type: 'registry:hook',
+      registryDependencies: undefined,
+      files: ['registry/components/ui/toast/hooks/use-toast.ts'],
+      component: React.lazy(() => import('@/registry/components/ui/toast/hooks/use-toast.ts')),
       source: '',
       category: 'undefined',
       subcategory: 'undefined',
