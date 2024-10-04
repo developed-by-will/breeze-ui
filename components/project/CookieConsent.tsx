@@ -1,7 +1,7 @@
 'use client';
 
+import { useToast } from '@/components/breeze-ui/toast/hooks/use-toast';
 import { ToastAction } from '@/registry/components/ui/toast';
-import { useToast } from '@/registry/components/ui/toast/hooks/use-toast';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';

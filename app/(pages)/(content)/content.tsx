@@ -6,7 +6,7 @@ import useRenderExample from '@/hooks/useRenderExample';
 import { ComponentType } from '@/registry/components/metadata';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
-import ToastExampleComponent from './ToastExampleComponent';
+import { ToastExampleComponent, ToastExampleComponentInstallation } from './ToastExampleComponent';
 
 type PropsType = {
   component: ComponentType;
@@ -55,11 +55,18 @@ export default function Content(props: Readonly<PropsType>) {
             <ToastExampleComponent component={component} />
           )}
 
-          <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
-            <Boxes size={24} /> CLI
-          </h2>
+          {component.example && component.slug !== 'toast' && (
+            <>
+              <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
+                <Boxes size={24} /> CLI
+              </h2>
+              <SyntaxHighlighter codeSnippet={component.addCommand} styleName="vscDarkPlus" />
+            </>
+          )}
 
-          <SyntaxHighlighter codeSnippet={component.addCommand} styleName="vscDarkPlus" />
+          {component.example && component.slug === 'toast' && (
+            <ToastExampleComponentInstallation component={component} />
+          )}
 
           <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center py-6 border-b-2">
             <Blocks size={24} /> Usage

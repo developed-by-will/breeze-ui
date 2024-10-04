@@ -34,38 +34,7 @@ const example_2 = {
   )
 };
 
-const implementation_1 = `useEffect(() => {
-    if (state === 'not-answered' || !state) {
-      toast({
-        title: 'We use cookies 🍪!',
-        description: 'These improve your experience, do you accept?',
-        variant: 'info',
-        duration: Infinity,
-        action: (
-          <div className="flex flex-col gap-2">
-            <ToastAction
-              altText="Try again"
-              className="w-full"
-              onClick={() => handleConsent('accepted')}
-            >
-              Accept
-            </ToastAction>
-            <ToastAction
-              altText="Try again"
-              className="w-full"
-              onClick={() => handleConsent('rejected')}
-            >
-              Reject
-            </ToastAction>
-          </div>
-        )
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-`;
-
-const implementation_2 = `<Button
+const implementation_1 = `<Button
   variant="outline"
   onClick={() => {
     toast({
@@ -75,6 +44,35 @@ const implementation_2 = `<Button
 >
   Show Toast
 </Button>
+`;
+
+const implementation_2 = `useEffect(() => {
+    toast({
+      title: 'We use cookies 🍪!',
+      description: 'These improve your experience, do you accept?',
+      variant: 'info',
+      duration: Infinity,
+      action: (
+        <div className="flex flex-col gap-2">
+          <ToastAction
+            altText="Try again"
+            className="w-full"
+            onClick={() => handleConsent('accepted')}
+          >
+            Accept
+          </ToastAction>
+          <ToastAction
+            altText="Try again"
+            className="w-full"
+            onClick={() => handleConsent('rejected')}
+          >
+            Reject
+          </ToastAction>
+        </div>
+      )
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 `;
 
 export const config: ComponentType = {

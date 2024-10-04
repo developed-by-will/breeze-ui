@@ -34,7 +34,7 @@ const implementation_1 = `const stepsArray = [
 ];
 
 return (
-    <Steps steps={darkModeSteps} />
+    <Steps steps={stepsArray} />
 )
 `;
 
