@@ -1,5 +1,5 @@
 import { commonOpenGraph, commonSEO } from '@/app/commonSEO';
-import { componentsMetadata } from '@/registry/components/ui/metadata';
+import { componentsMetadata } from '@/registry/components/metadata';
 import { Metadata } from 'next';
 import Component from '.';
 

@@ -2,10 +2,11 @@
 
 import Breadcrumbs, { BreadcrumbType } from '@/components/breeze-ui/breadcrumbs';
 import SyntaxHighlighter from '@/components/breeze-ui/syntax-highlighter';
-import useRenderExample from '@/lib/useRenderExample';
-import { ComponentType } from '@/registry/components/ui/metadata';
+import useRenderExample from '@/hooks/useRenderExample';
+import { ComponentType } from '@/registry/components/metadata';
 import * as Tabs from '@radix-ui/react-tabs';
 import { Blocks, Boxes } from 'lucide-react';
+import { ToastExampleComponent, ToastExampleComponentInstallation } from './ToastExampleComponent';
 
 type PropsType = {
   component: ComponentType;
@@ -50,22 +51,38 @@ export default function Content(props: Readonly<PropsType>) {
             renderExample
           )}
 
-          <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
-            <Boxes size={24} /> CLI
-          </h2>
+          {component.example && component.slug === 'toast' && (
+            <ToastExampleComponent component={component} />
+          )}
 
-          <SyntaxHighlighter codeSnippet={component.addCommand} styleName="vscDarkPlus" />
+          {component.example && component.slug !== 'toast' && (
+            <>
+              <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center pt-6 border-b-2">
+                <Boxes size={24} /> CLI
+              </h2>
+              <SyntaxHighlighter codeSnippet={component.addCommand} styleName="vscDarkPlus" />
+            </>
+          )}
+
+          {component.example && component.slug === 'toast' && (
+            <ToastExampleComponentInstallation component={component} />
+          )}
 
           <h2 className="flex pb-2 text-2xl font-semibold gap-2 items-center py-6 border-b-2">
             <Blocks size={24} /> Usage
           </h2>
 
+          {component.implementation_1_title && (
+            <p className="text-muted-foreground mb-2">{component.implementation_1_title}</p>
+          )}
           <SyntaxHighlighter codeSnippet={component.implementation_1} styleName="vscDarkPlus" />
 
+          {component.implementation_2_title && (
+            <p className="text-muted-foreground mb-2">{component.implementation_2_title}</p>
+          )}
           {component.implementation_2 && component.slug !== 'syntax-highlighter' && (
             <SyntaxHighlighter codeSnippet={component.implementation_2} styleName="vscDarkPlus" />
           )}
-
           {component.implementation_2 && component.slug === 'syntax-highlighter' && (
             <SyntaxHighlighter
               codeSnippet={component.implementation_2}
@@ -77,10 +94,16 @@ export default function Content(props: Readonly<PropsType>) {
             />
           )}
 
+          {component.implementation_3_title && (
+            <p className="text-muted-foreground mb-2">{component.implementation_3_title}</p>
+          )}
           {component.implementation_3 && (
             <SyntaxHighlighter codeSnippet={component.implementation_3} styleName="vscDarkPlus" />
           )}
 
+          {component.implementation_4_title && (
+            <p className="text-muted-foreground mb-2">{component.implementation_4_title}</p>
+          )}
           {component.implementation_4 && (
             <SyntaxHighlighter codeSnippet={component.implementation_4} styleName="vscDarkPlus" />
           )}

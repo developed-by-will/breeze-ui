@@ -2,15 +2,16 @@
 
 import HomepageCard from '@/components/project/HomepageCard';
 import Logo from '@/components/project/Logo';
-import { useChangeComponent } from '@/components/project/useChangeComponent';
+
 import { Button } from '@/components/ui/button';
+import { useChangeComponent } from '@/hooks/useChangeComponent';
+import { ComponentType } from '@/registry/components/metadata';
 import { componentsConfig } from '@/registry/components/ui';
-import { ComponentType } from '@/registry/components/ui/metadata';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { BellPlus, Component } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 export default function HomePage() {
   const { theme, systemTheme } = useTheme();
@@ -25,7 +26,11 @@ export default function HomePage() {
   const randomComponent = () => {
     const randomIndex = Math.floor(Math.random() * componentsConfig.length);
 
-    setFeatured(componentsConfig[randomIndex]);
+    if (componentsConfig[randomIndex].slug !== 'toast') {
+      setFeatured(componentsConfig[randomIndex]);
+    } else {
+      setFeatured(componentsConfig[0]);
+    }
   };
 
   const { changeComponent } = useChangeComponent();
@@ -88,7 +93,7 @@ export default function HomePage() {
               description={`${featured.name} - ${featured.description}`}
               footer={<Button className="bg-orange-500 hover:bg-orange-500">View Component</Button>}
             >
-              {featured.example}
+              {featured.example as ReactNode}
             </HomepageCard>
           </div>
         </Link>

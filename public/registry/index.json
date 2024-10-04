@@ -45,5 +45,22 @@
         "target": "components/breeze-ui/steps.tsx"
       }
     ]
+  },
+  {
+    "name": "toast",
+    "type": "registry:ui",
+    "dependencies": ["@radix-ui/react-toast"],
+    "files": [
+      {
+        "path": "ui/toast/index.tsx",
+        "type": "registry:ui",
+        "target": "components/breeze-ui/toast/index.tsx"
+      },
+      {
+        "path": "ui/toast/toaster.tsx",
+        "type": "registry:ui",
+        "target": "components/breeze-ui/toast/toaster.tsx"
+      }
+    ]
   }
 ]

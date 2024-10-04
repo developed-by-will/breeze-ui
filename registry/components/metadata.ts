@@ -29,6 +29,18 @@ export const componentsMetadata = {
     name: 'steps',
     title: 'Steps',
     description: 'Displays steps in a sequence.'
+  },
+  toast: {
+    slug: 'toast',
+    name: 'toast',
+    title: 'Toast',
+    description: 'Displays a toast message.'
+  },
+  'use-toast': {
+    slug: '',
+    name: 'use-toast',
+    title: '',
+    description: ''
   }
 } as const;
 
@@ -45,11 +57,18 @@ export type ComponentType = {
   title: ComponentTitle;
   description: ComponentDescription;
   codeSnippet: string;
-  example: React.ReactNode;
+  example: React.ReactNode | object;
+  example_2?: React.ReactNode | object;
+  example_3?: React.ReactNode | object;
+  example_4?: React.ReactNode | object;
   implementation_1: string;
+  implementation_1_title?: string;
   implementation_2?: string;
+  implementation_2_title?: string;
   implementation_3?: string;
+  implementation_3_title?: string;
   implementation_4?: string;
+  implementation_4_title?: string;
   addCommand: string;
   type: 'component' | 'block';
 };

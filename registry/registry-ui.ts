@@ -47,5 +47,22 @@ export const ui: Registry = [
         type: 'registry:ui'
       }
     ]
+  },
+  {
+    name: 'toast',
+    type: 'registry:ui',
+    dependencies: ['@radix-ui/react-toast'],
+    files: [
+      {
+        path: 'ui/toast/index.tsx',
+        target: 'components/breeze-ui/toast/index.tsx',
+        type: 'registry:ui'
+      },
+      {
+        path: 'ui/toast/toaster.tsx',
+        target: 'components/breeze-ui/toast/toaster.tsx',
+        type: 'registry:ui'
+      }
+    ]
   }
 ];
