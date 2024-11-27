@@ -17,14 +17,17 @@ const code = `<html>
     </div>
   </body>
 </html>`;
-const example = <SyntaxHighlighter codeSnippet={code} styleName="duotoneSpace" />;
+const example = (
+  <SyntaxHighlighter codeSnippet={code} styleName="duotoneSpace" language="typescript" />
+);
 const implementation_1 = `const codeExample = \`<p>Example without alert dialog</p>\`;
 
 return (
     <div>
         <SyntaxHighlighter
             codeSnippet={codeExample}
-            styleName="vscDarkPlus"
+            styleName="funky"
+            language="php"
         />
     </div>
 )
@@ -41,6 +44,7 @@ return (
             alertTitle="Caution"
             alertMessage=" Some text here."
             alertDialogAction="Copy & Continue"
+            language="lua"
         />
     </div>
 )

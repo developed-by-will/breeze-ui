@@ -1,9 +1,3 @@
-import { Button } from '@/components/ui/button';
-import { Check, Copy } from 'lucide-react';
-import { useCallback, useState } from 'react';
-import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
-import * as PrismStyles from 'react-syntax-highlighter/dist/esm/styles/prism';
-
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,23 +9,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger
 } from '@/components/ui/alert-dialog';
-
-type StyleName = keyof typeof PrismStyles;
-
-type PropsType =
-  | {
-      codeSnippet: string;
-      styleName: StyleName;
-      showAlert?: false;
-    }
-  | {
-      codeSnippet: string;
-      styleName: StyleName;
-      showAlert: true;
-      alertTitle: string;
-      alertMessage: string;
-      alertDialogAction: string;
-    };
+import { Button } from '@/components/ui/button';
+import { Check, Copy } from 'lucide-react';
+import { useCallback, useState } from 'react';
+import { Prism as ReactSyntaxHighlighter } from 'react-syntax-highlighter';
+import { PrismStyles, PropsType } from './types';
 
 const CopyCode = ({ codeSnippet }: { codeSnippet: string }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -92,7 +74,7 @@ const ShowAlertDialog = (props: Readonly<PropsType>) => {
 };
 
 export default function SyntaxHighlighter(props: Readonly<PropsType>) {
-  const { codeSnippet, styleName, showAlert } = props;
+  const { codeSnippet, styleName, showAlert, language = 'typescript' } = props;
   const style = PrismStyles[styleName];
 
   return (
@@ -111,7 +93,7 @@ export default function SyntaxHighlighter(props: Readonly<PropsType>) {
       )}
 
       <ReactSyntaxHighlighter
-        language="typescript"
+        language={language}
         style={style}
         wrapLongLines={true}
         customStyle={{
