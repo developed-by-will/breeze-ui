@@ -57,11 +57,6 @@ export const ui: Registry = [
         path: 'ui/toast/index.tsx',
         target: 'components/breeze-ui/toast/index.tsx',
         type: 'registry:ui'
-      },
-      {
-        path: 'ui/toast/toaster.tsx',
-        target: 'components/breeze-ui/toast/toaster.tsx',
-        type: 'registry:ui'
       }
     ]
   }

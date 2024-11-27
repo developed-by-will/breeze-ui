@@ -6,7 +6,7 @@ import {
   NavigationMenu as ShadcnNavigationMenu
 } from '@/components/ui/navigation-menu';
 import { useChangeComponent } from '@/hooks/useChangeComponent';
-import { blocksConfig, componentsConfig } from '@/registry/components/ui';
+import { blocksConfig, componentsConfig } from '@/registry/components';
 import Link from 'next/link';
 
 export default function NavigationMenu() {

@@ -2,8 +2,8 @@ import { Button } from '@/components/ui/button';
 import { Dialog } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { useChangeComponent } from '@/hooks/useChangeComponent';
+import { blocksConfig, componentsConfig } from '@/registry/components';
 import { ComponentType } from '@/registry/components/metadata';
-import { blocksConfig, componentsConfig } from '@/registry/components/ui';
 import { useRouter } from 'next/navigation';
 
 export default function Sidebar() {

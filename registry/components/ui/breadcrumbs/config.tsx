@@ -1,6 +1,10 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./index.tsx';
-import { componentsMetadata, ComponentType } from '@/registry/components/metadata';
+import {
+  componentsMetadata,
+  ComponentType,
+  REGISTRY_BASE_URL
+} from '@/registry/components/metadata';
 import Breadcrumbs, { BreadcrumbType } from '.';
 
 export const codeSnippet = codeSource;
@@ -32,6 +36,5 @@ export const config: ComponentType = {
   codeSnippet,
   example,
   implementation_1: exampleAsString,
-  addCommand:
-    'npx shadcn add https://raw.githubusercontent.com/developed-by-will/breeze-ui/refs/heads/main/public/registry/components/breadcrumbs.json'
+  addCommand: `npx shadcn add ${REGISTRY_BASE_URL}/${componentsMetadata.breadcrumbs.name}.json`
 };

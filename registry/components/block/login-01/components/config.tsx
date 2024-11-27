@@ -1,6 +1,10 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./form.tsx';
-import { componentsMetadata, ComponentType } from '@/registry/components/metadata';
+import {
+  componentsMetadata,
+  ComponentType,
+  REGISTRY_BASE_URL
+} from '@/registry/components/metadata';
 import LoginPage01 from './form';
 
 export const codeSnippet = codeSource;
@@ -65,5 +69,5 @@ export const config: ComponentType = {
   codeSnippet,
   example,
   implementation_1: exampleAsString,
-  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.login01.name}.json`
+  addCommand: `npx shadcn add ${REGISTRY_BASE_URL}/${componentsMetadata.login01.name}.json`
 };

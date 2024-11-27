@@ -1,3 +1,5 @@
+export const REGISTRY_BASE_URL = process.env.NEXT_PUBLIC_REGISTRY_BASE_URL as string;
+
 export const componentsMetadata = {
   breadcrumbs: {
     slug: 'breadcrumbs',
