@@ -13,23 +13,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useTheme } from 'next-themes';
 import Image, { StaticImageData } from 'next/image';
-import { BsDiscord, BsEnvelopeFill, BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
+import { ReactNode } from 'react';
 import { IconType } from 'react-icons/lib';
-
-// List of providers
-type ProvidersEnum = 'google' | 'github' | 'discord' | 'facebook' | 'email' | 'custom';
-
-// Exclude 'custom' from the list because it is handled separately
-const providerDetails: Record<
-  Exclude<ProvidersEnum, 'custom'>,
-  { label: string; icon?: JSX.Element; background: string }
-> = {
-  google: { label: 'Sign in with Google', icon: <BsGoogle />, background: 'bg-orange-600' },
-  github: { label: 'Sign in with GitHub', icon: <BsGithub />, background: 'bg-stone-600' },
-  discord: { label: 'Sign in with Discord', icon: <BsDiscord />, background: 'bg-indigo-600' },
-  facebook: { label: 'Sign in with Facebook', icon: <BsFacebook />, background: 'bg-blue-600' },
-  email: { label: 'Sign in with Email', icon: <BsEnvelopeFill />, background: 'bg-emerald-600' }
-};
+import { providerDetails, ProvidersEnum } from './providerDetails';
 
 // Check if one of the providers is 'custom'
 // If it is then customLabel & customBtnColor are required
@@ -48,7 +34,7 @@ export type LoginPage01Type = {
   customBtnColor: string;
   customIcon: IconType | string | JSX.Element;
 } & (
-    | { companyLogo?: undefined; companyLogoAlt?: undefined }
+    | { companyLogo: undefined; companyLogoAlt: undefined }
     | {
         companyLogo: string | StaticImageData | JSX.Element;
         companyLogoAlt: string;
@@ -74,6 +60,7 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
   const customLabel = 'customLabel' in props ? props.customLabel : undefined;
   const customBtnColor = 'customBtnColor' in props ? props.customBtnColor : undefined;
   const companyLogoAlt = 'companyLogoAlt' in props ? props.companyLogoAlt : undefined;
+  const customIcon = 'customIcon' in props ? props.customIcon : undefined;
 
   const currentTheme = theme === 'system' ? systemTheme : theme;
   const logo = currentTheme === 'dark' ? companyLogoAlternative : companyLogo;
@@ -123,7 +110,11 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
             {providers.map((provider, index) => {
               const { label, icon, background } =
                 provider === 'custom'
-                  ? { label: customLabel!, icon: undefined, background: customBtnColor! }
+                  ? {
+                      label: customLabel!,
+                      icon: customIcon,
+                      background: customBtnColor!
+                    }
                   : providerDetails[provider];
               const handleClick = handleLogin[index];
 
@@ -133,7 +124,7 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
                   onClick={handleClick}
                   className={`flex items-center w-full gap-2 hover:saturate-50 transition-all duration-300 ${background}`}
                 >
-                  {icon} {label}
+                  {icon as ReactNode} {label}
                 </Button>
               );
             })}

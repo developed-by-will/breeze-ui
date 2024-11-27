@@ -66,7 +66,8 @@ export const Index: Record<string, unknown> = {
       registryDependencies: ['button', 'card', 'input', 'label'],
       files: [
         'registry/components/block/login-01/page.tsx',
-        'registry/components/block/login-01/components/form.tsx'
+        'registry/components/block/login-01/components/form.tsx',
+        'registry/components/block/login-01/components/providerDetails.tsx'
       ],
       component: React.lazy(() => import('@/registry/components/block/login-01/page.tsx')),
       source: '__registry__/components/block/login-01/page.tsx',
