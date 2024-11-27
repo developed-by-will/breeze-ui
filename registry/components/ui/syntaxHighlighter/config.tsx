@@ -22,7 +22,7 @@ const implementation_1 = `const codeExample = \`<p>Example without alert dialog<
 
 return (
     <div>
-        <CodeSnippet
+        <SyntaxHighlighter
             codeSnippet={codeExample}
             styleName="vscDarkPlus"
         />
@@ -34,7 +34,7 @@ const implementation_2 = `const codeExample2 = \`<p>Example with alert dialog</p
  
 return (
     <div>
-        <CodeSnippet
+        <SyntaxHighlighter
             codeSnippet={codeExample2}
             styleName="vscDarkPlus"
             showAlert={true}
