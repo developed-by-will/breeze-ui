@@ -53,7 +53,7 @@ export const Index: Record<string, unknown> = {
       name: 'toast',
       type: 'registry:ui',
       registryDependencies: undefined,
-      files: ['registry/components/ui/toast/index.tsx', 'registry/components/ui/toast/toaster.tsx'],
+      files: ['registry/components/ui/toast/index.tsx'],
       component: React.lazy(() => import('@/registry/components/ui/toast/index.tsx')),
       source: '',
       category: 'undefined',
@@ -66,7 +66,8 @@ export const Index: Record<string, unknown> = {
       registryDependencies: ['button', 'card', 'input', 'label'],
       files: [
         'registry/components/block/login-01/page.tsx',
-        'registry/components/block/login-01/components/form.tsx'
+        'registry/components/block/login-01/components/form.tsx',
+        'registry/components/block/login-01/components/providerDetails.tsx'
       ],
       component: React.lazy(() => import('@/registry/components/block/login-01/page.tsx')),
       source: '__registry__/components/block/login-01/page.tsx',

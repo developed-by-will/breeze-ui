@@ -5,8 +5,8 @@ import Logo from '@/components/project/Logo';
 
 import { Button } from '@/components/ui/button';
 import { useChangeComponent } from '@/hooks/useChangeComponent';
+import { componentsConfig } from '@/registry/components';
 import { ComponentType } from '@/registry/components/metadata';
-import { componentsConfig } from '@/registry/components/ui';
 import { DiscordLogoIcon } from '@radix-ui/react-icons';
 import { BellPlus, Component } from 'lucide-react';
 import { useTheme } from 'next-themes';

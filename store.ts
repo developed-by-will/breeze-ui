@@ -1,5 +1,5 @@
+import { componentsConfig } from '@/registry/components';
 import { ComponentType } from '@/registry/components/metadata';
-import { componentsConfig } from '@/registry/components/ui';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

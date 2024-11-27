@@ -9,9 +9,9 @@ jobs:
     steps:
       - name: 🕵️ Check branch name
         run: |
-          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | grep -P '^(bugfix|feature|refact|release|hotfix)/[a-z0-9.-]+$')
+          BRANCH_NAME=$(echo ${GITHUB_HEAD_REF} | grep -P '^(fix|bugfix|feature|refact|release|hotfix)/[a-z0-9.-]+$')
           if [[ -z "${BRANCH_NAME}" ]]; then
-            echo "Invalid branch name. Branch names must start with 'bugfix/', 'feature/', 'refact/', 'release/', 'hotfix/' and only contain lowercase letters, numbers, hyphens, and dots."
+            echo "Invalid branch name. Branch names must start with 'fix', 'bugfix/', 'feature/', 'refact/', 'release/', 'hotfix/' and only contain lowercase letters, numbers, hyphens, and dots."
             exit 1
           fi
   build:
@@ -49,6 +49,8 @@ jobs:
       # This will build the app and produce the .next folder in the root
       - name: 🏗️ Build
         run: npm run build
+        env:
+          NEXT_PUBLIC_REGISTRY_BASE_URL_DEV: ${{ vars.NEXT_PUBLIC_REGISTRY_BASE_URL_DEV }}
 
       # Since the pipeline ignores the .next folder, we need to add it ot the artifact
       - name: ⬆️ Upload .next folder

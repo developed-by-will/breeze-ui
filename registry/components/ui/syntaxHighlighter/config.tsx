@@ -1,6 +1,10 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./index.tsx';
-import { componentsMetadata, ComponentType } from '@/registry/components/metadata';
+import {
+  componentsMetadata,
+  ComponentType,
+  REGISTRY_BASE_URL
+} from '@/registry/components/metadata';
 import SyntaxHighlighter from '.';
 
 export const syntaxHighlighter = codeSource;
@@ -18,7 +22,7 @@ const implementation_1 = `const codeExample = \`<p>Example without alert dialog<
 
 return (
     <div>
-        <CodeSnippet
+        <SyntaxHighlighter
             codeSnippet={codeExample}
             styleName="vscDarkPlus"
         />
@@ -30,7 +34,7 @@ const implementation_2 = `const codeExample2 = \`<p>Example with alert dialog</p
  
 return (
     <div>
-        <CodeSnippet
+        <SyntaxHighlighter
             codeSnippet={codeExample2}
             styleName="vscDarkPlus"
             showAlert={true}
@@ -52,5 +56,5 @@ export const config: ComponentType = {
   example,
   implementation_1,
   implementation_2,
-  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.syntaxHighlighter.name}.json`
+  addCommand: `npx shadcn add ${REGISTRY_BASE_URL}/${componentsMetadata.syntaxHighlighter.name}.json`
 };
