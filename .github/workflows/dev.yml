@@ -50,7 +50,7 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
         env:
-          NEXT_PUBLIC_REGISTRY_BASE_URL_DEV: ${{ vars.NEXT_PUBLIC_REGISTRY_BASE_URL_DEV }}
+          NEXT_PUBLIC_REGISTRY_BASE_URL: ${{ vars.NEXT_PUBLIC_REGISTRY_BASE_URL_DEV }}
 
       # Since the pipeline ignores the .next folder, we need to add it ot the artifact
       - name: ⬆️ Upload .next folder
