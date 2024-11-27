@@ -96,17 +96,6 @@ export const Index: Record<string, unknown> = {
       category: 'undefined',
       subcategory: 'undefined',
       chunks: []
-    },
-    'use-toast': {
-      name: 'use-toast',
-      type: 'registry:hook',
-      registryDependencies: undefined,
-      files: ['registry/components/ui/toast/hooks/use-toast.ts'],
-      component: React.lazy(() => import('@/registry/components/ui/toast/hooks/use-toast.ts')),
-      source: '',
-      category: 'undefined',
-      subcategory: 'undefined',
-      chunks: []
     }
   }
 };
