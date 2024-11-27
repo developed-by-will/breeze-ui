@@ -34,11 +34,11 @@ export type LoginPage01Type = {
   customBtnColor: string;
   customIcon: IconType | string | JSX.Element;
 } & (
-    | { companyLogo: undefined; companyLogoAlt: undefined }
+    | { companyLogo?: string | StaticImageData | JSX.Element; companyLogoAlt?: string }
     | {
-        companyLogo: string | StaticImageData | JSX.Element;
-        companyLogoAlt: string;
-        companyLogoAlternative: string | StaticImageData | JSX.Element;
+        companyLogo?: string | StaticImageData | JSX.Element;
+        companyLogoAlt?: string;
+        companyLogoAlternative?: string | StaticImageData | JSX.Element;
       }
   );
 
