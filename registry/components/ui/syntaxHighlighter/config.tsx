@@ -1,6 +1,10 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./index.tsx';
-import { componentsMetadata, ComponentType } from '@/registry/components/metadata';
+import {
+  componentsMetadata,
+  ComponentType,
+  REGISTRY_BASE_URL
+} from '@/registry/components/metadata';
 import SyntaxHighlighter from '.';
 
 export const syntaxHighlighter = codeSource;
@@ -52,5 +56,5 @@ export const config: ComponentType = {
   example,
   implementation_1,
   implementation_2,
-  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.syntaxHighlighter.name}.json`
+  addCommand: `npx shadcn add ${REGISTRY_BASE_URL}/${componentsMetadata.syntaxHighlighter.name}.json`
 };

@@ -1,6 +1,10 @@
 /* For the preview */
 import codeSource from '!!raw-loader!./index.tsx';
-import { componentsMetadata, ComponentType } from '@/registry/components/metadata';
+import {
+  componentsMetadata,
+  ComponentType,
+  REGISTRY_BASE_URL
+} from '@/registry/components/metadata';
 import { ToastAction } from '.';
 
 export const component = codeSource;
@@ -88,5 +92,5 @@ export const config: ComponentType = {
   implementation_1_title: 'Show permanent toast on page load',
   implementation_2,
   implementation_2_title: 'Show toast on button click',
-  addCommand: `npx shadcn add https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata.toast.name}.json https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata['use-toast'].name}.json`
+  addCommand: `npx shadcn add ${REGISTRY_BASE_URL}/${componentsMetadata.toast.name}.json https://breeze-ui.wilsongomes.me/public/registry/components/${componentsMetadata['use-toast'].name}.json`
 };
