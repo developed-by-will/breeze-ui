@@ -22,7 +22,7 @@ export default function CookieConsent() {
       toast({
         title: 'We use cookies 🍪!',
         description: 'These improve your experience, do you accept?',
-        variant: 'info',
+        variant: 'warning',
         duration: Infinity,
 
         action: (
