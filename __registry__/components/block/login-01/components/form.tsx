@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -8,106 +10,132 @@ import {
   CardTitle
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import { Loader2Icon } from 'lucide-react';
+import { useTheme } from 'next-themes';
 import Image, { StaticImageData } from 'next/image';
-import { BsDiscord, BsEnvelopeFill, BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
+import { ReactNode } from 'react';
 import { IconType } from 'react-icons/lib';
-
-// List of providers
-type ProvidersEnum = 'google' | 'github' | 'discord' | 'facebook' | 'email' | 'custom';
-
-// Exclude 'custom' from the list because it is handled separately
-const providerDetails: Record<
-  Exclude<ProvidersEnum, 'custom'>,
-  { label: string; icon?: JSX.Element; background: string }
-> = {
-  google: { label: 'Sign in with Google', icon: <BsGoogle />, background: 'bg-orange-600' },
-  github: { label: 'Sign in with GitHub', icon: <BsGithub />, background: 'bg-stone-600' },
-  discord: { label: 'Sign in with Discord', icon: <BsDiscord />, background: 'bg-indigo-600' },
-  facebook: { label: 'Sign in with Facebook', icon: <BsFacebook />, background: 'bg-blue-600' },
-  email: { label: 'Sign in with Email', icon: <BsEnvelopeFill />, background: 'bg-emerald-600' }
-};
+import { providerDetails, ProvidersEnum } from './providerDetails';
 
 // Check if one of the providers is 'custom'
 // If it is then customLabel & customBtnColor are required
 export type LoginPage01Type = {
   backgroundImage?: string | StaticImageData;
   companyLogo?: string | StaticImageData | JSX.Element;
+  companyLogoAlternative?: string | StaticImageData | JSX.Element;
   title?: string | JSX.Element;
   description?: string | JSX.Element;
   providers: ProvidersEnum[];
   handleLogin: Array<() => void>;
   formWidth: number;
+  loading?: boolean;
 } & {
   providers: (ProvidersEnum | 'custom')[];
   customLabel: string;
   customBtnColor: string;
   customIcon: IconType | string | JSX.Element;
 } & (
-    | { companyLogo?: undefined; companyLogoAlt?: undefined }
-    | { companyLogo: string | StaticImageData | JSX.Element; companyLogoAlt: string }
+    | { companyLogo?: string | StaticImageData | JSX.Element; companyLogoAlt?: string }
+    | {
+        companyLogo?: string | StaticImageData | JSX.Element;
+        companyLogoAlt?: string;
+        companyLogoAlternative?: string | StaticImageData | JSX.Element;
+      }
   );
 
 export default function LoginPage01(props: Readonly<LoginPage01Type>) {
   const {
     backgroundImage,
     companyLogo,
+    companyLogoAlternative,
     title,
     description,
     providers = [],
     handleLogin = [],
-    formWidth
+    formWidth,
+    loading
   } = props;
+
+  const { theme, systemTheme } = useTheme();
 
   // Optional chaining ensures customLabel & customBtnColor are only accessed if defined
   const customLabel = 'customLabel' in props ? props.customLabel : undefined;
   const customBtnColor = 'customBtnColor' in props ? props.customBtnColor : undefined;
   const companyLogoAlt = 'companyLogoAlt' in props ? props.companyLogoAlt : undefined;
+  const customIcon = 'customIcon' in props ? props.customIcon : undefined;
+
+  const currentTheme = theme === 'system' ? systemTheme : theme;
+  const logo = currentTheme === 'dark' ? companyLogoAlternative : companyLogo;
 
   return (
-    <>
+    <div className="flex flex-col">
       {backgroundImage && (
         <Image
           src={backgroundImage}
-          alt="Background image of a forest"
-          className="absolute w-full h-full object-cover"
+          alt="Jellydash Login Background"
+          className="absolute object-cover"
           quality={100}
           priority
           fill
         />
       )}
 
-      <div className="flex flex-col items-center justify-center h-screen">
-        <Card className={`flex flex-col items-center justify-center px-4 z-10 w-[${formWidth}px]`}>
+      <div className="relative z-40 flex flex-col items-center px-4 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="pt-15">
+          {logo && (typeof logo === 'string' || 'src' in logo) ? (
+            <Image
+              src={logo}
+              alt={companyLogoAlt ?? 'Company Logo'}
+              width={formWidth}
+              height={100}
+            />
+          ) : (
+            logo
+          )}
+        </div>
+      </div>
+
+      <div className="relative z-50 mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+        <Card
+          className={`flex flex-col border-none backdrop-blur-sm bg-gray-800 bg-opacity-50 shadow sm:rounded-lg px-4 z-10 w-[${formWidth}px]`}
+        >
           <CardHeader className="flex flex-col items-center">
-            {companyLogo && (typeof companyLogo === 'string' || 'src' in companyLogo) ? (
-              <Image
-                src={companyLogo}
-                alt={companyLogoAlt || 'Company Logo'}
-                width={formWidth}
-                height={100}
-              />
-            ) : (
-              companyLogo
-            )}
-            <CardTitle>{title && <h2>{title}</h2>}</CardTitle>
+            <CardTitle>
+              {title && (
+                <h2 className="mb-6 -mt-1 text-center text-lg font-bold text-neutral-200">
+                  {title}
+                </h2>
+              )}
+            </CardTitle>
             <CardDescription>
               {description && <div className="text-colors-neutral-700">{description}</div>}
             </CardDescription>
           </CardHeader>
           <CardContent className="w-full">
             <div className="flex flex-col gap-3">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" placeholder="Emaill address" />
-              <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" placeholder="********" />
+              <Input
+                id="email"
+                placeholder="Username"
+                className="!bg-gray-700/80 placeholder:text-gray-400 border-gray-500 py-5 text-white"
+              />
+
+              <Input
+                id="password"
+                type="password"
+                placeholder="********"
+                className="!bg-gray-700/80 placeholder:text-gray-400 border-gray-500 py-5 text-white"
+              />
             </div>
           </CardContent>
-          <CardFooter className="flex flex-col gap-3">
+          <CardFooter className="flex w-full flex-wrap gap-2 ">
             {providers.map((provider, index) => {
               const { label, icon, background } =
                 provider === 'custom'
-                  ? { label: customLabel!, icon: undefined, background: customBtnColor! }
+                  ? {
+                      label: customLabel!,
+                      icon: customIcon,
+                      background: customBtnColor!
+                    }
                   : providerDetails[provider];
               const handleClick = handleLogin[index];
 
@@ -115,15 +143,17 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
                 <Button
                   key={provider}
                   onClick={handleClick}
-                  className={`flex items-center w-full gap-2 hover:saturate-50 transition-all duration-300 ${background}`}
+                  disabled={loading}
+                  className={`inline-flex items-center justify-center font-medium rounded-md focus:outline-none transition ease-in-out duration-150 cursor-pointer disabled:opacity-50 whitespace-nowrap text-white border border-indigo-500 bg-indigo-600 bg-opacity-80 hover:bg-opacity-100 hover:border-indigo-500 focus:border-indigo-700 focus:ring-indigo active:bg-opacity-100 active:border-indigo-700 px-4 py-2 text-sm button-md mt-2 w-full shadow-sm ${background}`}
                 >
-                  {icon} {label}
+                  {icon as ReactNode} {label}
+                  {loading && <Loader2Icon className="animate-spin" />}
                 </Button>
               );
             })}
           </CardFooter>
         </Card>
       </div>
-    </>
+    </div>
   );
 }

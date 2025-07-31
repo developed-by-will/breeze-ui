@@ -13,7 +13,7 @@ export default function Login() {
 
   return (
     <LoginPage01
-      customBtnColor="bg:background"
+      customBtnColor="bg-indigo-600 hover:bg-indigo-700"
       customLabel="Sign In"
       customIcon=""
       formWidth={300}
