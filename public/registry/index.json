@@ -55,6 +55,11 @@
         "path": "ui/toast/index.tsx",
         "type": "registry:ui",
         "target": "components/breeze-ui/toast/index.tsx"
+      },
+      {
+        "path": "ui/toast/toaster.tsx",
+        "type": "registry:ui",
+        "target": "components/breeze-ui/toast/toaster.tsx"
       }
     ]
   }

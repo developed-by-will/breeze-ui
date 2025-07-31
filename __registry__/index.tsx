@@ -53,7 +53,7 @@ export const Index: Record<string, unknown> = {
       name: 'toast',
       type: 'registry:ui',
       registryDependencies: undefined,
-      files: ['registry/components/ui/toast/index.tsx'],
+      files: ['registry/components/ui/toast/index.tsx', 'registry/components/ui/toast/toaster.tsx'],
       component: React.lazy(() => import('@/registry/components/ui/toast/index.tsx')),
       source: '',
       category: 'undefined',
