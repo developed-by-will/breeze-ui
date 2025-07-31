@@ -34,7 +34,6 @@ const example = (
     formWidth={300}
     providers={['custom', 'google']}
     handleLogin={[() => signIn(), () => signInWithGoogle()]}
-    loading={true}
   />
 );
 
