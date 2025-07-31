@@ -252,7 +252,7 @@ export const Index: Record<string, unknown> = {
       category: "${item.category}",
       subcategory: "${item.subcategory}",
       chunks: [${chunks.map(
-        (chunk) => `{
+        (chunk: any) => `{
         name: "${chunk.name}",
         description: "${chunk.description ?? 'No description'}",
         component: ${chunk.component}
