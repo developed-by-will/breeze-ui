@@ -68,7 +68,7 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
   const logo = currentTheme === 'dark' ? companyLogoAlternative : companyLogo;
 
   return (
-    <>
+    <div className="flex flex-col">
       {backgroundImage && (
         <Image
           src={backgroundImage}
@@ -80,8 +80,8 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
         />
       )}
 
-      <div className="relative z-40 pt-8 flex flex-col items-center px-4 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="pt-20">
+      <div className="relative z-40 flex flex-col items-center px-4 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="pt-15">
           {logo && (typeof logo === 'string' || 'src' in logo) ? (
             <Image
               src={logo}
@@ -154,6 +154,6 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
           </CardFooter>
         </Card>
       </div>
-    </>
+    </div>
   );
 }

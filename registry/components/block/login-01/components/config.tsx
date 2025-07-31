@@ -28,12 +28,13 @@ const example = (
     companyLogo={logo}
     companyLogoAlternative={logoAlternative}
     companyLogoAlt="Company logo"
-    customBtnColor="bg:background"
+    customBtnColor="bg-indigo-600 hover:bg-indigo-700"
     customLabel="Sign In"
     customIcon=""
     formWidth={300}
     providers={['custom', 'google']}
     handleLogin={[() => signIn(), () => signInWithGoogle()]}
+    loading={true}
   />
 );
 
