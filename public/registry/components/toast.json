@@ -1,9 +1,7 @@
 {
   "name": "toast",
   "type": "registry:ui",
-  "dependencies": [
-    "@radix-ui/react-toast"
-  ],
+  "dependencies": ["@radix-ui/react-toast"],
   "files": [
     {
       "path": "ui/toast/index.tsx",

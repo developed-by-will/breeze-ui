@@ -2,16 +2,8 @@
   "name": "login-01",
   "type": "registry:block",
   "description": "Login 01",
-  "dependencies": [
-    "react-icons",
-    "next-themes"
-  ],
-  "registryDependencies": [
-    "button",
-    "card",
-    "input",
-    "label"
-  ],
+  "dependencies": ["react-icons", "next-themes"],
+  "registryDependencies": ["button", "card", "input", "label"],
   "files": [
     {
       "path": "block/login-01/page.tsx",

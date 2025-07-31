@@ -2,9 +2,7 @@
   {
     "name": "breadcrumbs",
     "type": "registry:ui",
-    "registryDependencies": [
-      "breadcrumb"
-    ],
+    "registryDependencies": ["breadcrumb"],
     "files": [
       {
         "path": "ui/breadcrumbs/index.tsx",
@@ -16,14 +14,8 @@
   {
     "name": "syntax-highlighter",
     "type": "registry:ui",
-    "dependencies": [
-      "react-syntax-highlighter",
-      "@types/react-syntax-highlighter"
-    ],
-    "registryDependencies": [
-      "alert-dialog",
-      "button"
-    ],
+    "dependencies": ["react-syntax-highlighter", "@types/react-syntax-highlighter"],
+    "registryDependencies": ["alert-dialog", "button"],
     "files": [
       {
         "path": "ui/syntaxHighlighter/index.tsx",
@@ -57,9 +49,7 @@
   {
     "name": "toast",
     "type": "registry:ui",
-    "dependencies": [
-      "@radix-ui/react-toast"
-    ],
+    "dependencies": ["@radix-ui/react-toast"],
     "files": [
       {
         "path": "ui/toast/index.tsx",
