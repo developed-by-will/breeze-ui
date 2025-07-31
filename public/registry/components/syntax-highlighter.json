@@ -1,8 +1,14 @@
 {
   "name": "syntax-highlighter",
   "type": "registry:ui",
-  "dependencies": ["react-syntax-highlighter", "@types/react-syntax-highlighter"],
-  "registryDependencies": ["alert-dialog", "button"],
+  "dependencies": [
+    "react-syntax-highlighter",
+    "@types/react-syntax-highlighter"
+  ],
+  "registryDependencies": [
+    "alert-dialog",
+    "button"
+  ],
   "files": [
     {
       "path": "ui/syntaxHighlighter/index.tsx",

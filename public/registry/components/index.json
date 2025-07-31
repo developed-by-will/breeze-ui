@@ -1,11 +1,19 @@
 {
   "name": "components",
   "type": "registry:ui",
-  "dependencies": ["tailwindcss-animate", "class-variance-authority", "lucide-react"],
-  "registryDependencies": ["utils"],
+  "dependencies": [
+    "tailwindcss-animate",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils"
+  ],
   "tailwind": {
     "config": {
-      "plugins": ["require(\"tailwindcss-animate\")"]
+      "plugins": [
+        "require(\"tailwindcss-animate\")"
+      ]
     }
   },
   "cssVars": {},

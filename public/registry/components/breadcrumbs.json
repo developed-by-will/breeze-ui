@@ -1,7 +1,9 @@
 {
   "name": "breadcrumbs",
   "type": "registry:ui",
-  "registryDependencies": ["breadcrumb"],
+  "registryDependencies": [
+    "breadcrumb"
+  ],
   "files": [
     {
       "path": "ui/breadcrumbs/index.tsx",
