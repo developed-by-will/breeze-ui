@@ -192,8 +192,6 @@ export default function LoginPage01(props: Readonly<LoginPage01Type>) {
                     cursor-pointer disabled:opacity-50 
                     whitespace-nowrap 
                     px-4 py-2 text-sm mt-2 w-full shadow-sm
-                    
-
                     ${customBtnColor && `bg-${customBtnColor}`}
                     ${!customBtnColor && `${background}`}
                     hover:bg-${background}
