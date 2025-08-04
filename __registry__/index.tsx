@@ -63,11 +63,14 @@ export const Index: Record<string, unknown> = {
     'login-01': {
       name: 'login-01',
       type: 'registry:block',
-      registryDependencies: ['button', 'card', 'input', 'label'],
+      registryDependencies: ['button', 'card', 'input', 'label', 'form', 'badge'],
       files: [
         'registry/components/block/login-01/page.tsx',
         'registry/components/block/login-01/components/form.tsx',
-        'registry/components/block/login-01/components/providerDetails.tsx'
+        'registry/components/block/login-01/components/providerDetails.tsx',
+        'registry/components/block/login-01/constants.ts',
+        'registry/components/block/login-01/formValidations.ts',
+        'registry/components/lib/breeze-ui/tanstackMutationHandler.ts'
       ],
       component: React.lazy(() => import('@/registry/components/block/login-01/page.tsx')),
       source: '__registry__/components/block/login-01/page.tsx',
