@@ -50,7 +50,7 @@ export default function Login() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit((data) => query.mutate(data))}
-        className="flex flex-col flex-auto bg-info rounded-2xl gap-4 max-w-xl mx-auto"
+        className="flex flex-col flex-auto bg-info rounded-2xl gap-4 max-w-xl mx-auto justify-center min-h-screen"
       >
         <LoginPage01
           backgroundImage={'../assets/pexels-nietjuh-1906440.jpg'}
