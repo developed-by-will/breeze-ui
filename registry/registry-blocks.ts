@@ -33,18 +33,13 @@ export const blocks: Registry = [
         type: 'registry:component'
       },
       {
-        path: 'block/login-01/constants.ts',
-        target: 'app/(pages)/login-01/constants.ts',
-        type: 'registry:component'
-      },
-      {
         path: 'block/login-01/formValidations.ts',
         target: 'app/(pages)/login-01/formValidations.ts',
         type: 'registry:component'
       },
       {
-        path: 'lib/breeze-ui/tanstackMutationHandler.ts',
-        target: 'lib/breeze-ui/tanstackMutationHandler.ts',
+        path: 'block/login-01/requestHandler.ts',
+        target: 'lib/breeze-ui/requestHandler.ts',
         type: 'registry:component'
       }
     ],

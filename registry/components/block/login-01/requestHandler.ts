@@ -1,6 +1,3 @@
-import { endpoint } from '../../block/login-01/constants';
-import { LoginPayloadType, LoginResponseType } from '../../block/login-01/formValidations';
-
 export async function POST<TPayload, TResponse>(
   url: string,
   payload: TPayload
@@ -20,8 +17,4 @@ export async function POST<TPayload, TResponse>(
   }
 
   return data as TResponse;
-}
-
-export async function login(payload: LoginPayloadType) {
-  return POST<LoginPayloadType, LoginResponseType>(endpoint['LOGIN'].path, payload);
 }

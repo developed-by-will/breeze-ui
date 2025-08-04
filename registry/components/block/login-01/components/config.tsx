@@ -12,6 +12,7 @@ export const codeSnippet = codeSource;
 /* For the example */
 import { useToast } from '@/components/breeze-ui/toast/hooks/use-toast';
 import { Form } from '@/components/ui/form';
+import { formValidationRules } from '@/registry/components/block/login-01/formValidations';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useRef } from 'react';
@@ -20,12 +21,11 @@ import * as z from 'zod';
 import logoAlternative from '../assets/generic-company-logo-white.png';
 import logo from '../assets/generic-company-logo.png';
 import cover from '../assets/pexels-nietjuh-1906440.jpg';
-import { formValidationRules } from '../formValidations';
 
 async function mockLogin(data: { Username: string; Pw: string }) {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve({ success: true, token: 'someRubishInHere' });
+      resolve({ success: true, token: 'someRubishInHere', data });
     }, 1000);
   });
 }
