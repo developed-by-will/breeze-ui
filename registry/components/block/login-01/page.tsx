@@ -3,13 +3,13 @@
 import { useToast } from '@/components/breeze-ui/toast/hooks/use-toast';
 import { Form } from '@/components/ui/form';
 
+import { POST } from '@/lib/requestHandler';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import LoginPage01 from './components/form';
 import { formValidationRules, LoginPayloadType, LoginResponseType } from './formValidations';
-import { POST } from './requestHandler';
 
 export default function Login() {
   const { toast } = useToast(); // From breeze-ui toast
