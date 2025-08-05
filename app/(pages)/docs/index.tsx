@@ -71,9 +71,9 @@ export default function Docs() {
           <AccordionItem value="item-1">
             <AccordionTrigger>What other libraries does it use?</AccordionTrigger>
             <AccordionContent>
-              As for now breeze/ui uses other well-known libraries such as <b>next-themes</b>,
-              <b>react-syntax-highlighter</b> and <b>react-icons</b>. This list will likely grow but
-              by always making sure they are reliable.
+              As for now breeze/ui uses other well-known libraries such as <b>next-themes</b>,{' '}
+              <b>react-syntax-highlighter</b>, <b>react-hook-form</b> and <b>react-icons</b>. This
+              list will likely grow but by always making sure they are reliable.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">

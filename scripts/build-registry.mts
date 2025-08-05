@@ -208,26 +208,6 @@ export const Index: Record<string, unknown> = {
           };
         })
       );
-
-      // // Write the source file for blocks only.
-      sourceFilename = `__registry__/components/${type}/${item.name}.tsx`;
-
-      if (item.files) {
-        const files = item.files.map((file) =>
-          typeof file === 'string' ? { type: 'registry:page', path: file } : file
-        );
-        if (files?.length) {
-          sourceFilename = `__registry__/components/${files[0].path}`;
-        }
-      }
-
-      const sourcePath = path.join(process.cwd(), sourceFilename);
-      if (!existsSync(sourcePath)) {
-        await fs.mkdir(sourcePath, { recursive: true });
-      }
-
-      rimraf.sync(sourcePath);
-      await fs.writeFile(sourcePath, sourceFile.getText());
     }
 
     let componentPath = `@/registry/components/${type}/${item.name}`;
@@ -296,10 +276,6 @@ export const Index: Record<string, unknown> = {
   const registryJson = JSON.stringify(items, null, 2);
   rimraf.sync(path.join(REGISTRY_PATH, 'index.json'));
   await fs.writeFile(path.join(REGISTRY_PATH, 'index.json'), registryJson, 'utf8');
-
-  // Write index.
-  rimraf.sync(path.join(process.cwd(), '__registry__/index.tsx'));
-  await fs.writeFile(path.join(process.cwd(), '__registry__/index.tsx'), index);
 }
 
 // ----------------------------------------------------------------------------
