@@ -45,5 +45,54 @@ export const blocks: Registry = [
     ],
     category: 'Authentication',
     subcategory: 'Login'
+  },
+  {
+    name: 'data-table',
+    description: 'Data Table',
+    type: 'registry:block',
+    registryDependencies: [
+      'checkbox',
+      'select',
+      'dropdown-menu',
+      'table',
+      'skeleton',
+      'input',
+      'button'
+    ],
+    dependencies: ['@tanstack/react-table', 'lucide-react'],
+    files: [
+      {
+        path: 'block/data-table/data-table.tsx',
+        target: 'components/breeze-ui/data-table/data-table.tsx',
+        type: 'registry:component'
+      },
+      {
+        path: 'block/data-table/index.ts',
+        target: 'components/breeze-ui/data-table/index.ts',
+        type: 'registry:component'
+      },
+      {
+        path: 'block/data-table/types.ts',
+        target: 'components/breeze-ui/data-table/types.ts',
+        type: 'registry:component'
+      },
+      {
+        path: 'block/data-table/components/column-header.tsx',
+        target: 'components/breeze-ui/data-table/components/column-header.tsx',
+        type: 'registry:component'
+      },
+      {
+        path: 'block/data-table/components/pagination.tsx',
+        target: 'components/breeze-ui/data-table/components/pagination.tsx',
+        type: 'registry:component'
+      },
+      {
+        path: 'block/data-table/components/view-options.tsx',
+        target: 'components/breeze-ui/data-table/components/view-options.tsx',
+        type: 'registry:component'
+      }
+    ],
+    category: 'Tables',
+    subcategory: 'Data Management'
   }
 ];
