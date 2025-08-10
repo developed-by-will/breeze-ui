@@ -1,3 +1,4 @@
+import * as DataTable from './block/data-table/components/config';
 import * as Login01 from './block/login-01/components/config';
 import * as Breadcrumbs from './ui/breadcrumbs/config';
 import * as Code from './ui/code/config';
@@ -12,4 +13,4 @@ export const componentsConfig = [
   Steps.config,
   Toast.config
 ];
-export const blocksConfig = [Login01.config];
+export const blocksConfig = [Login01.config, DataTable.config];

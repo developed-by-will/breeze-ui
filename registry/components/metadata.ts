@@ -43,6 +43,12 @@ export const componentsMetadata = {
     name: 'use-toast',
     title: '',
     description: ''
+  },
+  'data-table': {
+    slug: 'data-table',
+    name: 'data-table',
+    title: 'Data Table',
+    description: 'Displays a table of data with pagination, filtering, and sorting.'
   }
 } as const;
 
